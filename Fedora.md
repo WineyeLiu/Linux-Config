@@ -109,6 +109,8 @@ sudo dnf install dotnet-sdk-3.1
 sudo curl -sL https://rpm.nodesource.com/setup_13.x | sudo bash -
 sudo dnf install -y nodejs
 sudo npm install -g @angular/cli
+echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
 ```
 - [NodeSource Node.js Binary Distributions](https://github.com/nodesource/distributions/blob/master/README.md#rpm)
 
@@ -124,6 +126,25 @@ sudo tar xfz jetbrains-toolbox-*.tar.gz -C /usr/local/bin --strip-components 1
 sudo chmod 777 /usr/local/bin/jetbrains-toolbox
 ```
 *  Install Webstorm
+*  Install IDEA
 *  Install Rider
 *  Install Datagrip
 - [Download Jetbrains toolbox](https://www.jetbrains.com/toolbox-app/)
+
+# Fcitx
+```bash
+sudo dnf install fcitx
+sudo dnf install fcitx-qt4 fcitx-qt5
+sudo dnf install fcitx-unikey
+sudo dnf install kcm-fcitx
+sudo nano ~/.config/fcitx/config
+```
+```bash
+sudo nano ~/.xprofile
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+```
+
+
+- [fcitx shortcut](https://askubuntu.com/questions/736638/fcitx-wont-trigger-ime-on-superspace)
