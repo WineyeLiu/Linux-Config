@@ -6,6 +6,8 @@
 *  Workspace Behavior --> General behavior: Double click
 *  Workspace Behavior --> Screen locking: Off
 *  Workspace Behavior --> Screen edge: Off
+*  Shortcut --> Global shortcut --> KRunner --> Global alternative: Meta + Space
+*  Shortcut --> Global shortcut --> KRunner --> Global alternative: Clear
 *  Regional Setting --> Language: English
 *  Regional Setting --> Language: English
 *  Regional Setting --> Format: Vietnamese
@@ -106,5 +108,22 @@ sudo dnf install dotnet-sdk-3.1
 ```bash
 sudo curl -sL https://rpm.nodesource.com/setup_13.x | sudo bash -
 sudo dnf install -y nodejs
+sudo npm install -g @angular/cli
 ```
 - [NodeSource Node.js Binary Distributions](https://github.com/nodesource/distributions/blob/master/README.md#rpm)
+
+# VS Code
+```bash
+udo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+sudo dnf install code
+```
+
+# Jetbrains Toolbox
+```bash
+sudo tar xfz jetbrains-toolbox-*.tar.gz -C /usr/local/bin --strip-components 1
+sudo chmod 777 /usr/local/bin/jetbrains-toolbox
+```
+*  Install Webstorm
+*  Install Rider
+*  Install Datagrip
+- [Download Jetbrains toolbox](https://www.jetbrains.com/toolbox-app/)
