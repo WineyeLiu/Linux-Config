@@ -1,5 +1,39 @@
 # My Fedora KDE installation
 
+# Setting
+*  Global theme: Breeze Dark
+*  Plasma style: Breeze Dark
+*  Workspace Behavior --> General behavior: Double click
+*  Workspace Behavior --> Screen locking: Off
+*  Workspace Behavior --> Screen edge: Off
+*  Regional Setting --> Language: English
+*  Regional Setting --> Language: English
+*  Regional Setting --> Format: Vietnamese
+*  Regional Setting --> Format --> Number: Default
+*  Regional Setting --> Format --> Currency: Default
+*  Input Devices --> Mouse --> Pointer speed: 4, flat
+*  Input Devices --> Touch pad --> Tap to click: On
+*  Display and Monitor --> Compositor --> Animation speed: Instant
+*  Display and Monitor --> Compositor --> Render backend: OpenGL 3.1
+*  Power Management --> AC Power --> Brightness: 100%
+*  Power Management --> AC Power --> Dim screen: 30
+*  Power Management --> AC Power --> Screen energy saving: 35
+*  Power Management --> AC Power --> Suspend session: Off
+*  Power Management --> AC Power --> Lid close: Turn off screen
+*  Power Management --> AC Power --> Wireless: On
+*  Power Management --> Battery --> Brightness: 100%
+*  Power Management --> Battery --> Dim screen: 30
+*  Power Management --> Battery --> Screen energy saving: 35
+*  Power Management --> Battery --> Suspend session: Off
+*  Power Management --> Battery --> Lid close: Turn off screen
+*  Power Management --> Battery --> Wireless: On
+*  Power Management --> Low Battery --> Brightness: 40%
+*  Power Management --> Low Battery --> Dim screen: 5
+*  Power Management --> Low Battery --> Screen energy saving: 10
+*  Power Management --> Low Battery --> Suspend session: 15
+*  Power Management --> Low Battery --> Lid close: Sleep
+*  Power Management --> Advanced Setting --> Critical level: Shut down
+*  Removeable Storage --> Removeable Devices --> Enable automatic mouting: On
 
 # Full system update
 ```bash
@@ -27,3 +61,27 @@ sudo systemctl mask nvidia-fallback
 ```
 
 - [NVIDIA Optimus Bumblebee](https://docs.fedoraproject.org/en-US/quick-docs/bumblebee/)
+
+# Google Chrome
+```bash
+sudo dnf config-manager --set-enabled google-chrome
+sudo dnf install google-chrome-stable
+```
+
+# Vivaldi
+```bash
+sudo dnf config-manager --add-repo https://repo.vivaldi.com/archive/vivaldi-fedora.repo
+sudo dnf install vivaldi-stable
+```
+
+# Adobe Flash
+```bash
+sudo dnf install http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
+sudo dnf install flash-plugin alsa-plugins-pulseaudio libcurl
+```
+
+# Skype
+```bash
+sudo curl -o /etc/yum.repos.d/skype-stable.repo https://repo.skype.com/rpm/stable/skype-stable.repo
+sudo dnf install skypeforlinux
+```
