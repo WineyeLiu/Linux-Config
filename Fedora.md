@@ -118,6 +118,7 @@ sudo sysctl -p
 ```bash
 sudo systemctl start mariadb
 mysql_secure_installation
+```
 
 # VS Code
 ```bash
