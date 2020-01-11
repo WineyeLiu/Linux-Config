@@ -140,10 +140,10 @@ sudo dnf install kcm-fcitx
 sudo nano ~/.config/fcitx/config
 ```
 ```bash
-sudo nano ~/.xprofile
-export GTK_IM_MODULE=fcitx
+sudo nano /etc/profile.d/fcitx.sh
+export XMODIFIERS="@im-fcitx"
 export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
 ```
 
 
