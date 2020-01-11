@@ -85,3 +85,26 @@ sudo dnf install flash-plugin alsa-plugins-pulseaudio libcurl
 sudo curl -o /etc/yum.repos.d/skype-stable.repo https://repo.skype.com/rpm/stable/skype-stable.repo
 sudo dnf install skypeforlinux
 ```
+
+# IDE & Compiler
+- [Fedora Developer Portal](https://developer.fedoraproject.org/)
+
+# Java
+```bash
+sudo dnf install java-latest-openjdk.x86_64
+```
+
+# .NET Core
+```bash
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo wget -q -O /etc/yum.repos.d/microsoft-prod.repo https://packages.microsoft.com/config/fedora/30/prod.repo
+sudo dnf install dotnet-sdk-3.1
+```
+- [Install .NET Core Fedora](https://docs.microsoft.com/vi-vn/dotnet/core/install/linux-package-manager-fedora30)
+
+# Nodejs
+```bash
+sudo curl -sL https://rpm.nodesource.com/setup_13.x | sudo bash -
+sudo dnf install -y nodejs
+```
+- [NodeSource Node.js Binary Distributions](https://github.com/nodesource/distributions/blob/master/README.md#rpm)
