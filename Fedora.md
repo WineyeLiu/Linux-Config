@@ -60,6 +60,8 @@ sudo dnf install akmod-bbswitch bumblebee primus
 sudo gpasswd -a $USER bumblebee
 sudo systemctl enable bumblebeed
 sudo systemctl mask nvidia-fallback
+
+sudo dnf install intel-gpu-tools
 ```
 
 - [NVIDIA Optimus Bumblebee](https://docs.fedoraproject.org/en-US/quick-docs/bumblebee/)
