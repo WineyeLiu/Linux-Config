@@ -139,6 +139,17 @@ sudo chmod 777 /usr/local/bin/jetbrains-toolbox
 *  Install Datagrip
 - [Download Jetbrains toolbox](https://www.jetbrains.com/toolbox-app/)
 
+# Psensor
+```bash
+sudo dnf copr enable angeldm/psensor 
+sudo dnf install psensor
+```
+
+# Yakuake
+```bash
+sudo dnf install yakuake
+```
+
 # Fcitx
 ```bash
 sudo dnf install fcitx
