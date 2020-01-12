@@ -171,7 +171,7 @@ export GTK_IM_MODULE=fcitx
 sudo mkdir /mnt/disk1
 sudo mkdir /mnt/disk2
 sudo mkdir /mnt/disk3
-sudo blkid /dev/sda4
+sudo blkid /dev/sda5
 sudo blkid /dev/sdb1
 sudo blkid /dev/sdb2
 sudo nano /etc/fstab
