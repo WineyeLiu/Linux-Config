@@ -164,6 +164,21 @@ export XMODIFIERS="@im-fcitx"
 export QT_IM_MODULE=fcitx
 export GTK_IM_MODULE=fcitx
 ```
-
-
 - [fcitx shortcut](https://askubuntu.com/questions/736638/fcitx-wont-trigger-ime-on-superspace)
+
+# Automount partition
+```bash
+sudo blkid /dev/sda4
+sudo blkid /dev/sdb1
+sudo blkid /dev/sdb2
+sudo nano /etc/fstab
+
+UUID=01D5AFE0D7508090   /mnt/disk1  ntfs    defaults        0 0
+UUID=01D5308C5EDFFD30   /mnt/disk2  ntfs    defaults        0 0
+UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
+```
+
+# Remove old kernel
+```bash
+sudo dnf remove kernel*5.3.7-301.fc31.x86_64
+```
