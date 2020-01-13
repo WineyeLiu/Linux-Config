@@ -139,6 +139,14 @@ sudo chmod 777 /usr/local/bin/jetbrains-toolbox
 *  Install Datagrip
 - [Download Jetbrains toolbox](https://www.jetbrains.com/toolbox-app/)
 
+# Git
+```bash
+sudo dnf install git
+git config --global user.name "Duc Tran"
+git config --global user.email tv.duc95@gmail.com
+git config --global credential.helper store
+```
+
 # Psensor
 ```bash
 sudo dnf copr enable angeldm/psensor 
