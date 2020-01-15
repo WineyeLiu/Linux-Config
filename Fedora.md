@@ -193,3 +193,13 @@ UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
 ```bash
 sudo dnf remove kernel*5.3.7-301.fc31.x86_64
 ```
+
+# Wireless: turn off power management
+```bash
+sudo nano /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+
+[connection]
+wifi.powersave = 2
+
+sudo chmod 755 /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+```
