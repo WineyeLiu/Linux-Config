@@ -191,6 +191,7 @@ UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
 
 # Remove old kernel
 ```bash
+rpm -qa kernel
 sudo dnf remove kernel*5.3.7-301.fc31.x86_64
 ```
 
