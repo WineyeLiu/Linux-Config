@@ -142,6 +142,7 @@ sudo chmod 777 /usr/local/bin/jetbrains-toolbox
 # Git
 ```bash
 sudo dnf install git
+sudo dnf install gitflow
 git config --global user.name "Duc Tran"
 git config --global user.email tv.duc95@gmail.com
 git config --global credential.helper store
