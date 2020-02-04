@@ -221,4 +221,6 @@ sudo chmod 755 /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 # SELinux Administrator
 ```bash
 sudo dnf install policycoreutils-gui
+sudo setsebool -P httpd_read_user_content 1
+sudo setsebool -P httpd_use_fusefs 1
 ```
