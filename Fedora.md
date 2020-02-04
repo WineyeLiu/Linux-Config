@@ -147,6 +147,19 @@ git config --global user.email tv.duc95@gmail.com
 git config --global credential.helper store
 ```
 
+# Apache
+```bash
+sudo dnf install httpd
+sudo dnf install mod_ssl
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https
+```
+
+# Nginx
+```bash
+sudo dnf install nginx
+```
+
 # Psensor
 ```bash
 sudo dnf copr enable angeldm/psensor 
@@ -203,4 +216,9 @@ sudo nano /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 wifi.powersave = 2
 
 sudo chmod 755 /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+```
+
+# SELinux Administrator
+```bash
+sudo dnf install policycoreutils-gui
 ```
