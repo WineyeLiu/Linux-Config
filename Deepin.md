@@ -33,6 +33,14 @@ options iwlwifi bt_coex_active=0 power_save=0 swcrypto=0
 Graphic Driver Manager: bumblebee
 ```
 
+# Snap
+```bash
+sudo apt install snapd
+sudo snap install core
+sudo snap install snap-store
+
+```
+
 # Curl
 ```bash
 sudo apt-get install curl
@@ -180,3 +188,12 @@ X-MATE-Autostart-Delay=10
 *  Install Rider
 *  Install Datagrip
 - [Download Jetbrains toolbox](https://www.jetbrains.com/toolbox-app/)
+
+# Git
+```bash
+sudo apt-get install git
+sudo apt-get install gitflow
+git config --global user.name "Duc Tran"
+git config --global user.email tv.duc95@gmail.com
+git config --global credential.helper store
+```
