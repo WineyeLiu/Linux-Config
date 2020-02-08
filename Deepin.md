@@ -33,14 +33,6 @@ options iwlwifi bt_coex_active=0 power_save=0 swcrypto=0
 Graphic Driver Manager: bumblebee
 ```
 
-# Snap
-```bash
-sudo apt install snapd
-sudo snap install core
-sudo snap install snap-store
-
-```
-
 # Curl
 ```bash
 sudo apt-get install curl
@@ -68,7 +60,7 @@ Name=Mozilla Firefox
 GenericName=Web Browser
 # Gnome and KDE 3 uses Comment.
 Comment=Access the Internet
-Exec=/opt/firefox/firefox
+Exec=env XDG_CURRENT_DESKTOP=KDE/opt/firefox/firefox
 
 StartupNotify=true
 Terminal=false
