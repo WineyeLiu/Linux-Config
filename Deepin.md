@@ -110,3 +110,18 @@ echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 ```
 - [NodeSource Node.js Binary Distributions](https://github.com/nodesource/distributions/blob/master/README.md#deb)
+
+# MariaDB
+```bash
+sudo apt-key adv --fetch-keys 'https://mariadb.org/mariadb_release_signing_key.asc'
+sudo nano /etc/apt/sources.list
+
+# MariaDB 10.3 repository list - created 2020-02-08 14:10 UTC
+# http://downloads.mariadb.org/mariadb/repositories/
+deb [arch=amd64,i386,ppc64el] http://mirrors.accretive-networks.net/mariadb/repo/10.3/debian stretch main
+deb-src http://mirrors.accretive-networks.net/mariadb/repo/10.3/debian stretch main
+
+sudo apt-get update
+sudo apt-get install mariadb-server
+```
+- [MariaDB](https://downloads.mariadb.org/mariadb/repositories/#distro=Debian&distro_release=stretch--stretch&mirror=accretive&version=10.3)
