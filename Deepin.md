@@ -104,7 +104,7 @@ sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-13.0.2/bi
 ```bash
 https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.101-linux-x64-binaries
 sudo mkdir -p /opt/dotnet && sudo tar zxf dotnet-*.tar.gz -C /opt/dotnet
-sudo ln -s /opt/dotnet/dotnet /usr/local/bin
+sudo ln -s /opt/dotnet/dotnet /usr/local/bin/dotnet
 ```
 - [Install .NET Core Fedora](https://docs.microsoft.com/vi-vn/dotnet/core/install/sdk?pivots=os-linux#download-and-manually-install)
 
@@ -143,3 +143,40 @@ sudo systemctl start mariadb
 mysql_secure_installation
 ```
 - [MariaDB](https://downloads.mariadb.org/mariadb/repositories/#distro=Debian&distro_release=stretch--stretch&mirror=accretive&version=10.3)
+
+# VS Code
+```bash
+https://code.visualstudio.com/docs/?dv=linux64_deb
+sudo apt install ./code_*.deb
+```
+
+# Jetbrains Toolbox
+```bash
+sudo mkdir /opt/jetbrains-toolbox
+sudo tar xfz jetbrains-toolbox-*.tar.gz -C /opt/jetbrains-toolbox --strip-components 1
+sudo chmod 777 /usr/local/bin/jetbrains-toolbox
+sudo ln -s /opt/jetbrains-toolbox/jetbrains-toolbox /usr/local/bin/jetbrains-toolbox
+sudo nano cd /usr/share/applications/jetbrains-toolbox.desktop
+
+[Desktop Entry]
+Categories=Development;IDE;
+Exec=/opt/jetbrains-toolbox/jetbrains-toolbox %u
+Icon=/home/ductran/.local/share/JetBrains/Toolbox/toolbox.svg
+MimeType=x-scheme-handler/jetbrains;
+Name=JetBrains Toolbox
+StartupNotify=false
+StartupWMClass=jetbrains-toolbox
+Terminal=false
+Type=Application
+Version=1.0
+X-GNOME-Autostart-Delay=10
+X-GNOME-Autostart-enabled=true
+X-KDE-autostart-after=panel
+X-MATE-Autostart-Delay=10
+
+```
+*  Install Webstorm
+*  Install IDEA
+*  Install Rider
+*  Install Datagrip
+- [Download Jetbrains toolbox](https://www.jetbrains.com/toolbox-app/)
