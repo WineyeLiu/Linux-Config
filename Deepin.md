@@ -33,6 +33,11 @@ options iwlwifi bt_coex_active=0 power_save=0 swcrypto=0
 Graphic Driver Manager: bumblebee
 ```
 
+# Curl
+```bash
+sudo apt-get install curl
+```
+
 # Firefox
 ```bash
 https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=vi
@@ -68,3 +73,40 @@ Name=New Incognito Window
 Exec=/opt/firefox/firefox -private-window
 
 ```
+
+# Vivaldi
+```bash
+sudo apt-get install vivaldi-stable
+```
+
+# Skype
+```bash
+sudo apt-get install skypeforlinux
+```
+
+# IDE & Compiler
+- [Fedora Developer Portal](https://developer.fedoraproject.org/)
+
+# Java
+```bash
+https://www.oracle.com/technetwork/java/javase/downloads/jdk13-downloads-5672538.html
+sudo apt install ./jdk-13.0.2_linux-x64_bin.deb
+sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-13.0.2/bin/java 1
+```
+
+# .NET Core
+```bash
+https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.101-linux-x64-binaries
+sudo mkdir -p /opt/dotnet && sudo tar zxf dotnet-*.tar.gz -C /opt/dotnet
+sudo ln -s /opt/dotnet/dotnet /usr/local/bin
+```
+- [Install .NET Core Fedora](https://docs.microsoft.com/vi-vn/dotnet/core/install/sdk?pivots=os-linux#download-and-manually-install)
+
+# Nodejs
+```bash
+sudo curl -sL https://deb.nodesource.com/setup_13.x | sudo bash -
+sudo apt-get install -y nodejs
+echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+```
+- [NodeSource Node.js Binary Distributions](https://github.com/nodesource/distributions/blob/master/README.md#deb)
