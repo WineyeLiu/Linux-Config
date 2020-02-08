@@ -38,6 +38,12 @@ Graphic Driver Manager: bumblebee
 sudo apt-get install curl
 ```
 
+# Google Chrome
+```bash
+https://www.google.com/intl/vi/chrome/
+sudo apt install ./google-chrome-stable_current_amd64.deb
+```
+
 # Firefox
 ```bash
 https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=vi
