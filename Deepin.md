@@ -123,5 +123,17 @@ deb-src http://mirrors.accretive-networks.net/mariadb/repo/10.3/debian stretch m
 
 sudo apt-get update
 sudo apt-get install mariadb-server
+
+sudo mysqld_safe --skip-grant-tables &
+mysql -u root
+select Host,User,plugin from mysql.user where User='root';
+update mysql.user set plugin='mysql_native_password';
+update mysql.user set password=PASSWORD("") where User='root';
+flush privileges;
+quit;
+sudo kill -9 $(pgrep mysql)
+
+sudo systemctl start mariadb
+mysql_secure_installation
 ```
 - [MariaDB](https://downloads.mariadb.org/mariadb/repositories/#distro=Debian&distro_release=stretch--stretch&mirror=accretive&version=10.3)
