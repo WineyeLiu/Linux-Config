@@ -32,3 +32,39 @@ options iwlwifi bt_coex_active=0 power_save=0 swcrypto=0
 ```bash
 Graphic Driver Manager: bumblebee
 ```
+
+# Firefox
+```bash
+https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=vi
+sudo tar xjf firefox-*.tar.bz2 -C /opt/
+sudo ln -s /opt/firefox/firefox /usr/bin/firefox
+sudo cp /opt/firefox/browser/chrome/icons/default/default128.png /usr/share/icons/hicolor/128x128/apps/firefox.png
+sudo nano cd /usr/share/applications/firefox.desktop
+
+[Desktop Entry]
+Version=1.0
+Name=Mozilla Firefox
+# Only KDE 4 seems to use GenericName, so we reuse the KDE strings.
+# From Ubuntu's language-pack-kde-XX-base packages, version 9.04-20090413.
+GenericName=Web Browser
+# Gnome and KDE 3 uses Comment.
+Comment=Access the Internet
+Exec=/opt/firefox/firefox
+
+StartupNotify=true
+Terminal=false
+Icon=firefox
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
+Actions=new-window;new-private-window;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=/opt/firefox/firefox
+
+[Desktop Action new-private-window]
+Name=New Incognito Window
+Exec=/opt/firefox/firefox -private-window
+
+```
