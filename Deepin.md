@@ -27,3 +27,8 @@ sudo apt-get upgrade
 sudo nano /etc/modprobe.d/iwlwifi.conf
 options iwlwifi bt_coex_active=0 power_save=0 swcrypto=0
 ```
+
+# Update graphic driver
+```bash
+Graphic Driver Manager: bumblebee
+```
