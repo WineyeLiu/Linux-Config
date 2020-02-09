@@ -72,3 +72,23 @@ Restart
 ```
 
 - [Guide: Install and configure optimus-manager for hybrid GPU setups (Intel/NVIDIA)](https://forum.manjaro.org/t/guide-install-and-configure-optimus-manager-for-hybrid-gpu-setups-intel-nvidia/92196)
+
+# Apps
+```bash
+Add or remove software
+
+google-chrome
+vivaldi
+psensor
+gnome-keyring
+skype
+```
+
+# IDE & Compiler
+
+# Java
+```bash
+Add or remove software
+
+jdk-openjdk
+```
