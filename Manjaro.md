@@ -16,21 +16,25 @@
 *  Startup and Shutdown --> Autostart --> Add program: KSysGuard
 *  Startup and Shutdown --> Splash Screen: Breath
 *  Regional Settings --> Formats --> Region: Viet Nam
+*  Regional Settings --> Formats --> Detail Setting --> Number: Default
 *  Regional Settings --> Formats --> Detail Setting --> Currency: Default
 *  Input Devices --> Mouse --> Poiter speed: 3
 *  Input Devices --> Touchpad --> Poiter speed: 3
 *  Input Devices --> Touchpad --> Tapping --> Tap-to-click: true
 *  Display and Monitor --> Compositor --> Animation speed: Instant
 *  Display and Monitor --> Compositor --> Rendering backend: OpenGL 3.1
+*  Power Management --> Energy Saving --> On AC Power --> Brightness: 100%
 *  Power Management --> Energy Saving --> On AC Power --> Dim screen: 30 min
 *  Power Management --> Energy Saving --> On AC Power --> Screen energy saving: 35 min
 *  Power Management --> Energy Saving --> On AC Power --> When laptop lid close: Turn off screen
 *  Power Management --> Energy Saving --> On AC Power --> Wireless: On
+*  Power Management --> Energy Saving --> On Battery --> Brightness: 100%
 *  Power Management --> Energy Saving --> On Battery --> Dim screen: 30 min
 *  Power Management --> Energy Saving --> On Battery --> Screen energy saving: 35 min
 *  Power Management --> Energy Saving --> On Battery --> Suspend session: Off
 *  Power Management --> Energy Saving --> On Battery --> When laptop lid close: Turn off screen
 *  Power Management --> Energy Saving --> On Battery --> Wireless: On
+*  Power Management --> Energy Saving --> On Low Battery --> Brightness: 40%
 *  Power Management --> Energy Saving --> On Low Battery --> Dim screen: 10 min
 *  Power Management --> Energy Saving --> On Low Battery --> Screen energy saving: 15 min
 *  Power Management --> Energy Saving --> On Low Battery --> Suspend session: 30 min
