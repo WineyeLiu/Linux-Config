@@ -73,15 +73,24 @@ Restart
 
 - [Guide: Install and configure optimus-manager for hybrid GPU setups (Intel/NVIDIA)](https://forum.manjaro.org/t/guide-install-and-configure-optimus-manager-for-hybrid-gpu-setups-intel-nvidia/92196)
 
+# Disable PC Speaker
+```bash
+sudo rmmod pcspkr
+sudo nano /etc/modprobe.d/nobeep.conf
+
+# Do not load the 'pcspkr' module on boot.
+blacklist pcspkr
+```
+
 # Apps
 ```bash
-Add or remove software
+Add or remove software (or use pamac install --no-confirm)
 
 google-chrome
 vivaldi
 psensor
 gnome-keyring
-skype
+skypeforlinux-stable-bin
 ```
 
 # IDE & Compiler
