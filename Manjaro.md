@@ -45,3 +45,12 @@
 pamac checkupdates -a
 pamac upgrade -a
 ```
+
+# Add AUR Repository
+```bash
+Add or remove software
+Preference
+
+Enable AUR support: true
+Check update from AUR: true
+```
