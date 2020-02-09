@@ -42,8 +42,8 @@
 
 # Full system update
 ```bash
-pamac checkupdates -a
-pamac upgrade -a
+sudo pacman -Syu
+sudo pacman -Syyu
 ```
 
 # Add AUR Repository
@@ -54,3 +54,21 @@ Preference
 Enable AUR support: true
 Check update from AUR: true
 ```
+
+# NVIDIA drivers
+```bash
+sudo pacman -S optimus-manager
+sudo systemctl disable bumblebeed.service
+cd /etc/X11/xorg.conf.d/
+ls -la
+sudo mv 90-mhwd.conf 90-mhwd.conf.bak
+cd /etc/X11/
+ls -la
+sudo nano /etc/sddm.conf
+put a # before the line starting with 'DisplayCommand and 'DisplayStopCommand'
+pamac install optimus-manager-qt
+Add auto-start optimus-manager-qt
+Restart
+```
+
+- [Guide: Install and configure optimus-manager for hybrid GPU setups (Intel/NVIDIA)](https://forum.manjaro.org/t/guide-install-and-configure-optimus-manager-for-hybrid-gpu-setups-intel-nvidia/92196)
