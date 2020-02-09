@@ -101,3 +101,10 @@ Add or remove software
 
 jdk-openjdk
 ```
+
+# .NET Core
+```bash
+Add or remove software
+
+dotnet-sdk
+```
