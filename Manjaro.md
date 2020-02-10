@@ -50,7 +50,8 @@ sudo pacman -Syyu
 ```bash
 Add or remove software
 Preference
-
+```
+```bash
 Enable AUR support: true
 Check update from AUR: true
 ```
@@ -66,7 +67,7 @@ cd /etc/X11/
 ls -la
 sudo nano /etc/sddm.conf
 put a # before the line starting with 'DisplayCommand and 'DisplayStopCommand'
-pamac install optimus-manager-qt
+pamac install --no-confirm optimus-manager-qt
 Add auto-start optimus-manager-qt
 Restart
 ```
@@ -77,7 +78,8 @@ Restart
 ```bash
 sudo rmmod pcspkr
 sudo nano /etc/modprobe.d/nobeep.conf
-
+```
+```bash
 # Do not load the 'pcspkr' module on boot.
 blacklist pcspkr
 ```
@@ -109,6 +111,24 @@ Add or remove software
 dotnet-sdk
 ```
 
+# Fcitx
+```bash
+Add or remove software (or use pamac install --no-confirm)
+fcitx
+fcitx-gtk2 fcitx-gtk3 fcitx-qt4 fcitx-qt5
+fcitx-unikey
+kcm-fcitx
+
+sudo nano ~/.config/fcitx/config
+```
+```bash
+sudo nano ~/.xprofile
+export XMODIFIERS="@im-fcitx"
+export QT_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+```
+- [fcitx shortcut](https://askubuntu.com/questions/736638/fcitx-wont-trigger-ime-on-superspace)
+
 # Automount partition
 ```bash
 sudo mkdir /mnt/disk1
@@ -118,8 +138,30 @@ sudo blkid /dev/sda5
 sudo blkid /dev/sdb1
 sudo blkid /dev/sdb2
 sudo nano /etc/fstab
-
+```
+```bash
 UUID=01D5AFE0E284B260   /mnt/disk1  ntfs    defaults        0 0
 UUID=01D5308C5EDFFD30   /mnt/disk2  ntfs    defaults        0 0
 UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
+```
+
+# Wireless: turn off power management
+```bash
+sudo nano /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+```
+```bash
+[connection]
+wifi.powersave = 2
+```
+```bash
+sudo chmod 755 /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+```
+
+# Add swap
+```bash
+sudo fallocate -l 4G /swapfile
+sudo mkswap /swapfile
+sudo chmod u=rw,go= /swapfile
+sudo swapon /swapfile
+sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 ```
