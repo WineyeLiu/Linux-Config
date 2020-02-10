@@ -108,3 +108,18 @@ Add or remove software
 
 dotnet-sdk
 ```
+
+# Automount partition
+```bash
+sudo mkdir /mnt/disk1
+sudo mkdir /mnt/disk2
+sudo mkdir /mnt/disk3
+sudo blkid /dev/sda5
+sudo blkid /dev/sdb1
+sudo blkid /dev/sdb2
+sudo nano /etc/fstab
+
+UUID=01D5AFE0E284B260   /mnt/disk1  ntfs    defaults        0 0
+UUID=01D5308C5EDFFD30   /mnt/disk2  ntfs    defaults        0 0
+UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
+```
