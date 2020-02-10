@@ -86,7 +86,7 @@ blacklist pcspkr
 
 # Apps
 ```bash
-Add or remove software (or use pamac install --no-confirm)
+GUI (or use pamac install --no-confirm)
 
 google-chrome
 vivaldi
@@ -99,17 +99,38 @@ skypeforlinux-stable-bin
 
 # Java
 ```bash
-Add or remove software
+GUI (or use pamac install --no-confirm)
 
 jdk-openjdk
 ```
 
 # .NET Core
 ```bash
-Add or remove software
+GUI (or use pamac install --no-confirm)
 
 dotnet-sdk
 ```
+
+# Nodejs
+```bash
+GUI (or use pamac install --no-confirm)
+
+nodejs
+(or sudo pacman -S nodejs npm)
+```
+- [Install NodeJS via package manager](https://nodejs.org/en/download/package-manager/#arch-linux)
+
+# MariaDB
+```bash
+GUI (or use pamac install --no-confirm)
+
+mariadb
+```
+```bash
+sudo systemctl start mariadb
+mysql_secure_installation
+```
+- [MariaDB - ArchWiki](https://wiki.archlinux.org/index.php/MariaDB)
 
 # Fcitx
 ```bash
