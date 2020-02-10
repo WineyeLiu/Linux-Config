@@ -4,7 +4,6 @@
 *  Kernel: Install latest and restart
 *  Hardware Configuration: Auto install proprietary driver and restart
 *  Language packages: Install packages
-*  Time and Date --> Set time and date automatical: true
 *  Time and Date --> Hardware clock in local timezone: true
 *  Global Theme: Breeze Dark
 *  Workspace Behavior --> General Behavior --> Click behavior: Double click
@@ -15,6 +14,7 @@
 *  Shortcut --> Global Shortcut --> Yakuake: window+f12
 *  Startup and Shutdown --> Autostart --> Add program: KSysGuard
 *  Startup and Shutdown --> Splash Screen: Breath
+*  Regional Setting --> Language: English
 *  Regional Settings --> Formats --> Region: Viet Nam
 *  Regional Settings --> Formats --> Detail Setting --> Number: Default
 *  Regional Settings --> Formats --> Detail Setting --> Currency: Default

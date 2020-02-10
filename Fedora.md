@@ -9,7 +9,6 @@
 *  Shortcut --> Global shortcut --> KRunner --> Global alternative: Meta + Space
 *  Shortcut --> Global shortcut --> KRunner --> Global alternative: Clear
 *  Regional Setting --> Language: English
-*  Regional Setting --> Language: English
 *  Regional Setting --> Format: Vietnamese
 *  Regional Setting --> Format --> Number: Default
 *  Regional Setting --> Format --> Currency: Default
