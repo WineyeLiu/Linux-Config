@@ -93,9 +93,23 @@ vivaldi
 psensor
 gnome-keyring
 skypeforlinux-stable-bin
+qBittorrent
+clementine
 ```
 
 # IDE & Compiler
+
+# Git
+```bash
+GUI (or use pamac install --no-confirm)
+
+gitflow-avh
+```
+```bash
+git config --global user.name "Duc Tran"
+git config --global user.email tv.duc95@gmail.com
+git config --global credential.helper store
+```
 
 # Java
 ```bash
@@ -127,10 +141,42 @@ GUI (or use pamac install --no-confirm)
 mariadb
 ```
 ```bash
+sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 sudo systemctl start mariadb
-mysql_secure_installation
+sudo mysql_secure_installation
 ```
 - [MariaDB - ArchWiki](https://wiki.archlinux.org/index.php/MariaDB)
+
+# VSCode
+```bash
+GUI (or use pamac install --no-confirm)
+
+visual-studio-code-bin
+```
+
+# Jetbrains
+```bash
+GUI (or use pamac install --no-confirm)
+
+webstorm
+intellij-idea-ultimate-edition
+rider
+datagrip
+```
+
+# Apache
+```bash
+GUI (or use pamac install --no-confirm)
+
+apache
+```
+
+# Nginx
+```bash
+GUI (or use pamac install --no-confirm)
+
+nginx
+```
 
 # Fcitx
 ```bash
