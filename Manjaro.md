@@ -178,18 +178,29 @@ GUI (or use pamac install --no-confirm)
 nginx
 ```
 
+# Browser intergation
+```bash
+GUI (or use pamac install --no-confirm)
+
+plasma-browser-integration
+```
+
 # Fcitx
 ```bash
-Add or remove software (or use pamac install --no-confirm)
+GUI (or use pamac install --no-confirm)
+
 fcitx
 fcitx-gtk2 fcitx-gtk3 fcitx-qt4 fcitx-qt5
 fcitx-unikey
 kcm-fcitx
 
 sudo nano ~/.config/fcitx/config
+
+TriggerKey=SUPER_SPACE
 ```
 ```bash
 sudo nano ~/.xprofile
+
 export XMODIFIERS="@im-fcitx"
 export QT_IM_MODULE=fcitx
 export GTK_IM_MODULE=fcitx
@@ -210,18 +221,6 @@ sudo nano /etc/fstab
 UUID=01D5AFE0E284B260   /mnt/disk1  ntfs    defaults        0 0
 UUID=01D5308C5EDFFD30   /mnt/disk2  ntfs    defaults        0 0
 UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
-```
-
-# Wireless: turn off power management
-```bash
-sudo nano /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
-```
-```bash
-[connection]
-wifi.powersave = 2
-```
-```bash
-sudo chmod 755 /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 ```
 
 # Add swap
