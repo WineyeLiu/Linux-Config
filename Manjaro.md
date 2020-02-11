@@ -235,3 +235,4 @@ sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 # Tweaks
 *  Configure appplication laucher --> Show application by name: on
 *  Pin favorite apps: System Settings, Add or Remove Software, Dolphin, Vivaldi, Chrome, Firefox, Skype, Visual Studio Code, Webstorm
+*  Configure Panel --> Screen Edge: Left
