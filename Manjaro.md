@@ -178,6 +178,19 @@ GUI (or use pamac install --no-confirm)
 nginx
 ```
 
+# FTP Server
+```bash
+GUI (or use pamac install --no-confirm)
+
+bftpd
+```
+```bash
+sudo nano /etc/bftpd.conf
+
+ANONYMOUS_USER="yes"
+DENY_LOGIN="no"
+```
+
 # Browser intergation
 ```bash
 GUI (or use pamac install --no-confirm)
