@@ -177,6 +177,12 @@ GUI (or use pamac install --no-confirm)
 
 nginx
 ```
+```bash
+sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
+sudo mkdir /etc/nginx/conf.d
+sudo cp ~/Downloads/nginx.conf /etc/nginx/nginx.conf
+sudo cp ~/Downloads/127.0.0.1.conf /etc/nginx/conf.d/127.0.0.1.conf
+```
 
 # FTP Server
 ```bash
