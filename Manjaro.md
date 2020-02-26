@@ -5,14 +5,12 @@
 *  Hardware Configuration: Auto install proprietary driver and restart
 *  Language packages: Install packages
 *  Time and Date --> Hardware clock in local timezone: true
-*  Global Theme: Breeze Dark
 *  Workspace Behavior --> General Behavior --> Click behavior: Double click
 *  Workspace Behavior --> Screen Edges --> No
 *  Workspace Behavior --> Screen locking --> Lock screen: off
 *  Shortcut --> Global Shortcut --> Krunner: alt+f2
 *  Shortcut --> Global Shortcut --> Yakuake: window+f12
 *  Startup and Shutdown --> Autostart --> Add program: KSysGuard
-*  Startup and Shutdown --> Splash Screen: Breath
 *  Regional Setting --> Language: English
 *  Regional Settings --> Formats --> Region: Viet Nam
 *  Regional Settings --> Formats --> Detail Setting --> Number: Default
