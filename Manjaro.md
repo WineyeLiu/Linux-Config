@@ -67,7 +67,10 @@ cd /etc/X11/
 ls -la
 sudo nano /etc/sddm.conf
 put a # before the line starting with 'DisplayCommand and 'DisplayStopCommand'
-pamac install --no-confirm optimus-manager-qt
+
+GUI (or use pamac install --no-confirm)
+optimus-manager-qt
+
 Add auto-start optimus-manager-qt
 Restart
 ```
