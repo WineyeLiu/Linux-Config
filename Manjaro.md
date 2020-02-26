@@ -163,6 +163,12 @@ intellij-idea-ultimate-edition
 rider
 datagrip
 ```
+```bash
+sudo cp /opt/webstorm/bin/webstorm.png /usr/share/icons/hicolor/128x128/apps/webstorm.png
+sudo cp /opt/datagrip/bin/datagrip.png /usr/share/icons/hicolor/128x128/apps/datagrip.png
+sudo nano /usr/share/applications/jetbrains-datagrip.desktop
+sudo nano /usr/share/applications/jetbrains-webstorm.desktop
+```
 
 # Apache
 ```bash
