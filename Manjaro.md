@@ -130,7 +130,11 @@ dotnet-sdk
 GUI (or use pamac install --no-confirm)
 
 nodejs
+npm
 (or sudo pacman -S nodejs npm)
+```
+```bash
+sudo npm install -g @angular/cli
 ```
 - [Install NodeJS via package manager](https://nodejs.org/en/download/package-manager/#arch-linux)
 
