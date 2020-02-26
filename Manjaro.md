@@ -9,7 +9,6 @@
 *  Workspace Behavior --> General Behavior --> Click behavior: Double click
 *  Workspace Behavior --> Screen Edges --> No
 *  Workspace Behavior --> Screen locking --> Lock screen: off
-*  Shortcut --> Global Shortcut --> Krunner: window+space
 *  Shortcut --> Global Shortcut --> Krunner: alt+f2
 *  Shortcut --> Global Shortcut --> Yakuake: window+f12
 *  Startup and Shutdown --> Autostart --> Add program: KSysGuard
