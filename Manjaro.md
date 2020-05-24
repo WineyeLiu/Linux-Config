@@ -104,6 +104,7 @@ clementine
 GUI (or use pamac install --no-confirm)
 
 gitflow-avh
+gitkraken
 ```
 ```bash
 git config --global user.name "Duc Tran"
