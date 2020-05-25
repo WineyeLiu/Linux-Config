@@ -276,3 +276,9 @@ sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 *  Input Method panel --> Hide: fcitx, virtual keyboard, Telex, Unicode, Half width, Spell check, Macro, Full width input, No remind
 *  Edit panel --> More Setting --> Auto hide
 *  Lock widget
+
+# Theme
+*  Global theme: Arc KDE
+*  GTK Theme: Plane GTK Arc Dark
+*  Icon: papirus dark
+*  SDDM: KDE-Story
