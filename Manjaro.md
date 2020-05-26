@@ -135,6 +135,7 @@ npm
 (or sudo pacman -S nodejs npm)
 ```
 ```bash
+sudo rm -rfv /etc/sysctl.d/*
 echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 
