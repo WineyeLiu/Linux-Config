@@ -135,6 +135,9 @@ npm
 (or sudo pacman -S nodejs npm)
 ```
 ```bash
+echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+
 sudo npm install -g @angular/cli
 ```
 - [Install NodeJS via package manager](https://nodejs.org/en/download/package-manager/#arch-linux)
