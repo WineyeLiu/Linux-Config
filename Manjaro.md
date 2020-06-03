@@ -169,7 +169,7 @@ sudo mysql_secure_installation
 ```bash
 GUI (or use pamac install --no-confirm)
 
-visual-studio-code-bin
+Code - OSS
 ```
 
 # Jetbrains
