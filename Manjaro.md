@@ -109,7 +109,16 @@ gitkraken
 ```bash
 git config --global user.name "Duc Tran"
 git config --global user.email tv.duc95@gmail.com
-git config --global credential.helper store
+git config --global core.askpass /usr/bin/ksshaskpass
+
+sudo nano ~/.config/autostart-scripts/ssh-add.sh
+#!/bin/sh
+ssh-add -q < /dev/null
+
+sudo nano ~/.config/plasma-workspace/env/askpass.sh
+#!/bin/sh
+export SSH_ASKPASS='/usr/bin/ksshaskpass'
+export GIT_ASKPASS='/usr/bin/ksshaskpass'
 ```
 
 # Java
