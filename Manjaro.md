@@ -120,6 +120,12 @@ sudo nano ~/.config/plasma-workspace/env/askpass.sh
 export SSH_ASKPASS='/usr/bin/ksshaskpass'
 export GIT_ASKPASS='/usr/bin/ksshaskpass'
 ```
+```bash
+Crack GitKraken
+
+sudo node dist/bin/gitcracken.js patcher
+```
+- [GitCracken](https://github.com/5cr1pt/GitCracken)
 
 # Java
 ```bash
