@@ -281,6 +281,13 @@ sudo swapon /swapfile
 sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 ```
 
+# SDDM Auto numlock
+```bash
+sudo nano /etc/sddm.conf
+
+Numlock=on
+```
+
 # Tweaks
 *  Unpin all app in task bar
 *  Configure desktop --> Tweak --> Show the desktop toolbox: off
