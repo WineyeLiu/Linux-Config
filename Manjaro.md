@@ -9,6 +9,7 @@
 *  Workspace Behavior --> Screen Edges --> No
 *  Workspace Behavior --> Screen locking --> Lock screen: off
 *  Shortcut --> Global Shortcut --> Krunner: alt+f2
+*  Shortcut --> Global Shortcut --> KWin --> Toggle Present Windows (Current Desktop): Meta+Tab
 *  Shortcut --> Global Shortcut --> Yakuake: window+f12
 *  Startup and Shutdown --> Autostart --> Add program: KSysGuard
 *  Regional Setting --> Language: English
