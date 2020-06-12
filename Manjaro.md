@@ -94,8 +94,16 @@ vivaldi
 psensor
 gnome-keyring
 skypeforlinux-stable-bin
-qBittorrent
+telegram
+caprine
 clementine
+Calibre
+Stellarium
+GIMP
+KRDC
+Krfb
+Grub Customizer
+Kvantum-manjaro
 ```
 
 # IDE & Compiler
@@ -177,6 +185,13 @@ sudo mysql_secure_installation
 GUI (or use pamac install --no-confirm)
 
 Code - OSS
+```
+
+# Codeblocks
+```bash
+GUI (or use pamac install --no-confirm)
+
+Codeblocks
 ```
 
 # Jetbrains
@@ -309,3 +324,5 @@ Numlock=on
 *  GTK Theme: Plane GTK Arc Dark
 *  Icon: papirus dark
 *  SDDM: KDE-Story
+*  Application Style: kvantum
+*  Kvantum: Arc Dark
