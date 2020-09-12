@@ -201,7 +201,7 @@ exit
 ```bash
 GUI (or use pamac install --no-confirm)
 
-Code - OSS
+visual-studio-code-bin
 ```
 
 # Codeblocks
