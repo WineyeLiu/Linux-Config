@@ -183,6 +183,20 @@ sudo mysql_secure_installation
 ```
 - [MariaDB - ArchWiki](https://wiki.archlinux.org/index.php/MariaDB)
 
+# PostgreSQL
+```bash
+GUI (or use pamac install --no-confirm)
+
+postgresql
+pgadmin4
+```
+```bash
+sudo su postgres -l
+initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'
+exit
+```
+- [PostgreSQL - ArchWiki](https://wiki.archlinux.org/index.php/PostgreSQL)
+
 # VSCode
 ```bash
 GUI (or use pamac install --no-confirm)
