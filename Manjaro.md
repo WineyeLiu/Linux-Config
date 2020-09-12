@@ -5,7 +5,9 @@
 *  Hardware Configuration: Auto install proprietary driver and restart
 *  Language packages: Install packages
 *  Time and Date --> Hardware clock in local timezone: true
+*  Workspace Behavior --> General Behavior --> Animation speed: Instant
 *  Workspace Behavior --> General Behavior --> Click behavior: Double click
+*  Workspace Behavior --> Desktop Effect --> Remove Screen Edge
 *  Workspace Behavior --> Screen Edges --> No
 *  Workspace Behavior --> Screen locking --> Lock screen: off
 *  Shortcut --> Global Shortcut --> Krunner: alt+f2
@@ -16,6 +18,7 @@
 *  Regional Settings --> Formats --> Region: Viet Nam
 *  Regional Settings --> Formats --> Detail Setting --> Number: Default
 *  Regional Settings --> Formats --> Detail Setting --> Currency: Default
+*  Input Devices --> Keyboard --> Numlock: On
 *  Input Devices --> Mouse --> Poiter speed: 3
 *  Input Devices --> Touchpad --> Poiter speed: 3
 *  Input Devices --> Touchpad --> Tapping --> Tap-to-click: true
@@ -54,7 +57,7 @@ Enable AUR support: true
 Check update from AUR: true
 ```
 
-# NVIDIA drivers
+# NVIDIA drivers (optional)
 ```bash
 sudo pacman -S optimus-manager
 sudo systemctl disable bumblebeed.service
