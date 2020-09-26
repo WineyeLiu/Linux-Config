@@ -337,6 +337,14 @@ Numlock=on
 *  Lock widget
 
 # Theme
+*  Global theme: Nordian Global
+*  GTK Theme: Nordian Breeze GTK
+*  Icon: Breeze Nordian
+*  SDDM: Nordian
+*  Application Style: kvantum
+*  Kvantum: Nordian Kvantum
+
+# Theme 2
 *  Global theme: Arc KDE
 *  GTK Theme: Plane GTK Arc Dark
 *  Icon: papirus dark
