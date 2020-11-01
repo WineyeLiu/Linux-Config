@@ -151,6 +151,7 @@ jdk-openjdk
 GUI (or use pamac install --no-confirm)
 
 dotnet-sdk
+aspnet-runtime
 ```
 
 # Nodejs
