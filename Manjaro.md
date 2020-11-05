@@ -272,21 +272,18 @@ plasma-browser-integration
 ```bash
 GUI (or use pamac install --no-confirm)
 
-fcitx
-fcitx-gtk2 fcitx-gtk3 fcitx-qt4 fcitx-qt5
-fcitx-unikey
-kcm-fcitx
-
-sudo nano ~/.config/fcitx/config
-
-TriggerKey=SUPER_SPACE
+fcitx5
+fcitx5-gtk fcitx5-qt
+fcitx5-chinese-addons fcitx5-unikey
+fcitx5-configtool
 ```
 ```bash
 sudo nano ~/.xprofile
 
-export XMODIFIERS="@im-fcitx"
-export QT_IM_MODULE=fcitx
-export GTK_IM_MODULE=fcitx
+INPUT_METHOD  DEFAULT=fcitx5
+GTK_IM_MODULE DEFAULT=fcitx5
+QT_IM_MODULE  DEFAULT=fcitx5
+XMODIFIERS    DEFAULT=\@im=fcitx5
 ```
 - [fcitx shortcut](https://askubuntu.com/questions/736638/fcitx-wont-trigger-ime-on-superspace)
 
