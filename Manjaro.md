@@ -107,6 +107,7 @@ KRDC
 Krfb
 Grub Customizer
 Kvantum-manjaro
+kdialog
 ```
 
 # IDE & Compiler
@@ -280,10 +281,10 @@ fcitx5-configtool
 ```bash
 sudo nano ~/.xprofile
 
-INPUT_METHOD  DEFAULT=fcitx5
-GTK_IM_MODULE DEFAULT=fcitx5
-QT_IM_MODULE  DEFAULT=fcitx5
-XMODIFIERS    DEFAULT=\@im=fcitx5
+export INPUT_METHOD=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 ```
 - [fcitx shortcut](https://askubuntu.com/questions/736638/fcitx-wont-trigger-ime-on-superspace)
 
