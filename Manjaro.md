@@ -140,6 +140,8 @@ export GIT_ASKPASS='/usr/bin/ksshaskpass'
 ```bash
 Crack GitKraken
 
+npm i
+npm run-script build
 sudo node dist/bin/gitcracken.js patcher
 ```
 - [GitCracken](https://github.com/5cr1pt/GitCracken)
