@@ -160,6 +160,13 @@ GUI (or use pamac install --no-confirm)
 dotnet-sdk
 aspnet-runtime
 ```
+```bash
+Install .NET Core 3.1
+
+sudo chmod 777 dotnet-install.sh
+sudo ./dotnet-install.sh -c 3.1
+```
+- [dotnet-install scripts](https://dot.net/v1/dotnet-install.sh)
 
 # Nodejs
 ```bash
