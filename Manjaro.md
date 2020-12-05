@@ -326,6 +326,12 @@ sudo nano /etc/sddm.conf
 Numlock=on
 ```
 
+# Fix KDE bug
+```bash
+mv ~/.config/mimeapps.list ~/.local/share/applications/
+```
+- [KDE Plasma kickstart issue: loop message “Applications updated.”](https://forum.manjaro.org/t/kde-plasma-kickstart-issue-loop-message-applications-updated/38559/3)
+
 # Tweaks
 *  Unpin all app in task bar
 *  Configure desktop --> Tweak --> Show the desktop toolbox: off
