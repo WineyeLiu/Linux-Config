@@ -164,7 +164,7 @@ aspnet-runtime
 Install .NET Core 3.1
 
 sudo chmod 777 dotnet-install.sh
-sudo ./dotnet-install.sh -c 3.1
+sudo ./dotnet-install.sh --channel 3.1 --install-dir /usr/share/dotnet
 ```
 - [dotnet-install scripts](https://dot.net/v1/dotnet-install.sh)
 
