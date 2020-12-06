@@ -335,9 +335,14 @@ Numlock=on
 
 # Fix KDE bug
 ```bash
+sudo pacman -Rdd kservice-git ktextwidgets-git kwallet-git
+sudo pacman -S kservice ktextwidgets kwallet
+```
+or
+```bash
 mv ~/.config/mimeapps.list ~/.local/share/applications/
 ```
-- [KDE Plasma kickstart issue: loop message “Applications updated.”](https://forum.manjaro.org/t/kde-plasma-kickstart-issue-loop-message-applications-updated/38559/3)
+- [KDE Plasma kickstart issue: loop message “Applications updated.”](https://forum.manjaro.org/t/kde-plasma-kickstart-issue-loop-message-applications-updated/38559/15)
 
 # Tweaks
 *  Unpin all app in task bar
