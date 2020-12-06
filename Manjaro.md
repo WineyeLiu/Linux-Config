@@ -335,8 +335,9 @@ Numlock=on
 
 # Fix KDE bug
 ```bash
-sudo pacman -Rdd kservice-git ktextwidgets-git kwallet-git
-sudo pacman -S kservice ktextwidgets kwallet
+sudo pacman -Rdd attica-git karchive-git kauth-git kbookmarks-git kcodecs-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kglobalaccel-git kguiaddons-git ki18n-git kiconthemes-git kitemviews-git knotifications-git kservice-git ktextwidgets-git kwallet-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git sonnet-git kjobwidgets-git kio-git solid-git
+
+sudo pacman -S attica karchive kauth kbookmarks kcodecs kcompletion kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kglobalaccel kguiaddons ki18n kiconthemes kitemviews knotifications kservice ktextwidgets kwallet kwidgetsaddons kwindowsystem kxmlgui sonnet kjobwidgets kio solid
 ```
 or
 ```bash
