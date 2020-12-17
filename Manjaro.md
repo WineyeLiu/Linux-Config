@@ -92,6 +92,27 @@ sudo nano /etc/modprobe.d/nobeep.conf
 blacklist pcspkr
 ```
 
+# Fix KDE bug
+```bash
+sudo pacman -Rdd attica-git karchive-git kauth-git kbookmarks-git kcodecs-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kglobalaccel-git kguiaddons-git ki18n-git kiconthemes-git kitemviews-git knotifications-git kservice-git ktextwidgets-git kwallet-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git sonnet-git kjobwidgets-git kio-git solid-git
+
+sudo pacman -S attica karchive kauth kbookmarks kcodecs kcompletion kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kglobalaccel kguiaddons ki18n kiconthemes kitemviews knotifications kservice ktextwidgets kwallet kwidgetsaddons kwindowsystem kxmlgui sonnet kjobwidgets kio solid
+```
+or
+```bash
+mv ~/.config/mimeapps.list ~/.local/share/applications/
+```
+- [KDE Plasma kickstart issue: loop message “Applications updated.”](https://forum.manjaro.org/t/kde-plasma-kickstart-issue-loop-message-applications-updated/38559/15)
+```bash
+sudo nano /usr/lib/NetworkManager/conf.d/20-connectivity.conf
+```
+```bash
+[connectivity]
+#uri=http://www.archlinux.org/check_network_status.txt
+uri=http://networkcheck.kde.org/
+```
+- [Log in required for ethernet at home?”](https://www.reddit.com/r/ManjaroLinux/comments/keabph/log_in_required_for_ethernet_at_home/)
+
 # Apps
 ```bash
 GUI (or use pamac install --no-confirm)
@@ -104,6 +125,8 @@ skypeforlinux-stable-bin
 telegram
 caprine
 clementine
+mpv
+Celluloid
 Calibre
 Stellarium
 GIMP
@@ -112,6 +135,7 @@ Krfb
 Grub Customizer
 Kvantum-manjaro
 kdialog
+Piper
 ```
 
 # IDE & Compiler
@@ -201,7 +225,7 @@ sudo mysql_secure_installation
 # PostgreSQL
 ```bash
 GUI (or use pamac install --no-confirm)
-
+https://askubuntu.com/questions/736638/fcitx-wont-trigger-ime-on-superspace
 postgresql
 pgadmin4
 ```
@@ -333,18 +357,6 @@ sudo nano /etc/sddm.conf
 Numlock=on
 ```
 
-# Fix KDE bug
-```bash
-sudo pacman -Rdd attica-git karchive-git kauth-git kbookmarks-git kcodecs-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kglobalaccel-git kguiaddons-git ki18n-git kiconthemes-git kitemviews-git knotifications-git kservice-git ktextwidgets-git kwallet-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git sonnet-git kjobwidgets-git kio-git solid-git
-
-sudo pacman -S attica karchive kauth kbookmarks kcodecs kcompletion kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kglobalaccel kguiaddons ki18n kiconthemes kitemviews knotifications kservice ktextwidgets kwallet kwidgetsaddons kwindowsystem kxmlgui sonnet kjobwidgets kio solid
-```
-or
-```bash
-mv ~/.config/mimeapps.list ~/.local/share/applications/
-```
-- [KDE Plasma kickstart issue: loop message “Applications updated.”](https://forum.manjaro.org/t/kde-plasma-kickstart-issue-loop-message-applications-updated/38559/15)
-
 # Tweaks
 *  Unpin all app in task bar
 *  Configure desktop --> Tweak --> Show the desktop toolbox: off
@@ -375,3 +387,12 @@ mv ~/.config/mimeapps.list ~/.local/share/applications/
 *  SDDM: KDE-Story
 *  Application Style: kvantum
 *  Kvantum: Arc Dark
+
+# Windows Font
+```bash
+mkdir /usr/share/fonts/WindowsFonts
+cp /windows/Windows/Fonts/* /usr/share/fonts/WindowsFonts/
+chmod 644 /usr/share/fonts/WindowsFonts/*
+fc-cache --force
+```
+- [Microsoft fonts](https://wiki.archlinux.org/index.php/Microsoft_fonts)
