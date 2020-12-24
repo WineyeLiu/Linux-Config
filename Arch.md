@@ -251,66 +251,9 @@ makepkg -si PKGBUILD
 
 # Pamac
 ```bash
-git clone https://aur.archlinux.org/pamac-aur.git
-cd pamac-aur/
+git clone https://aur.archlinux.org/pamac-all.git
+cd pamac-all/
 makepkg -si PKGBUILD
-```
-
-# Install Nvidia 390
-```bash
-pamac install nvidia-390xx nvidia-390xx-utils lib32-nvidia-390xx-utils
-```
-
-# Install Bumblebee
-```bash
-pacman -S bumblebee
-```
-
-# Setting
-*  Workspace Behavior --> General Behavior --> Animation speed: Instant
-*  Workspace Behavior --> General Behavior --> Click behavior: Double click
-*  Workspace Behavior --> Desktop Effect --> Remove Screen Edge
-*  Workspace Behavior --> Screen Edges --> No
-*  Workspace Behavior --> Screen locking --> Lock screen: off
-*  Shortcut --> Global Shortcut --> Defaults
-*  Shortcut --> Global Shortcut --> Krunner: alt+f2
-*  Shortcut --> Global Shortcut --> KWin --> Hide window boder: Meta+Enter
-*  Shortcut --> Global Shortcut --> KWin --> Maximum window: Meta+PageUp
-*  Shortcut --> Global Shortcut --> KWin --> Minimum window: Meta+PageDown
-*  Shortcut --> Global Shortcut --> KWin --> Toggle Present Windows (Current Desktop): Meta+Tab
-*  Shortcut --> Global Shortcut --> Yakuake: window+f12
-*  Startup and Shutdown --> Autostart --> Add program: KSysGuard
-*  Regional Setting --> Language: English
-*  Regional Settings --> Formats --> Region: Viet Nam
-*  Regional Settings --> Formats --> Detail Setting --> Number: Default
-*  Regional Settings --> Formats --> Detail Setting --> Currency: Default
-*  Input Devices --> Keyboard --> Numlock: On
-*  Input Devices --> Mouse --> Poiter speed: 3
-*  Input Devices --> Touchpad --> Poiter speed: 3
-*  Input Devices --> Touchpad --> Tapping --> Tap-to-click: true
-*  Display and Monitor --> Compositor --> Animation speed: Instant
-*  Display and Monitor --> Compositor --> Rendering backend: OpenGL 3.1
-*  Power Management --> Energy Saving --> On AC Power --> Brightness: 100%
-*  Power Management --> Energy Saving --> On AC Power --> Dim screen: 30 min
-*  Power Management --> Energy Saving --> On AC Power --> Screen energy saving: 35 min
-*  Power Management --> Energy Saving --> On AC Power --> When laptop lid close: Turn off screen
-*  Power Management --> Energy Saving --> On AC Power --> Wireless: On
-*  Power Management --> Energy Saving --> On Battery --> Brightness: 100%
-*  Power Management --> Energy Saving --> On Battery --> Dim screen: 30 min
-*  Power Management --> Energy Saving --> On Battery --> Screen energy saving: 35 min
-*  Power Management --> Energy Saving --> On Battery --> Suspend session: Off
-*  Power Management --> Energy Saving --> On Battery --> When laptop lid close: Turn off screen
-*  Power Management --> Energy Saving --> On Battery --> Wireless: On
-*  Power Management --> Energy Saving --> On Low Battery --> Brightness: 40%
-*  Power Management --> Energy Saving --> On Low Battery --> Dim screen: 10 min
-*  Power Management --> Energy Saving --> On Low Battery --> Screen energy saving: 15 min
-*  Power Management --> Energy Saving --> On Low Battery --> Suspend session: 30 min
-*  Power Management --> Advanced Settings --> At critical level: Shutdown
-
-# Full system update
-```bash
-sudo pacman -Syu
-sudo pacman -Syyu
 ```
 
 # Add AUR Repository
@@ -321,6 +264,22 @@ Preference
 ```bash
 Enable AUR support: true
 Check update from AUR: true
+```
+
+# Full system update
+```bash
+sudo pacman -Syu
+sudo pacman -Syyu
+```
+
+# Install Nvidia 390
+```bash
+pamac install nvidia-390xx nvidia-390xx-utils lib32-nvidia-390xx-utils
+```
+
+# Install Bumblebee
+```bash
+pacman -S bumblebee
 ```
 
 # NVIDIA drivers (optional)
@@ -344,6 +303,46 @@ Restart
 
 - [Guide: Install and configure optimus-manager for hybrid GPU setups (Intel/NVIDIA)](https://forum.manjaro.org/t/guide-install-and-configure-optimus-manager-for-hybrid-gpu-setups-intel-nvidia/92196)
 
+# Setting
+*  Workspace Behavior --> General Behavior --> Animation speed: Instant
+*  Workspace Behavior --> General Behavior --> Click behavior: Double click
+*  Workspace Behavior --> Desktop Effect --> Remove Screen Edge
+*  Workspace Behavior --> Screen Edges --> No
+*  Workspace Behavior --> Screen locking --> Lock screen: off
+*  Shortcut --> Global Shortcut --> Defaults
+*  Shortcut --> Global Shortcut --> Krunner: alt+f2
+*  Shortcut --> Global Shortcut --> KWin --> Hide window boder: Meta+Enter
+*  Shortcut --> Global Shortcut --> KWin --> Maximum window: Meta+PageUp
+*  Shortcut --> Global Shortcut --> KWin --> Minimum window: Meta+PageDown
+*  Shortcut --> Global Shortcut --> KWin --> Toggle Present Windows (Current Desktop): Meta+Tab
+*  Shortcut --> Global Shortcut --> Yakuake: window+f12
+*  Startup and Shutdown --> Autostart --> Add program: Yakuake
+*  Startup and Shutdown --> Autostart --> Add program: KSysGuard
+*  Regional Setting --> Language: English
+*  Regional Settings --> Formats --> Region: Viet Nam
+*  Regional Settings --> Formats --> Detail Setting --> Number: Default
+*  Regional Settings --> Formats --> Detail Setting --> Currency: Default
+*  Input Devices --> Keyboard --> Numlock: On
+*  Input Devices --> Mouse --> Poiter speed: 3
+*  Input Devices --> Touchpad --> Poiter speed: 3
+*  Input Devices --> Touchpad --> Tapping --> Tap-to-click: true
+*  Display and Monitor --> Compositor --> Rendering backend: OpenGL 3.1
+*  Power Management --> Energy Saving --> On AC Power --> Brightness: 100%
+*  Power Management --> Energy Saving --> On AC Power --> Dim screen: 30 min
+*  Power Management --> Energy Saving --> On AC Power --> Screen energy saving: 35 min
+*  Power Management --> Energy Saving --> On AC Power --> When laptop lid close: Turn off screen
+*  Power Management --> Energy Saving --> On AC Power --> Wireless: On
+*  Power Management --> Energy Saving --> On Battery --> Brightness: 100%
+*  Power Management --> Energy Saving --> On Battery --> Dim screen: 30 min
+*  Power Management --> Energy Saving --> On Battery --> Screen energy saving: 35 min
+*  Power Management --> Energy Saving --> On Battery --> Suspend session: Off
+*  Power Management --> Energy Saving --> On Battery --> When laptop lid close: Turn off screen
+*  Power Management --> Energy Saving --> On Battery --> Wireless: On
+*  Power Management --> Energy Saving --> On Low Battery --> Brightness: 40%
+*  Power Management --> Energy Saving --> On Low Battery --> Dim screen: 10 min
+*  Power Management --> Energy Saving --> On Low Battery --> Screen energy saving: 15 min
+*  Power Management --> Energy Saving --> On Low Battery --> Suspend session: 30 min
+*  Power Management --> Advanced Settings --> At critical level: Shutdown
 
 # Disable PC Speaker
 ```bash
