@@ -258,7 +258,7 @@ makepkg -si PKGBUILD
 
 # Install Nvidia 390
 ```bash
-pamac install nvidia-390xx 	nvidia-390xx-utils lib32-nvidia-390xx-utils
+pamac install nvidia-390xx nvidia-390xx-utils lib32-nvidia-390xx-utils
 ```
 
 # Install Bumblebee
