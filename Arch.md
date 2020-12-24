@@ -197,7 +197,7 @@ pacman -S vulkan-intel lib32-vulkan-intel vulkan-radeon lib32-vulkan-radeon
 ```
 * For nvidia latest driver
 ```bash
-pacman -S nvidia 	nvidia-utils lib32-nvidia-utils
+pacman -S nvidia nvidia-utils lib32-nvidia-utils
 ```
 
 # Sound driver
@@ -259,6 +259,11 @@ makepkg -si PKGBUILD
 # Install Nvidia 390
 ```bash
 pamac install nvidia-390xx 	nvidia-390xx-utils lib32-nvidia-390xx-utils
+```
+
+# Install Bumblebee
+```bash
+pacman -S bumblebee
 ```
 
 # Setting
