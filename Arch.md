@@ -242,7 +242,7 @@ pacman -S git
 reboot
 ```
 
-# Yay
+# Yay (optional)
 ```bash
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin/
@@ -251,7 +251,9 @@ makepkg -si PKGBUILD
 
 # Pamac
 ```bash
-yay -S pamac-all
+git clone https://aur.archlinux.org/pamac-aur.git
+cd pamac-aur/
+makepkg -si PKGBUILD
 ```
 
 # Add AUR Repository
