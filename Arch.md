@@ -20,12 +20,17 @@ iwctl --passphrase passphrase station device connect SSID
 
 # Update the system clock
 ```bash
+timedatectl set-timezone Asia/Ho_Chi_Minh
 timedatectl set-ntp true
 ```
 
 # Update pacman, set mirror
 ```bash
 pacman -Syyy
+```
+* optional
+```bash
+pacman -S python
 pacman -S reflector
 reflector -c Singapore -a 6 --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Syyy
@@ -141,7 +146,11 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```bash
 systemctl enable NetworkManager
 systemctl enable bluetooth
-systemctl enable org.cups.cupsd
+systemctl enable cups
+systemctl enable sshd
+```
+* optional
+```bash
 systemctl enable sshd
 ```
 
@@ -156,7 +165,8 @@ uncomment # %wheel ALL=(ALL) ALL
 
 # Reboot
 ```bash
-unmount -a
+exit
+umount -a
 reboot
 ```
 
@@ -171,17 +181,29 @@ nmtui
 pacman -S xorg
 ```
 
+# Enable multilib
+```bash
+nano /etc/pacman.conf
+
+uncomment
+#[multilib]
+#Include = /etc/pacman.d/mirrorlist
+```
+
 # Graphic driver
 ```bash
 pacman -S xf86-video-intel xf86-video-amdgpu xf86-video-nouveau mesa lib32-mesa
 pacman -S vulkan-intel lib32-vulkan-intel vulkan-radeon lib32-vulkan-radeon
-pacman -S nvidia-390xx 	nvidia-390xx-utils lib32-nvidia-390xx-utils
+```
+* For nvidia latest driver
+```bash
+pacman -S nvidia 	nvidia-utils lib32-nvidia-utils
 ```
 
 # Sound driver
 ```bash
 pacman -S alsa-firmware alsa-utils alsa-lib alsa-plugins alsa-oss lib32-alsa-lib lib32-alsa-oss lib32-alsa-plugins
-pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer
+pacman -S pulseaudio pulseaudio-alsa pulseaudio-equalizer
 ```
 
 # Input driver
@@ -210,7 +232,17 @@ pacman -S libreoffice
 pacman -S thunderbird firefox
 ```
 
-# Yay
+# Git
+```bash
+pacman -S git
+```
+
+# Reboot
+```bash
+reboot
+```
+
+# Yay (optional)
 ```bash
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin/
@@ -219,12 +251,14 @@ makepkg -si PKGBUILD
 
 # Pamac
 ```bash
-yay -S pamac-aur
+git clone https://aur.archlinux.org/pamac-aur.git
+cd pamac-aur/
+makepkg -si PKGBUILD
 ```
 
-# Reboot
+# Install Nvidia 390
 ```bash
-reboot
+pamac install nvidia-390xx 	nvidia-390xx-utils lib32-nvidia-390xx-utils
 ```
 
 # Setting
