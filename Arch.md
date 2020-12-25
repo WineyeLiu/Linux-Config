@@ -613,6 +613,7 @@ Numlock=on
 *  SDDM: Nordian
 *  Application Style: kvantum
 *  Kvantum: Nordian Kvantum
+*  Wallpaper: Plasma Desktop Wallpaper 1591
 
 # Theme 2
 *  Global theme: Arc KDE
@@ -621,6 +622,13 @@ Numlock=on
 *  SDDM: KDE-Story
 *  Application Style: kvantum
 *  Kvantum: Arc Dark
+
+# Plasmoid
+*  Analog clock
+*  System Monitor
+*  hard disk activity
+*  Network speed
+
 
 # Windows Font
 ```bash
