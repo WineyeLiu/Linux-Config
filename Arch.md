@@ -644,10 +644,10 @@ sudo fc-cache --force
 
 # GRUB Theme
 ```bash
-yay -S grub2-theme-archlinux
+yay -S grub2-theme-archxion
 sudo nano /etc/default/grub
 
-Replace #GRUB_THEME="/path/to/gfxtheme" by GRUB_THEME="/boot/grub/themes/Archlinux/theme.txt"
+Replace #GRUB_THEME="/path/to/gfxtheme" by GRUB_THEME="/boot/grub/themes/Archxion/theme.txt"
 
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
