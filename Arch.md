@@ -219,7 +219,7 @@ systemctl enable sddm
 
 # KDE Plasma
 ```bash
-pacman -S plasma plasma-wayland-session kde-applications
+pacman -S plasma plasma-wayland-session kde-applications sddm-kcm
 ```
 
 # Libre Office
@@ -354,7 +354,7 @@ sudo nano /etc/modprobe.d/nobeep.conf
 blacklist pcspkr
 ```
 
-# Fix KDE bug
+# Fix Network bug
 ```bash
 sudo nano /usr/lib/NetworkManager/conf.d/20-connectivity.conf
 ```
@@ -382,12 +382,10 @@ Celluloid
 Calibre
 Stellarium
 GIMP
-KRDC
-Krfb
-Grub Customizer
-Kvantum-manjaro
+grub-customizer
+kvantum-qt5
 kdialog
-Piper
+piper
 vlc
 ```
 
@@ -484,7 +482,8 @@ pgadmin4
 ```
 ```bash
 sudo su postgres -l
-initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'
+initdb --locale=en_US.UTF-8 -E UTF8 -D /var/lib/postgres/data
+createuser --interactive --pwprompt
 exit
 ```
 - [PostgreSQL - ArchWiki](https://wiki.archlinux.org/index.php/PostgreSQL)
@@ -500,7 +499,7 @@ visual-studio-code-bin
 ```bash
 GUI (or use pamac install --no-confirm)
 
-Codeblocks
+codeblocks
 ```
 
 # Jetbrains
@@ -511,12 +510,6 @@ webstorm
 intellij-idea-ultimate-edition
 rider
 datagrip
-```
-```bash
-sudo cp /opt/webstorm/bin/webstorm.png /usr/share/icons/hicolor/128x128/apps/webstorm.png
-sudo cp /opt/datagrip/bin/datagrip.png /usr/share/icons/hicolor/128x128/apps/datagrip.png
-sudo nano /usr/share/applications/jetbrains-datagrip.desktop
-sudo nano /usr/share/applications/jetbrains-webstorm.desktop
 ```
 
 # Apache
@@ -535,8 +528,9 @@ nginx
 ```bash
 sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 sudo mkdir /etc/nginx/conf.d
-sudo cp ~/Downloads/nginx.conf /etc/nginx/nginx.conf
-sudo cp ~/Downloads/127.0.0.1.conf /etc/nginx/conf.d/127.0.0.1.conf
+cd Downloads/dotfiles/nginx
+sudo cp nginx.conf /etc/nginx/nginx.conf
+sudo cp 127.0.0.1.conf /etc/nginx/conf.d/127.0.0.1.conf
 ```
 
 # FTP Server
@@ -550,13 +544,6 @@ sudo nano /etc/bftpd.conf
 
 ANONYMOUS_USER="yes"
 DENY_LOGIN="no"
-```
-
-# Browser intergation
-```bash
-GUI (or use pamac install --no-confirm)
-
-plasma-browser-integration
 ```
 
 # Fcitx
@@ -583,9 +570,9 @@ export XMODIFIERS=@im=fcitx
 sudo mkdir /mnt/disk1
 sudo mkdir /mnt/disk2
 sudo mkdir /mnt/disk3
-sudo blkid /dev/sdb5
-sudo blkid /dev/sda1
-sudo blkid /dev/sda2
+sudo blkid /dev/sda5
+sudo blkid /dev/sdb1
+sudo blkid /dev/sdb2
 sudo nano /etc/fstab
 ```
 ```bash
@@ -596,6 +583,7 @@ UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
 
 # SDDM Auto numlock
 ```bash
+sddm --example-config | sudo tee /etc/sddm.conf
 sudo nano /etc/sddm.conf
 
 Numlock=on
