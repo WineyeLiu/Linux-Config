@@ -595,13 +595,13 @@ Numlock=on
 *  Unpin all app in task bar
 *  Configure desktop --> Tweak --> Show the desktop toolbox: off
 *  Configure appplication laucher --> Show application by name: on
-*  Pin favorite apps: System Settings, Add or Remove Software, Dolphin, Vivaldi, Chrome, Firefox, Skype, Visual Studio Code, Webstorm
+*  Pin favorite apps: System Settings, Add or Remove Software, Dolphin, Vivaldi, Chrome, Firefox, Skype, Visual Studio Code, Webstorm, Rider, GitKraken
 *  Configure Panel --> Screen Edge: Left
 *  Edit panel --> Add widget --> Download new widget: Win7 volume mixer
 *  Configure System Tray --> Extra items: clipboard, Device notifier, Display Configuration, KDE Connect, Media Player, Notification, Printer, Weather report
 *  Configure System Tray --> Entries --> Hidden all
 *  Configure System Tray --> Entries --> Auto: Notification, psensor, Clipboard
-*  Edit panel --> Add widget: Battery, Volume mixer, Network, Bluetooth, Touchpad, Input Method panel
+*  Edit panel --> Adnetd widget: Battery, Volume mixer, Network, Bluetooth, Touchpad, Input Method panel
 *  Input Method panel --> Hide: fcitx, virtual keyboard, Telex, Unicode, Half width, Spell check, Macro, Full width input, No remind
 *  Edit panel --> More Setting --> Auto hide
 *  Lock widget
