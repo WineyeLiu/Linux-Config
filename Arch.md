@@ -646,6 +646,9 @@ sudo pacman -S ttf-roboto
 sudo pacman -S ttf-dejav
 sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
 sudo pacman -S adobe-source-han-sans-tw-fonts adobe-source-han-serif-tw-fonts
+sudo pacman -S ttf-arphic-ukai ttf-arphic-uming
+sudo pacman -S wqy-microhei wqy-zenhei wqy-bitmapfont
+sudo pacman -S opendesktop-fonts
 ```
 
 # Windows Font
