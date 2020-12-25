@@ -133,7 +133,7 @@ passwd
 
 # GRUB and others
 ```bash
-pacman -S grub efibootmgr os-prober ntfs-3g networkmanager network-manager-applet wpa_supplicant dialog mtools dosfstools base-devel linux-headers git bluez bluez-utils pulseaudio-bluetooth cups openssh
+pacman -S grub efibootmgr os-prober ntfs-3g networkmanager network-manager-applet wpa_supplicant dialog mtools dosfstools base-devel linux-headers git bluez bluez-utils cups openssh
 ```
 ```bash
 mkdir /boot/EFI
@@ -203,7 +203,7 @@ pacman -S nvidia nvidia-utils lib32-nvidia-utils
 # Sound driver
 ```bash
 pacman -S alsa-firmware alsa-utils alsa-lib alsa-plugins alsa-oss lib32-alsa-lib lib32-alsa-oss lib32-alsa-plugins
-pacman -S pulseaudio pulseaudio-alsa pulseaudio-equalizer
+pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer
 ```
 
 # Input driver
