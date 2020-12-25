@@ -633,7 +633,6 @@ Numlock=on
 *  hard disk activity
 *  Network speed
 
-
 # Windows Font
 ```bash
 sudo mkdir /usr/share/fonts/WindowsFonts
@@ -642,6 +641,17 @@ sudo chmod 644 /usr/share/fonts/WindowsFonts/*
 sudo fc-cache --force
 ```
 - [Microsoft fonts](https://wiki.archlinux.org/index.php/Microsoft_fonts)
+
+# GRUB Theme
+```bash
+yay -S grub2-theme-archlinux
+sudo nano /etc/default/grub
+
+Replace #GRUB_THEME="/path/to/gfxtheme" by GRUB_THEME="/boot/grub/themes/Archlinux/theme.txt"
+
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+- [Generator/Grub2-themes](https://github.com/Generator/Grub2-themes)
 
 # Tips & Tricks
 *  Pacman remove unused packages
