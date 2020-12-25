@@ -639,6 +639,15 @@ Numlock=on
 *  hard disk activity
 *  Network speed
 
+# Chinese Font
+```bash
+sudo pacman -S noto-fonts-cjk
+sudo pacman -S ttf-roboto
+sudo pacman -S ttf-dejav
+sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
+sudo pacman -S adobe-source-han-sans-tw-fonts adobe-source-han-serif-tw-fonts
+```
+
 # Windows Font
 ```bash
 sudo mkdir /usr/share/fonts/WindowsFonts
