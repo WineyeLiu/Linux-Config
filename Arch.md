@@ -272,9 +272,15 @@ sudo pacman -Syu
 sudo pacman -Syyu
 ```
 
+# Update mirrorlist
+```bash
+sudo pacman -S reflector
+sudo reflector --country Singapore --country Japan --country China --country HongKong --country 'South Korea' --country Vietnam  --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+```
+
 # Install Nvidia 390
 ```bash
-pamac install nvidia-390xx nvidia-390xx-utils lib32-nvidia-390xx-utils
+yay -S nvidia-390xx nvidia-390xx-utils lib32-nvidia-390xx-utils
 ```
 
 # Install Bumblebee
