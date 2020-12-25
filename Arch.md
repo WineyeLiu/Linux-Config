@@ -485,8 +485,12 @@ pgadmin4
 ```bash
 sudo su postgres -l
 initdb --locale=en_US.UTF-8 -E UTF8 -D /var/lib/postgres/data
+exit
+sudo systemctl start postgresql
+sudo su postgres -l
 createuser --interactive --pwprompt
 exit
+sudo systemctl stop postgresql
 ```
 - [PostgreSQL - ArchWiki](https://wiki.archlinux.org/index.php/PostgreSQL)
 
