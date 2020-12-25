@@ -641,9 +641,9 @@ Numlock=on
 
 # Chinese Font
 ```bash
-sudo pacman -S noto-fonts-cjk
-sudo pacman -S ttf-roboto
-sudo pacman -S ttf-dejav
+sudo pacman -S noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+sudo pacman -S ttf-roboto ttf-dejavu ttf-droid ttf-inconsolata ttf-indic-otf ttf-liberation
+sudo pacman -S terminus-font
 sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
 sudo pacman -S adobe-source-han-sans-tw-fonts adobe-source-han-serif-tw-fonts
 sudo pacman -S ttf-arphic-ukai ttf-arphic-uming
