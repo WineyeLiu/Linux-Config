@@ -636,3 +636,8 @@ fc-cache --force
 ```bash
 sudo pacman -Rs $(pacman -Qdtq)
 ```
+*  Clear cache files
+```bash
+sudo rm -rfv /tmp/*
+sudo rm -rfv ~/.cache/*
+```
