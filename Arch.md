@@ -219,7 +219,7 @@ systemctl enable sddm
 
 # KDE Plasma
 ```bash
-pacman -S plasma plasma-wayland-session kde-applications sddm-kcm
+pacman -S plasma plasma-wayland-session plasma-wayland-protocols kde-applications sddm-kcm
 ```
 
 # Libre Office
