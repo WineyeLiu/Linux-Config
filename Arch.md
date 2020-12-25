@@ -387,6 +387,8 @@ kvantum-qt5
 kdialog
 piper
 vlc
+qbittorrent
+neofetch
 ```
 
 # IDE & Compiler
@@ -628,3 +630,9 @@ chmod 644 /usr/share/fonts/WindowsFonts/*
 fc-cache --force
 ```
 - [Microsoft fonts](https://wiki.archlinux.org/index.php/Microsoft_fonts)
+
+# Tips & Tricks
+*  Pacman remove unused packages
+```bash
+sudo pacman -Rs $(pacman -Qdtq)
+```
