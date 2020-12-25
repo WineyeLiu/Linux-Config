@@ -624,10 +624,10 @@ Numlock=on
 
 # Windows Font
 ```bash
-mkdir /usr/share/fonts/WindowsFonts
-cp /windows/Windows/Fonts/* /usr/share/fonts/WindowsFonts/
-chmod 644 /usr/share/fonts/WindowsFonts/*
-fc-cache --force
+sudo mkdir /usr/share/fonts/WindowsFonts
+sudo cp /run/media/ductran/00EE6951EE693FD0/Windows/Fonts/* /usr/share/fonts/WindowsFonts/
+sudo chmod 644 /usr/share/fonts/WindowsFonts/*
+sudo fc-cache --force
 ```
 - [Microsoft fonts](https://wiki.archlinux.org/index.php/Microsoft_fonts)
 
