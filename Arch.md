@@ -647,9 +647,12 @@ sudo pacman -S ttf-roboto ttf-dejavu ttf-droid ttf-inconsolata ttf-indic-otf ttf
 sudo pacman -S terminus-font
 sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
 sudo pacman -S adobe-source-han-sans-tw-fonts adobe-source-han-serif-tw-fonts
-sudo pacman -S ttf-arphic-ukai ttf-arphic-uming
 sudo pacman -S wqy-microhei wqy-zenhei wqy-bitmapfont
 sudo pacman -S opendesktop-fonts
+```
+*  optional: typographic font
+```bash
+sudo pacman -S ttf-arphic-ukai ttf-arphic-uming
 ```
 
 # Windows Font
