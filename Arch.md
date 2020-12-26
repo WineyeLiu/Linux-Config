@@ -247,6 +247,7 @@ reboot
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin/
 makepkg -si PKGBUILD
+yay --editmenu --nodiffmenu --save
 ```
 
 # Pamac
@@ -521,8 +522,10 @@ GUI (or use pamac install --no-confirm)
 
 webstorm
 intellij-idea-ultimate-edition
-rider
 datagrip
+rider
+
+Note: edit rider PKGBUILD _installdir='/opt'
 ```
 
 # Apache
