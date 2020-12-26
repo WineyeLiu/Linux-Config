@@ -562,7 +562,7 @@ ANONYMOUS_USER="yes"
 DENY_LOGIN="no"
 ```
 
-# Fcitx
+# iBus
 ```bash
 GUI (or use pamac install --no-confirm)
 
@@ -578,6 +578,30 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 ```
 - [fcitx shortcut](https://askubuntu.com/questions/736638/fcitx-wont-trigger-ime-on-superspace)
+
+# Fcitx
+```bash
+GUI (or use pamac install --no-confirm)
+
+ibus ibus-pinyin ibus-unikey ibus-bamboo
+
+Edit ibus-bamboo PKGBUILD pkgver=0.6.7 sha256sums=('SKIP')
+```
+```bash
+sudo nano ~/.xprofile
+
+export INPUT_METHOD=ibus
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+```
+```bash
+sudo nano /usr/share/applications/ibus-daemon.desktop
+
+[Desktop Entry]
+Name=IBus Daemon
+Exec=ibus-daemon -drx --panel=/usr/lib/kimpanel-ibus-panel
+```
 
 # Automount partition
 ```bash
