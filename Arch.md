@@ -395,6 +395,7 @@ piper
 vlc
 qbittorrent
 neofetch
+htop
 ```
 
 # IDE & Compiler
