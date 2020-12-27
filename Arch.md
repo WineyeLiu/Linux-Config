@@ -105,7 +105,7 @@ hwclock --systohc
 ```bash
 nano /etc/locale.gen
 
-uncommnet en_US.UTF-8 UTF-8
+uncomment en_US.UTF-8 UTF-8 vi_VN UTF-8
 ```
 ```bash
 locale-gen
