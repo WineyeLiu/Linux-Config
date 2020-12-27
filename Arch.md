@@ -562,7 +562,7 @@ ANONYMOUS_USER="yes"
 DENY_LOGIN="no"
 ```
 
-# iBus
+# Fcitx
 ```bash
 GUI (or use pamac install --no-confirm)
 
@@ -579,7 +579,7 @@ export XMODIFIERS=@im=fcitx
 ```
 - [fcitx shortcut](https://askubuntu.com/questions/736638/fcitx-wont-trigger-ime-on-superspace)
 
-# Fcitx
+# iBus
 ```bash
 GUI (or use pamac install --no-confirm)
 
