@@ -397,6 +397,8 @@ vlc
 qbittorrent
 neofetch
 htop
+openvpn
+networkmanager-openvpn
 ```
 
 # IDE & Compiler
