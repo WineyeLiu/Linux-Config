@@ -65,7 +65,7 @@ mount /dev/sda3 /mnt/windows10
 
 # Install Linux
 ```bash
-pacstrap /mnt base linux linux-firmware nano intel-ucode
+pacstrap /mnt base linux linux-firmware linux-headers nano intel-ucode
 ```
 
 # Configure the system
@@ -133,7 +133,7 @@ passwd
 
 # GRUB and others
 ```bash
-pacman -S grub efibootmgr os-prober ntfs-3g networkmanager network-manager-applet wpa_supplicant dialog mtools dosfstools base-devel linux-headers git bluez bluez-utils cups openssh
+pacman -S grub efibootmgr os-prober ntfs-3g networkmanager network-manager-applet wpa_supplicant dialog mtools dosfstools base-devel  git bluez bluez-utils cups openssh sshfs
 ```
 ```bash
 mkdir /boot/EFI
@@ -147,10 +147,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 systemctl enable bluetooth
 systemctl enable cups
-systemctl enable sshd
-```
-* optional
-```bash
 systemctl enable sshd
 ```
 
