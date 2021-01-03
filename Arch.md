@@ -347,16 +347,6 @@ Restart
 *  Power Management --> Energy Saving --> On Low Battery --> Suspend session: 30 min
 *  Power Management --> Advanced Settings --> At critical level: Shutdown
 
-# Disable PC Speaker
-```bash
-sudo rmmod pcspkr
-sudo nano /etc/modprobe.d/nobeep.conf
-```
-```bash
-# Do not load the 'pcspkr' module on boot.
-blacklist pcspkr
-```
-
 # Fix Network bug
 ```bash
 sudo nano /usr/lib/NetworkManager/conf.d/20-connectivity.conf
@@ -367,6 +357,40 @@ sudo nano /usr/lib/NetworkManager/conf.d/20-connectivity.conf
 uri=http://networkcheck.kde.org/
 ```
 - [Log in required for ethernet at home?”](https://www.reddit.com/r/ManjaroLinux/comments/keabph/log_in_required_for_ethernet_at_home/)
+
+# Disable PC Speaker
+```bash
+sudo rmmod pcspkr
+sudo nano /etc/modprobe.d/nobeep.conf
+```
+```bash
+# Do not load the 'pcspkr' module on boot.
+blacklist pcspkr
+```
+
+# Automount partition
+```bash
+sudo mkdir /mnt/disk1
+sudo mkdir /mnt/disk2
+sudo mkdir /mnt/disk3
+sudo blkid /dev/sda5
+sudo blkid /dev/sdb1
+sudo blkid /dev/sdb2
+sudo nano /etc/fstab
+```
+```bash
+UUID=01D5AFE0E284B260   /mnt/disk1  ntfs    defaults        0 0
+UUID=01D5308C5EDFFD30   /mnt/disk2  ntfs    defaults        0 0
+UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
+```
+
+# SDDM Auto numlock
+```bash
+sddm --example-config | sudo tee /etc/sddm.conf
+sudo nano /etc/sddm.conf
+
+Numlock=on
+```
 
 # Apps
 ```bash
@@ -601,29 +625,7 @@ Name=IBus Daemon
 Exec=ibus-daemon -drx --panel=/usr/lib/kimpanel-ibus-panel
 ```
 
-# Automount partition
-```bash
-sudo mkdir /mnt/disk1
-sudo mkdir /mnt/disk2
-sudo mkdir /mnt/disk3
-sudo blkid /dev/sda5
-sudo blkid /dev/sdb1
-sudo blkid /dev/sdb2
-sudo nano /etc/fstab
-```
-```bash
-UUID=01D5AFE0E284B260   /mnt/disk1  ntfs    defaults        0 0
-UUID=01D5308C5EDFFD30   /mnt/disk2  ntfs    defaults        0 0
-UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
-```
 
-# SDDM Auto numlock
-```bash
-sddm --example-config | sudo tee /etc/sddm.conf
-sudo nano /etc/sddm.conf
-
-Numlock=on
-```
 
 # Tweaks
 *  Unpin all app in task bar
