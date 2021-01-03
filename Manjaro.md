@@ -82,16 +82,6 @@ Restart
 
 - [Guide: Install and configure optimus-manager for hybrid GPU setups (Intel/NVIDIA)](https://forum.manjaro.org/t/guide-install-and-configure-optimus-manager-for-hybrid-gpu-setups-intel-nvidia/92196)
 
-# Disable PC Speaker
-```bash
-sudo rmmod pcspkr
-sudo nano /etc/modprobe.d/nobeep.conf
-```
-```bash
-# Do not load the 'pcspkr' module on boot.
-blacklist pcspkr
-```
-
 # Fix KDE bug
 ```bash
 sudo pacman -Rdd attica-git karchive-git kauth-git kbookmarks-git kcodecs-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kglobalaccel-git kguiaddons-git ki18n-git kiconthemes-git kitemviews-git knotifications-git kservice-git ktextwidgets-git kwallet-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git sonnet-git kjobwidgets-git kio-git solid-git
@@ -112,6 +102,48 @@ sudo nano /usr/lib/NetworkManager/conf.d/20-connectivity.conf
 uri=http://networkcheck.kde.org/
 ```
 - [Log in required for ethernet at home?”](https://www.reddit.com/r/ManjaroLinux/comments/keabph/log_in_required_for_ethernet_at_home/)
+
+# Disable PC Speaker
+```bash
+sudo rmmod pcspkr
+sudo nano /etc/modprobe.d/nobeep.conf
+```
+```bash
+# Do not load the 'pcspkr' module on boot.
+blacklist pcspkr
+```
+
+# Automount partition
+```bash
+sudo mkdir /mnt/disk1
+sudo mkdir /mnt/disk2
+sudo mkdir /mnt/disk3
+sudo blkid /dev/sdb5
+sudo blkid /dev/sda1
+sudo blkid /dev/sda2
+sudo nano /etc/fstab
+```
+```bash
+UUID=01D5AFE0E284B260   /mnt/disk1  ntfs    defaults        0 0
+UUID=01D5308C5EDFFD30   /mnt/disk2  ntfs    defaults        0 0
+UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
+```
+
+# Add swap
+```bash
+sudo fallocate -l 4G /swapfile
+sudo mkswap /swapfile
+sudo chmod u=rw,go= /swapfile
+sudo swapon /swapfile
+sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
+```
+
+# SDDM Auto numlock
+```bash
+sudo nano /etc/sddm.conf
+
+Numlock=on
+```
 
 # Apps
 ```bash
@@ -151,7 +183,9 @@ gitkraken
 git config --global user.name "Duc Tran"
 git config --global user.email tv.duc95@gmail.com
 git config --global core.askpass /usr/bin/ksshaskpass
-
+```
+*  Optional: use ksshaskpass
+```bash
 sudo nano ~/.config/autostart-scripts/ssh-add.sh
 #!/bin/sh
 ssh-add -q < /dev/null
@@ -231,8 +265,13 @@ pgadmin4
 ```
 ```bash
 sudo su postgres -l
-initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'
+initdb --locale=en_US.UTF-8 -E UTF8 -D /var/lib/postgres/data
 exit
+sudo systemctl start postgresql
+sudo su postgres -l
+createuser --interactive --pwprompt
+exit
+sudo systemctl stop postgresql
 ```
 - [PostgreSQL - ArchWiki](https://wiki.archlinux.org/index.php/PostgreSQL)
 
@@ -258,12 +297,11 @@ webstorm
 intellij-idea-ultimate-edition
 rider
 datagrip
+
+Note: edit rider PKGBUILD _installdir='/opt'
 ```
 ```bash
-sudo cp /opt/webstorm/bin/webstorm.png /usr/share/icons/hicolor/128x128/apps/webstorm.png
-sudo cp /opt/datagrip/bin/datagrip.png /usr/share/icons/hicolor/128x128/apps/datagrip.png
-sudo nano /usr/share/applications/jetbrains-datagrip.desktop
-sudo nano /usr/share/applications/jetbrains-webstorm.desktop
+
 ```
 
 # Apache
@@ -325,37 +363,7 @@ export XMODIFIERS=@im=fcitx
 ```
 - [fcitx shortcut](https://askubuntu.com/questions/736638/fcitx-wont-trigger-ime-on-superspace)
 
-# Automount partition
-```bash
-sudo mkdir /mnt/disk1
-sudo mkdir /mnt/disk2
-sudo mkdir /mnt/disk3
-sudo blkid /dev/sdb5
-sudo blkid /dev/sda1
-sudo blkid /dev/sda2
-sudo nano /etc/fstab
-```
-```bash
-UUID=01D5AFE0E284B260   /mnt/disk1  ntfs    defaults        0 0
-UUID=01D5308C5EDFFD30   /mnt/disk2  ntfs    defaults        0 0
-UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
-```
 
-# Add swap
-```bash
-sudo fallocate -l 4G /swapfile
-sudo mkswap /swapfile
-sudo chmod u=rw,go= /swapfile
-sudo swapon /swapfile
-sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
-```
-
-# SDDM Auto numlock
-```bash
-sudo nano /etc/sddm.conf
-
-Numlock=on
-```
 
 # Tweaks
 *  Unpin all app in task bar
