@@ -149,6 +149,7 @@ Numlock=on
 ```bash
 GUI (or use pamac install --no-confirm)
 
+yay-bin
 google-chrome
 vivaldi
 psensor
@@ -301,7 +302,30 @@ datagrip
 Note: edit rider PKGBUILD _installdir='/opt'
 ```
 ```bash
+sudo ark -b -o /opt /mnt/disk3/Software/IDE/java-11.0.7-jetbrain.zip
+sudo mv /opt/java-11.0.7-jetbrain /opt/jbr
+```
+```bash
+sudo nano /opt/datagrip/bin/datagrip.sh
+export DATAGRIP_JDK=/opt/jbr
 
+sudo nano /opt/intellij-idea-ultimate-edition/bin/idea.sh
+export IDEA_JDK=/opt/jbr
+
+sudo nano /opt/rider/bin/rider.sh
+export RIDER_JDK=/opt/jbr
+
+sudo nano /opt/webstorm/bin/webstorm.sh
+export WEBIDE_JDK=/opt/jbr
+```
+or
+```bash
+sudo nano ~/.xprofile
+
+export DATAGRIP_JDK=/opt/jbr
+export IDEA_JDK=/opt/jbr
+export RIDER_JDK=/opt/jbr
+export WEBIDE_JDK=/opt/jbr
 ```
 
 # Apache
@@ -362,8 +386,6 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 ```
 - [fcitx shortcut](https://askubuntu.com/questions/736638/fcitx-wont-trigger-ime-on-superspace)
-
-
 
 # Tweaks
 *  Unpin all app in task bar
