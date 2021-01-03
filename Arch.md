@@ -65,7 +65,7 @@ mount /dev/sda3 /mnt/windows10
 
 # Install Linux
 ```bash
-pacstrap /mnt base linux linux-firmware nano intel-ucode
+pacstrap /mnt base linux linux-firmware linux-headers nano intel-ucode
 ```
 
 # Configure the system
@@ -105,7 +105,7 @@ hwclock --systohc
 ```bash
 nano /etc/locale.gen
 
-uncommnet en_US.UTF-8 UTF-8
+uncomment en_US.UTF-8 UTF-8 vi_VN UTF-8
 ```
 ```bash
 locale-gen
@@ -133,7 +133,7 @@ passwd
 
 # GRUB and others
 ```bash
-pacman -S grub efibootmgr os-prober ntfs-3g networkmanager network-manager-applet wpa_supplicant dialog mtools dosfstools base-devel linux-headers git bluez bluez-utils cups openssh
+pacman -S grub efibootmgr os-prober ntfs-3g networkmanager network-manager-applet wpa_supplicant dialog mtools dosfstools base-devel  git bluez bluez-utils cups openssh sshfs
 ```
 ```bash
 mkdir /boot/EFI
@@ -147,10 +147,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 systemctl enable bluetooth
 systemctl enable cups
-systemctl enable sshd
-```
-* optional
-```bash
 systemctl enable sshd
 ```
 
@@ -219,7 +215,7 @@ systemctl enable sddm
 
 # KDE Plasma
 ```bash
-pacman -S plasma plasma-wayland-session kde-applications sddm-kcm
+pacman -S plasma plasma-wayland-session plasma-wayland-protocols kde-applications sddm-kcm unrar
 ```
 
 # Libre Office
@@ -247,6 +243,7 @@ reboot
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin/
 makepkg -si PKGBUILD
+yay --editmenu --nodiffmenu --save
 ```
 
 # Pamac
@@ -272,9 +269,15 @@ sudo pacman -Syu
 sudo pacman -Syyu
 ```
 
+# Update mirrorlist
+```bash
+sudo pacman -S reflector
+sudo reflector --country Singapore --country Japan --country China --country HongKong --country 'South Korea' --country Vietnam  --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+```
+
 # Install Nvidia 390
 ```bash
-pamac install nvidia-390xx nvidia-390xx-utils lib32-nvidia-390xx-utils
+yay -S nvidia-390xx nvidia-390xx-utils lib32-nvidia-390xx-utils
 ```
 
 # Install Bumblebee
@@ -389,6 +392,9 @@ piper
 vlc
 qbittorrent
 neofetch
+htop
+openvpn
+networkmanager-openvpn
 ```
 
 # IDE & Compiler
@@ -485,8 +491,12 @@ pgadmin4
 ```bash
 sudo su postgres -l
 initdb --locale=en_US.UTF-8 -E UTF8 -D /var/lib/postgres/data
+exit
+sudo systemctl start postgresql
+sudo su postgres -l
 createuser --interactive --pwprompt
 exit
+sudo systemctl stop postgresql
 ```
 - [PostgreSQL - ArchWiki](https://wiki.archlinux.org/index.php/PostgreSQL)
 
@@ -510,8 +520,10 @@ GUI (or use pamac install --no-confirm)
 
 webstorm
 intellij-idea-ultimate-edition
-rider
 datagrip
+rider
+
+Note: edit rider PKGBUILD _installdir='/opt'
 ```
 
 # Apache
@@ -552,10 +564,8 @@ DENY_LOGIN="no"
 ```bash
 GUI (or use pamac install --no-confirm)
 
-fcitx5
-fcitx5-gtk fcitx5-qt
+fcitx5-im
 fcitx5-chinese-addons fcitx5-unikey
-fcitx5-configtool
 ```
 ```bash
 sudo nano ~/.xprofile
@@ -566,6 +576,30 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 ```
 - [fcitx shortcut](https://askubuntu.com/questions/736638/fcitx-wont-trigger-ime-on-superspace)
+
+# iBus
+```bash
+GUI (or use pamac install --no-confirm)
+
+ibus ibus-pinyin ibus-unikey ibus-bamboo
+
+Edit ibus-bamboo PKGBUILD pkgver=0.6.7 sha256sums=('SKIP')
+```
+```bash
+sudo nano ~/.xprofile
+
+export INPUT_METHOD=ibus
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+```
+```bash
+sudo nano /usr/share/applications/ibus-daemon.desktop
+
+[Desktop Entry]
+Name=IBus Daemon
+Exec=ibus-daemon -drx --panel=/usr/lib/kimpanel-ibus-panel
+```
 
 # Automount partition
 ```bash
@@ -629,6 +663,20 @@ Numlock=on
 *  hard disk activity
 *  Network speed
 
+# Chinese Font
+```bash
+sudo pacman -S noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+sudo pacman -S ttf-roboto ttf-dejavu ttf-droid ttf-inconsolata ttf-indic-otf ttf-liberation
+sudo pacman -S terminus-font
+sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
+sudo pacman -S adobe-source-han-sans-tw-fonts adobe-source-han-serif-tw-fonts
+sudo pacman -S wqy-microhei wqy-zenhei wqy-bitmapfont
+sudo pacman -S opendesktop-fonts
+```
+*  optional: typographic font
+```bash
+sudo pacman -S ttf-arphic-ukai ttf-arphic-uming
+```
 
 # Windows Font
 ```bash
@@ -638,6 +686,17 @@ sudo chmod 644 /usr/share/fonts/WindowsFonts/*
 sudo fc-cache --force
 ```
 - [Microsoft fonts](https://wiki.archlinux.org/index.php/Microsoft_fonts)
+
+# GRUB Theme
+```bash
+yay -S grub2-theme-archxion
+sudo nano /etc/default/grub
+
+Replace #GRUB_THEME="/path/to/gfxtheme" by GRUB_THEME="/boot/grub/themes/Archxion/theme.txt"
+
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+- [Generator/Grub2-themes](https://github.com/Generator/Grub2-themes)
 
 # Tips & Tricks
 *  Pacman remove unused packages
