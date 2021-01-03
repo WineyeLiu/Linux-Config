@@ -379,7 +379,7 @@ Numlock=on
 *  SDDM: Nordian
 *  Application Style: kvantum
 *  Kvantum: Nordian Kvantum
-*  Wallpaper: Plasma Wallpaper 1591
+*  Wallpaper: Plasma Desktop Wallpaper 1591
 
 # Theme 2
 *  Global theme: Arc KDE
