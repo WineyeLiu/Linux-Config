@@ -419,6 +419,7 @@ neofetch
 htop
 openvpn
 networkmanager-openvpn
+subtitleeditor
 ```
 
 # IDE & Compiler
