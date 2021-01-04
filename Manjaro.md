@@ -159,6 +159,8 @@ Grub Customizer
 Kvantum-manjaro
 kdialog
 Piper
+neofetch
+subtitleeditor
 ```
 
 # IDE & Compiler
