@@ -489,6 +489,12 @@ sudo chmod 777 dotnet-install.sh
 sudo ./dotnet-install.sh --channel 3.1 --install-dir /usr/share/dotnet
 ```
 - [dotnet-install scripts](https://dot.net/v1/dotnet-install.sh)
+```bash
+dotnet tool install --global dotnet-ef
+sudo nano ~/.xprofile
+
+export PATH="$PATH:/home/ductran/.dotnet/tools"
+```
 
 # Nodejs
 ```bash
