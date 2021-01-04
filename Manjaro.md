@@ -84,16 +84,6 @@ Restart
 
 # Fix KDE bug
 ```bash
-sudo pacman -Rdd user-manager-git
-pacman -S attica karchive kauth kbookmarks kcodecs kcompletion kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kglobalaccel kguiaddons ki18n kiconthemes kio kitemviews kjobwidgets knotifications kwidgetsaddons kwindowsystem kxmlgui solid sonnet
-```
-or
-```bash
-pamac install attica karchive kauth kbookmarks kcodecs kcompletion kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kglobalaccel kguiaddons ki18n kiconthemes kio kitemviews kjobwidgets knotifications kwidgetsaddons kwindowsystem kxmlgui solid sonnet
-```
-- [KDE Plasma kickstart issue: loop message “Applications updated.”](https://forum.manjaro.org/t/kde-plasma-kickstart-issue-loop-message-applications-updated/38559/15)
-- [Many -git versions from Architect, installed as User-manager-git dependences](https://forum.manjaro.org/t/many-git-versions-from-architect-installed-as-user-manager-git-dependences/41524/26)
-```bash
 sudo nano /usr/lib/NetworkManager/conf.d/20-connectivity.conf
 ```
 ```bash
@@ -205,6 +195,20 @@ sudo node dist/bin/gitcracken.js patcher
 ```
 - [GitCracken](https://github.com/5cr1pt/GitCracken)
 
+# C++
+```bash
+GUI (or use pamac install --no-confirm)
+
+gcc
+```
+
+# Go
+```bash
+GUI (or use pamac install --no-confirm)
+
+go
+```
+
 # Java
 ```bash
 GUI (or use pamac install --no-confirm)
@@ -298,6 +302,8 @@ webstorm
 intellij-idea-ultimate-edition
 rider
 datagrip
+clion
+goland
 
 Note: edit rider PKGBUILD _installdir='/opt'
 ```
@@ -326,6 +332,20 @@ export DATAGRIP_JDK=/opt/jbr
 export IDEA_JDK=/opt/jbr
 export RIDER_JDK=/opt/jbr
 export WEBIDE_JDK=/opt/jbr
+```
+
+# Redis
+```bash
+GUI (or use pamac install --no-confirm)
+
+redis
+```
+
+# RabbitMQ
+```bash
+GUI (or use pamac install --no-confirm)
+
+RabbitMQ
 ```
 
 # Apache
