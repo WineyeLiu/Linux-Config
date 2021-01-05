@@ -341,6 +341,8 @@ export DATAGRIP_JDK=/opt/jbr
 export IDEA_JDK=/opt/jbr
 export RIDER_JDK=/opt/jbr
 export WEBIDE_JDK=/opt/jbr
+export CLION_JDK=/opt/jbr
+export GOLAND_JDK=/opt/jbr
 ```
 
 # Redis
