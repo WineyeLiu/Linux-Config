@@ -210,6 +210,7 @@ clang
 GUI (or use pamac install --no-confirm)
 
 go
+go-tools
 ```
 
 # Java
