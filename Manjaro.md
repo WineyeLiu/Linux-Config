@@ -417,6 +417,13 @@ ANONYMOUS_USER="yes"
 DENY_LOGIN="no"
 ```
 
+# PostMan
+```bash
+GUI (or use pamac install --no-confirm)
+
+postman-bin
+```
+
 # Browser intergation
 ```bash
 GUI (or use pamac install --no-confirm)
