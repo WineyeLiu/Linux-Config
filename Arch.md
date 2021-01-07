@@ -675,6 +675,13 @@ ANONYMOUS_USER="yes"
 DENY_LOGIN="no"
 ```
 
+# PostMan
+```bash
+GUI (or use pamac install --no-confirm)
+
+postman-bin
+```
+
 # Fcitx
 ```bash
 GUI (or use pamac install --no-confirm)
@@ -715,8 +722,6 @@ sudo nano /usr/share/applications/ibus-daemon.desktop
 Name=IBus Daemon
 Exec=ibus-daemon -drx --panel=/usr/lib/kimpanel-ibus-panel
 ```
-
-
 
 # Tweaks
 *  Unpin all app in task bar
