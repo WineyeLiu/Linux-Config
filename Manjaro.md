@@ -240,6 +240,30 @@ sudo nano ~/.xprofile
 export PATH="$PATH:/home/ductran/.dotnet/tools"
 ```
 
+# Mono
+```bash
+GUI (or use pamac install --no-confirm)
+
+mono
+mono-tools
+mono-addins
+mono-msbuild
+mono-msbuild-sdkresolver
+```
+config to run ASP .NET project
+```bash
+sudo mkdir /etc/mono/registry
+sudo chmod uog+rw /etc/mono/registry
+
+edit web.config
+<dependentAssembly>
+    <assemblyIdentity name="System.Net.Http" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+    <bindingRedirect oldVersion="0.0.0.0-2.0.0.0" newVersion="4.2.0.0" />
+</dependentAssembly>
+```
+- [Access to the path “/etc/mono/registry” is denied](https://stackoverflow.com/questions/24872394/access-to-the-path-etc-mono-registry-is-denied)
+- [How to get Swashbuckle / Swagger working on the Mono (.NET) Framework?](https://stackoverflow.com/questions/36062557/how-to-get-swashbuckle-swagger-working-on-the-mono-net-framework)
+
 # Nodejs
 ```bash
 GUI (or use pamac install --no-confirm)
