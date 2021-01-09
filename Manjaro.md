@@ -83,6 +83,7 @@ Restart
 - [Guide: Install and configure optimus-manager for hybrid GPU setups (Intel/NVIDIA)](https://forum.manjaro.org/t/guide-install-and-configure-optimus-manager-for-hybrid-gpu-setups-intel-nvidia/92196)
 
 # Fix KDE bug
+*  Fix check network bug
 ```bash
 sudo nano /usr/lib/NetworkManager/conf.d/20-connectivity.conf
 ```
@@ -92,6 +93,13 @@ sudo nano /usr/lib/NetworkManager/conf.d/20-connectivity.conf
 uri=http://networkcheck.kde.org/
 ```
 - [Log in required for ethernet at home?”](https://www.reddit.com/r/ManjaroLinux/comments/keabph/log_in_required_for_ethernet_at_home/)
+*  Fix shortcut bug
+```bash
+sudo nano ~/.config/plasma-org.kde.plasma.desktop-appletsrc
+sudo nano ~/.config/kglobalshortcutsrc
+
+Remove Alt+F1
+```
 
 # Disable PC Speaker
 ```bash
