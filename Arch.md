@@ -347,7 +347,8 @@ Restart
 *  Power Management --> Energy Saving --> On Low Battery --> Suspend session: 30 min
 *  Power Management --> Advanced Settings --> At critical level: Shutdown
 
-# Fix Network bug
+# Fix KDE bug
+*  Fix check network bug
 ```bash
 sudo nano /usr/lib/NetworkManager/conf.d/20-connectivity.conf
 ```
@@ -356,7 +357,14 @@ sudo nano /usr/lib/NetworkManager/conf.d/20-connectivity.conf
 #uri=http://www.archlinux.org/check_network_status.txt
 uri=http://networkcheck.kde.org/
 ```
-- [Log in required for ethernet at home?”](https://www.reddit.com/r/ManjaroLinux/comments/keabph/log_in_required_for_ethernet_at_home/)
+[Log in required for ethernet at home?”](https://www.reddit.com/r/ManjaroLinux/comments/keabph/log_in_required_for_ethernet_at_home/)
+*  Fix shortcut bug
+```bash
+sudo nano ~/.config/plasma-org.kde.plasma.desktop-appletsrc
+sudo nano ~/.config/kglobalshortcutsrc
+
+Remove Alt+F1
+```
 
 # Disable PC Speaker
 ```bash
