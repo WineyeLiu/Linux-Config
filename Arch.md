@@ -313,12 +313,14 @@ Restart
 *  Workspace Behavior --> Screen Edges --> No
 *  Workspace Behavior --> Screen locking --> Lock screen: off
 *  Shortcut --> Global Shortcut --> Defaults
-*  Shortcut --> Global Shortcut --> Krunner: alt+f2
+*  Shortcut --> Global Shortcut --> Import Windows cheme with win key
+*  Shortcut --> Global Shortcut --> Krunner: untick alt+f2
 *  Shortcut --> Global Shortcut --> KWin --> Hide window boder: Meta+Enter
 *  Shortcut --> Global Shortcut --> KWin --> Maximum window: Meta+PageUp
 *  Shortcut --> Global Shortcut --> KWin --> Minimum window: Meta+PageDown
 *  Shortcut --> Global Shortcut --> KWin --> Toggle Present Windows (Current Desktop): Meta+Tab
 *  Shortcut --> Global Shortcut --> Yakuake: window+f12
+*  Shortcut --> Global Shortcut --> Konsole: Ctrl+Alt+T
 *  Startup and Shutdown --> Autostart --> Add program: Yakuake
 *  Startup and Shutdown --> Autostart --> Add program: KSysGuard
 *  Regional Setting --> Language: English
@@ -363,7 +365,7 @@ uri=http://networkcheck.kde.org/
 sudo nano ~/.config/plasma-org.kde.plasma.desktop-appletsrc
 sudo nano ~/.config/kglobalshortcutsrc
 
-Remove Alt+F1
+Change Alt+F1 => Meta+Alt+F1
 ```
 
 # Disable PC Speaker
