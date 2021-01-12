@@ -733,6 +733,93 @@ Name=IBus Daemon
 Exec=ibus-daemon -drx --panel=/usr/lib/kimpanel-ibus-panel
 ```
 
+# KeepassXC
+```bash
+GUI (or use pamac install --no-confirm)
+
+keepassxc
+
+create database ~/Passwords with key ~/Passwords
+```
+```bash
+sudo nano ~/.xprofile
+
+export PATH="$PATH:/home/ductran/bin"
+```
+```bash
+sudo nano ~/bin/keepassxc-unlock
+
+#!/bin/bash
+# Get password using secret-tool and unlock keepassxc
+tmp_passwd=$(secret-tool lookup keepass Passwords)
+database='/home/ductran/Passwords.kdbx'
+keyfile='/home/ductran/Passwords.key'
+dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc >
+string:$database string:$tmp_passwd string:$keyfile
+```
+```bash
+sudo nano ~/bin/keepassxc-lock
+
+#!/bin/bash
+dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc >
+```
+```bash
+sudo nano ~/bin/keepassxc-startup
+
+#!/bin/bash
+sleep 5
+keepassxc-unlock
+```
+```bash
+sudo nano ~/bin/keepassxc-watch
+
+#!/bin/bash
+# KeepassXC watch for logout and unlock a database
+dbus-monitor --session "type=signal,interface=org.gnome.ScreenSaver" |
+  while read MSG; do
+    LOCK_STAT=`echo $MSG | grep boolean | awk '{print $2}'`
+    if [[ "$LOCK_STAT" == "false" ]]; then
+        keepassxc-unlock
+    fi
+  done
+```
+```bash
+sudo nano ~/.local/share/applications/keepassxc-lock.desktop
+
+[Desktop Entry]
+Name=KeePassXC-lock
+GenericName=Password Manager
+Comment=Secure way to lock KeepassXC
+Exec=keepassxc-lock
+Icon=keepassxc
+StartupNotify=false
+Terminal=false
+Type=Application
+Version=1.0
+Categories=Utility;Security;Qt;
+MimeType=application/x-keepass2;
+```
+```bash
+sudo nano ~/.local/share/applications/keepassxc-unlock.desktop
+
+[Desktop Entry]
+Name=KeePassXC-unlock
+GenericName=Password Manager
+Comment=Secure way to unlock KeepassXC
+Exec=keepassxc-unlock
+Icon=keepassxc
+StartupNotify=false
+Terminal=false
+Type=Application
+Version=1.0
+Categories=Utility;Security;Qt;
+MimeType=application/x-keepass2;
+```
+```bash
+Add keepassxc-startup, keepassxc-watch to autostart scripts
+```
+- [Automatically unlock KeepassXC on startup and after lock screen](https://grabski.me/tech,/linux/2020/09/02/automatically-unlock-keepassxc-on-startup-and-after-lock-screen/)
+
 # Tweaks
 *  Unpin all app in task bar
 *  Configure desktop --> Tweak --> Show the desktop toolbox: off
