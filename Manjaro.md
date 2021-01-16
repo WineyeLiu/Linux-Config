@@ -212,6 +212,7 @@ sudo node dist/bin/gitcracken.js patcher
 GUI (or use pamac install --no-confirm)
 
 gcc
+gdb
 cmake
 clang
 llvm
