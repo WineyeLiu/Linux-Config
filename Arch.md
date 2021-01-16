@@ -470,6 +470,10 @@ GUI (or use pamac install --no-confirm)
 
 gcc
 clang
+llvm
+lldb
+lld
+libc++
 ```
 
 # Go
