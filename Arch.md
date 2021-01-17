@@ -555,6 +555,50 @@ sudo npm install -g @angular/cli
 ```
 - [Install NodeJS via package manager](https://nodejs.org/en/download/package-manager/#arch-linux)
 
+# Flutter
+```bash
+GUI (or use pamac install --no-confirm)
+
+flutter
+android-sdk
+android-sdk-platform-tools
+android-sdk-build-tools
+android-sdk-cmdline-tools-latest
+android-platform
+```
+```bash
+sudo groupadd flutterusers
+sudo gpasswd -a $USER flutterusers
+sudo chown -R $USER:flutterusers /opt/flutter
+sudo chmod -R g+w /opt/flutter/
+```
+```bash
+sudo groupadd android-sdk
+sudo gpasswd -a $USER android-sdk
+sudo chown -R $USER:android-sdk /opt/android-sdk
+sudo chmod -R g+w /opt/android-sdk
+```
+```bash
+sudo nano ~/.xprofile
+
+#Java
+export JAVA_HOME='/usr/lib/jvm/java-14-openjdk/'
+
+# Android SDK
+export ANDROID_SDK_ROOT='/opt/android-sdk'
+export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools/"
+export PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/"
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools/bin/"
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools/"
+
+# Flutter
+export PATH="$PATH:/opt/flutter/bin"
+```
+```bash
+flutter doctor
+flutter doctor --android-licenses
+```
+
 # MariaDB
 ```bash
 GUI (or use pamac install --no-confirm)
