@@ -553,7 +553,7 @@ sudo nano ~/bin/keepassxc-watch
 
 #!/bin/bash
 # KeepassXC watch for logout and unlock a database
-dbus-monitor --session "type=signal,interface=org.gnome.ScreenSaver" |
+dbus-monitor --session "type=signal,interface=org.freedesktop.ScreenSaver" |
   while read MSG; do
     LOCK_STAT=`echo $MSG | grep boolean | awk '{print $2}'`
     if [[ "$LOCK_STAT" == "false" ]]; then
