@@ -234,6 +234,7 @@ go-tools
 GUI (or use pamac install --no-confirm)
 
 jdk-openjdk
+java-openjfx
 ```
 
 # .NET Core
