@@ -793,33 +793,39 @@ keepassxc
 create database ~/Passwords with key ~/Passwords
 ```
 ```bash
-sudo nano ~/.xprofile
+nano ~/.xprofile
 
 export PATH="$PATH:/home/ductran/bin"
 ```
 ```bash
-sudo nano ~/bin/keepassxc-unlock
+nano ~/bin/keepassxc-unlock
 
 #!/bin/bash
 # Get password using secret-tool and unlock keepassxc
 tmp_passwd=$(secret-tool lookup keepass Passwords)
 database='/home/ductran/Passwords.kdbx'
-keyfile='/home/ductran/Passwords.key'
-dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc >
+keyfile='/home/ductran/Passwords.keyx;'
+dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc org.keepassxc.MainWindow.openDatabase \
 string:$database string:$tmp_passwd string:$keyfile
 ```
 ```bash
-sudo nano ~/bin/keepassxc-lock
+nano ~/bin/keepassxc-lock
 
 #!/bin/bash
 dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc >
 ```
 ```bash
-sudo nano ~/bin/keepassxc-startup
+nano ~/bin/keepassxc-startup
 
 #!/bin/bash
 sleep 5
 keepassxc-unlock
+```
+```bash
+sudo chmod 777 ~/bin/keepassxc-unlock
+sudo chmod 777 ~/bin/keepassxc-lock
+sudo chmod 777 ~/bin/keepassxc-startup
+sudo chmod 777 ~/bin/keepassxc-watch
 ```
 ```bash
 sudo nano ~/bin/keepassxc-watch
@@ -894,6 +900,12 @@ Add keepassxc-startup, keepassxc-watch to autostart scripts
 *  Application Style: kvantum
 *  Kvantum: Nordian Kvantum
 *  Wallpaper: Plasma Desktop Wallpaper 1591
+*  Fix SDDM date Format
+```bash
+sudo nano /usr/share/sddm/themes/Nordian-SDDM/components/Clock.qml
+
+"'The day is' dddd dd MMMM yyyy"
+```
 
 # Theme 2
 *  Global theme: Arc KDE
