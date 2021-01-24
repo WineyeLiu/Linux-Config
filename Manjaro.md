@@ -526,31 +526,31 @@ sudo nano ~/.xprofile
 export PATH="$PATH:/home/ductran/bin"
 ```
 ```bash
-sudo nano ~/bin/keepassxc-unlock
+nano ~/bin/keepassxc-unlock
 
 #!/bin/bash
 # Get password using secret-tool and unlock keepassxc
 tmp_passwd=$(secret-tool lookup keepass Passwords)
 database='/home/ductran/Passwords.kdbx'
-keyfile='/home/ductran/Passwords.key'
-dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc >
+keyfile='/home/ductran/Passwords.keyx;'
+dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc org.keepassxc.MainWindow.openDatabase \
 string:$database string:$tmp_passwd string:$keyfile
 ```
 ```bash
-sudo nano ~/bin/keepassxc-lock
+nano ~/bin/keepassxc-lock
 
 #!/bin/bash
 dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc >
 ```
 ```bash
-sudo nano ~/bin/keepassxc-startup
+nano ~/bin/keepassxc-startup
 
 #!/bin/bash
 sleep 5
 keepassxc-unlock
 ```
 ```bash
-sudo nano ~/bin/keepassxc-watch
+nano ~/bin/keepassxc-watch
 
 #!/bin/bash
 # KeepassXC watch for logout and unlock a database
@@ -563,7 +563,13 @@ dbus-monitor --session "type=signal,interface=org.freedesktop.ScreenSaver" |
   done
 ```
 ```bash
-sudo nano ~/.local/share/applications/keepassxc-lock.desktop
+sudo chmod 777 ~/bin/keepassxc-unlock
+sudo chmod 777 ~/bin/keepassxc-lock
+sudo chmod 777 ~/bin/keepassxc-startup
+sudo chmod 777 ~/bin/keepassxc-watch
+```
+```bash
+nano ~/.local/share/applications/keepassxc-lock.desktop
 
 [Desktop Entry]
 Name=KeePassXC-lock
@@ -579,7 +585,7 @@ Categories=Utility;Security;Qt;
 MimeType=application/x-keepass2;
 ```
 ```bash
-sudo nano ~/.local/share/applications/keepassxc-unlock.desktop
+nano ~/.local/share/applications/keepassxc-unlock.desktop
 
 [Desktop Entry]
 Name=KeePassXC-unlock
@@ -622,6 +628,12 @@ Add keepassxc-startup, keepassxc-watch to autostart scripts
 *  Application Style: kvantum
 *  Kvantum: Nordian Kvantum
 *  Wallpaper: Plasma Desktop Wallpaper 1591
+*  Fix SDDM date Format
+```bash
+sudo nano /usr/share/sddm/themes/Nordian-SDDM/components/Clock.qml
+
+"'The day is' dddd dd MMMM yyyy"
+```
 
 # Theme 2
 *  Global theme: Arc KDE
@@ -633,9 +645,9 @@ Add keepassxc-startup, keepassxc-watch to autostart scripts
 
 # Windows Font
 ```bash
-mkdir /usr/share/fonts/WindowsFonts
-cp /windows/Windows/Fonts/* /usr/share/fonts/WindowsFonts/
-chmod 644 /usr/share/fonts/WindowsFonts/*
-fc-cache --force
+sudo mkdir /usr/share/fonts/WindowsFonts
+sudo cp /run/media/ductran/00EE6951EE693FD0/Windows/Fonts/* /usr/share/fonts/WindowsFonts/
+sudo chmod 644 /usr/share/fonts/WindowsFonts/*
+sudo fc-cache --force
 ```
 - [Microsoft fonts](https://wiki.archlinux.org/index.php/Microsoft_fonts)
