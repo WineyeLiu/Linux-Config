@@ -605,6 +605,13 @@ Add keepassxc-startup, keepassxc-watch to autostart scripts
 ```
 - [Automatically unlock KeepassXC on startup and after lock screen](https://grabski.me/tech,/linux/2020/09/02/automatically-unlock-keepassxc-on-startup-and-after-lock-screen/)
 
+# Latte dock
+```bash
+GUI (or use pamac install --no-confirm)
+
+latte-dock
+```
+
 # Tweaks
 *  Unpin all app in task bar
 *  Configure desktop --> Tweak --> Show the desktop toolbox: off
