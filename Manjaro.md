@@ -268,6 +268,7 @@ mono-tools
 mono-addins
 mono-msbuild
 mono-msbuild-sdkresolver
+xsp
 ```
 config to run ASP .NET project
 ```bash
