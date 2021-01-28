@@ -1,0 +1,21 @@
+[PlasmaTransientsConfig]
+PreloadWeight=42
+
+[ScreenConnectors]
+10=LVDS1
+
+[UniversalSettings]
+badges3DStyle=false
+canDisableBorders=true
+currentLayout=My Layout
+downloadWindowSize=800,550
+lastNonAssignedLayout=My Layout
+launchers=
+layoutsColumnWidths=104,74,61,100
+layoutsWindowSize=700,599
+memoryUsage=0
+metaPressAndHoldEnabled=true
+mouseSensitivity=2
+screenTrackerInterval=2500
+showInfoWindow=true
+version=2
