@@ -313,12 +313,14 @@ Restart
 *  Workspace Behavior --> Screen Edges --> No
 *  Workspace Behavior --> Screen locking --> Lock screen: off
 *  Shortcut --> Global Shortcut --> Defaults
-*  Shortcut --> Global Shortcut --> Krunner: alt+f2
+*  Shortcut --> Global Shortcut --> Import Windows cheme with win key
+*  Shortcut --> Global Shortcut --> Krunner: untick alt+f2
 *  Shortcut --> Global Shortcut --> KWin --> Hide window boder: Meta+Enter
 *  Shortcut --> Global Shortcut --> KWin --> Maximum window: Meta+PageUp
 *  Shortcut --> Global Shortcut --> KWin --> Minimum window: Meta+PageDown
 *  Shortcut --> Global Shortcut --> KWin --> Toggle Present Windows (Current Desktop): Meta+Tab
 *  Shortcut --> Global Shortcut --> Yakuake: window+f12
+*  Shortcut --> Global Shortcut --> Konsole: Ctrl+Alt+T
 *  Startup and Shutdown --> Autostart --> Add program: Yakuake
 *  Startup and Shutdown --> Autostart --> Add program: KSysGuard
 *  Regional Setting --> Language: English
@@ -347,6 +349,25 @@ Restart
 *  Power Management --> Energy Saving --> On Low Battery --> Suspend session: 30 min
 *  Power Management --> Advanced Settings --> At critical level: Shutdown
 
+# Fix KDE bug
+*  Fix check network bug
+```bash
+sudo nano /usr/lib/NetworkManager/conf.d/20-connectivity.conf
+```
+```bash
+[connectivity]
+#uri=http://www.archlinux.org/check_network_status.txt
+uri=http://networkcheck.kde.org/
+```
+[Log in required for ethernet at home?”](https://www.reddit.com/r/ManjaroLinux/comments/keabph/log_in_required_for_ethernet_at_home/)
+*  Fix shortcut bug
+```bash
+sudo nano ~/.config/plasma-org.kde.plasma.desktop-appletsrc
+sudo nano ~/.config/kglobalshortcutsrc
+
+Change Alt+F1 => Meta+Alt+F1
+```
+
 # Disable PC Speaker
 ```bash
 sudo rmmod pcspkr
@@ -357,16 +378,29 @@ sudo nano /etc/modprobe.d/nobeep.conf
 blacklist pcspkr
 ```
 
-# Fix Network bug
+# Automount partition
 ```bash
-sudo nano /usr/lib/NetworkManager/conf.d/20-connectivity.conf
+sudo mkdir /mnt/disk1
+sudo mkdir /mnt/disk2
+sudo mkdir /mnt/disk3
+sudo blkid /dev/sda5
+sudo blkid /dev/sdb1
+sudo blkid /dev/sdb2
+sudo nano /etc/fstab
 ```
 ```bash
-[connectivity]
-#uri=http://www.archlinux.org/check_network_status.txt
-uri=http://networkcheck.kde.org/
+UUID=01D5AFE0E284B260   /mnt/disk1  ntfs    defaults        0 0
+UUID=01D5308C5EDFFD30   /mnt/disk2  ntfs    defaults        0 0
+UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
 ```
-- [Log in required for ethernet at home?”](https://www.reddit.com/r/ManjaroLinux/comments/keabph/log_in_required_for_ethernet_at_home/)
+
+# SDDM Auto numlock
+```bash
+sddm --example-config | sudo tee /etc/sddm.conf
+sudo nano /etc/sddm.conf
+
+Numlock=on
+```
 
 # Apps
 ```bash
@@ -395,6 +429,7 @@ neofetch
 htop
 openvpn
 networkmanager-openvpn
+subtitleeditor
 ```
 
 # IDE & Compiler
@@ -429,11 +464,34 @@ sudo node dist/bin/gitcracken.js patcher
 ```
 - [GitCracken](https://github.com/5cr1pt/GitCracken)
 
+# C++
+```bash
+GUI (or use pamac install --no-confirm)
+
+gcc
+gdb
+cmake
+clang
+llvm
+lldb
+lld
+libc++
+```
+
+# Go
+```bash
+GUI (or use pamac install --no-confirm)
+
+go
+go-tools
+```
+
 # Java
 ```bash
 GUI (or use pamac install --no-confirm)
 
 jdk-openjdk
+java-openjfx
 ```
 
 # .NET Core
@@ -450,6 +508,37 @@ sudo chmod 777 dotnet-install.sh
 sudo ./dotnet-install.sh --channel 3.1 --install-dir /usr/share/dotnet
 ```
 - [dotnet-install scripts](https://dot.net/v1/dotnet-install.sh)
+```bash
+dotnet tool install --global dotnet-ef
+sudo nano ~/.xprofile
+
+export PATH="$PATH:/home/ductran/.dotnet/tools"
+```
+
+# Mono
+```bash
+GUI (or use pamac install --no-confirm)
+
+mono
+mono-tools
+mono-addins
+mono-msbuild
+mono-msbuild-sdkresolver
+xsp
+```
+config to run ASP .NET project
+```bash
+sudo mkdir /etc/mono/registry
+sudo chmod uog+rw /etc/mono/registry
+
+edit web.config
+<dependentAssembly>
+    <assemblyIdentity name="System.Net.Http" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+    <bindingRedirect oldVersion="0.0.0.0-2.0.0.0" newVersion="4.2.0.0" />
+</dependentAssembly>
+```
+- [Access to the path “/etc/mono/registry” is denied](https://stackoverflow.com/questions/24872394/access-to-the-path-etc-mono-registry-is-denied)
+- [How to get Swashbuckle / Swagger working on the Mono (.NET) Framework?](https://stackoverflow.com/questions/36062557/how-to-get-swashbuckle-swagger-working-on-the-mono-net-framework)
 
 # Nodejs
 ```bash
@@ -467,6 +556,50 @@ sudo sysctl -p
 sudo npm install -g @angular/cli
 ```
 - [Install NodeJS via package manager](https://nodejs.org/en/download/package-manager/#arch-linux)
+
+# Flutter
+```bash
+GUI (or use pamac install --no-confirm)
+
+flutter
+android-sdk
+android-sdk-platform-tools
+android-sdk-build-tools
+android-sdk-cmdline-tools-latest
+android-platform
+```
+```bash
+sudo groupadd flutterusers
+sudo gpasswd -a $USER flutterusers
+sudo chown -R $USER:flutterusers /opt/flutter
+sudo chmod -R g+w /opt/flutter/
+```
+```bash
+sudo groupadd android-sdk
+sudo gpasswd -a $USER android-sdk
+sudo chown -R $USER:android-sdk /opt/android-sdk
+sudo chmod -R g+w /opt/android-sdk
+```
+```bash
+sudo nano ~/.xprofile
+
+#Java
+export JAVA_HOME='/usr/lib/jvm/java-14-openjdk/'
+
+# Android SDK
+export ANDROID_SDK_ROOT='/opt/android-sdk'
+export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools/"
+export PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/"
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools/bin/"
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools/"
+
+# Flutter
+export PATH="$PATH:/opt/flutter/bin"
+```
+```bash
+flutter doctor
+flutter doctor --android-licenses
+```
 
 # MariaDB
 ```bash
@@ -522,8 +655,52 @@ webstorm
 intellij-idea-ultimate-edition
 datagrip
 rider
+clion
+goland
 
 Note: edit rider PKGBUILD _installdir='/opt'
+```
+```bash
+sudo ark -b -o /opt /mnt/disk3/Software/IDE/java-11.0.7-jetbrain.zip
+sudo mv /opt/java-11.0.7-jetbrain /opt/jbr
+```
+```bash
+sudo nano /opt/datagrip/bin/datagrip.sh
+export DATAGRIP_JDK=/opt/jbr
+
+sudo nano /opt/intellij-idea-ultimate-edition/bin/idea.sh
+export IDEA_JDK=/opt/jbr
+
+sudo nano /opt/rider/bin/rider.sh
+export RIDER_JDK=/opt/jbr
+
+sudo nano /opt/webstorm/bin/webstorm.sh
+export WEBIDE_JDK=/opt/jbr
+```
+or
+```bash
+sudo nano ~/.xprofile
+
+export DATAGRIP_JDK=/opt/jbr
+export IDEA_JDK=/opt/jbr
+export RIDER_JDK=/opt/jbr
+export WEBIDE_JDK=/opt/jbr
+export CLION_JDK=/opt/jbr
+export GOLAND_JDK=/opt/jbr
+```
+
+# Redis
+```bash
+GUI (or use pamac install --no-confirm)
+
+redis
+```
+
+# RabbitMQ
+```bash
+GUI (or use pamac install --no-confirm)
+
+RabbitMQ
 ```
 
 # Apache
@@ -558,6 +735,13 @@ sudo nano /etc/bftpd.conf
 
 ANONYMOUS_USER="yes"
 DENY_LOGIN="no"
+```
+
+# PostMan
+```bash
+GUI (or use pamac install --no-confirm)
+
+postman-bin
 ```
 
 # Fcitx
@@ -601,29 +785,98 @@ Name=IBus Daemon
 Exec=ibus-daemon -drx --panel=/usr/lib/kimpanel-ibus-panel
 ```
 
-# Automount partition
+# KeepassXC
 ```bash
-sudo mkdir /mnt/disk1
-sudo mkdir /mnt/disk2
-sudo mkdir /mnt/disk3
-sudo blkid /dev/sda5
-sudo blkid /dev/sdb1
-sudo blkid /dev/sdb2
-sudo nano /etc/fstab
-```
-```bash
-UUID=01D5AFE0E284B260   /mnt/disk1  ntfs    defaults        0 0
-UUID=01D5308C5EDFFD30   /mnt/disk2  ntfs    defaults        0 0
-UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
-```
+GUI (or use pamac install --no-confirm)
 
-# SDDM Auto numlock
-```bash
-sddm --example-config | sudo tee /etc/sddm.conf
-sudo nano /etc/sddm.conf
+keepassxc
 
-Numlock=on
+create database ~/Passwords with key ~/Passwords
 ```
+```bash
+nano ~/.xprofile
+
+export PATH="$PATH:/home/ductran/bin"
+```
+```bash
+nano ~/bin/keepassxc-unlock
+
+#!/bin/bash
+# Get password using secret-tool and unlock keepassxc
+tmp_passwd=$(secret-tool lookup keepass Passwords)
+database='/home/ductran/Passwords.kdbx'
+keyfile='/home/ductran/Passwords.keyx;'
+dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc org.keepassxc.MainWindow.openDatabase \
+string:$database string:$tmp_passwd string:$keyfile
+```
+```bash
+nano ~/bin/keepassxc-lock
+
+#!/bin/bash
+dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc >
+```
+```bash
+nano ~/bin/keepassxc-startup
+
+#!/bin/bash
+sleep 5
+keepassxc-unlock
+```
+```bash
+sudo chmod 777 ~/bin/keepassxc-unlock
+sudo chmod 777 ~/bin/keepassxc-lock
+sudo chmod 777 ~/bin/keepassxc-startup
+sudo chmod 777 ~/bin/keepassxc-watch
+```
+```bash
+sudo nano ~/bin/keepassxc-watch
+
+#!/bin/bash
+# KeepassXC watch for logout and unlock a database
+dbus-monitor --session "type=signal,interface=org.freedesktop.ScreenSaver" |
+  while read MSG; do
+    LOCK_STAT=`echo $MSG | grep boolean | awk '{print $2}'`
+    if [[ "$LOCK_STAT" == "false" ]]; then
+        keepassxc-unlock
+    fi
+  done
+```
+```bash
+sudo nano ~/.local/share/applications/keepassxc-lock.desktop
+
+[Desktop Entry]
+Name=KeePassXC-lock
+GenericName=Password Manager
+Comment=Secure way to lock KeepassXC
+Exec=keepassxc-lock
+Icon=keepassxc
+StartupNotify=false
+Terminal=false
+Type=Application
+Version=1.0
+Categories=Utility;Security;Qt;
+MimeType=application/x-keepass2;
+```
+```bash
+sudo nano ~/.local/share/applications/keepassxc-unlock.desktop
+
+[Desktop Entry]
+Name=KeePassXC-unlock
+GenericName=Password Manager
+Comment=Secure way to unlock KeepassXC
+Exec=keepassxc-unlock
+Icon=keepassxc
+StartupNotify=false
+Terminal=false
+Type=Application
+Version=1.0
+Categories=Utility;Security;Qt;
+MimeType=application/x-keepass2;
+```
+```bash
+Add keepassxc-startup, keepassxc-watch to autostart scripts
+```
+- [Automatically unlock KeepassXC on startup and after lock screen](https://grabski.me/tech,/linux/2020/09/02/automatically-unlock-keepassxc-on-startup-and-after-lock-screen/)
 
 # Tweaks
 *  Unpin all app in task bar
@@ -648,6 +901,12 @@ Numlock=on
 *  Application Style: kvantum
 *  Kvantum: Nordian Kvantum
 *  Wallpaper: Plasma Desktop Wallpaper 1591
+*  Fix SDDM date Format
+```bash
+sudo nano /usr/share/sddm/themes/Nordian-SDDM/components/Clock.qml
+
+"'The day is' dddd dd MMMM yyyy"
+```
 
 # Theme 2
 *  Global theme: Arc KDE

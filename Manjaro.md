@@ -11,12 +11,14 @@
 *  Workspace Behavior --> Screen Edges --> No
 *  Workspace Behavior --> Screen locking --> Lock screen: off
 *  Shortcut --> Global Shortcut --> Defaults
-*  Shortcut --> Global Shortcut --> Krunner: alt+f2
+*  Shortcut --> Global Shortcut --> Import Windows cheme with win key
+*  Shortcut --> Global Shortcut --> Krunner: untick alt+f2
 *  Shortcut --> Global Shortcut --> KWin --> Hide window boder: Meta+Enter
 *  Shortcut --> Global Shortcut --> KWin --> Maximum window: Meta+PageUp
 *  Shortcut --> Global Shortcut --> KWin --> Minimum window: Meta+PageDown
 *  Shortcut --> Global Shortcut --> KWin --> Toggle Present Windows (Current Desktop): Meta+Tab
 *  Shortcut --> Global Shortcut --> Yakuake: window+f12
+*  Shortcut --> Global Shortcut --> Konsole: Ctrl+Alt+T
 *  Startup and Shutdown --> Autostart --> Add program: KSysGuard
 *  Regional Setting --> Language: English
 *  Regional Settings --> Formats --> Region: Viet Nam
@@ -82,6 +84,25 @@ Restart
 
 - [Guide: Install and configure optimus-manager for hybrid GPU setups (Intel/NVIDIA)](https://forum.manjaro.org/t/guide-install-and-configure-optimus-manager-for-hybrid-gpu-setups-intel-nvidia/92196)
 
+# Fix KDE bug
+*  Fix check network bug
+```bash
+sudo nano /usr/lib/NetworkManager/conf.d/20-connectivity.conf
+```
+```bash
+[connectivity]
+#uri=http://www.archlinux.org/check_network_status.txt
+uri=http://networkcheck.kde.org/
+```
+[Log in required for ethernet at home?”](https://www.reddit.com/r/ManjaroLinux/comments/keabph/log_in_required_for_ethernet_at_home/)
+*  Fix shortcut bug
+```bash
+sudo nano ~/.config/plasma-org.kde.plasma.desktop-appletsrc
+sudo nano ~/.config/kglobalshortcutsrc
+
+Change Alt+F1 => Meta+Alt+F1
+```
+
 # Disable PC Speaker
 ```bash
 sudo rmmod pcspkr
@@ -92,31 +113,43 @@ sudo nano /etc/modprobe.d/nobeep.conf
 blacklist pcspkr
 ```
 
-# Fix KDE bug
+# Automount partition
 ```bash
-sudo pacman -Rdd attica-git karchive-git kauth-git kbookmarks-git kcodecs-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kglobalaccel-git kguiaddons-git ki18n-git kiconthemes-git kitemviews-git knotifications-git kservice-git ktextwidgets-git kwallet-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git sonnet-git kjobwidgets-git kio-git solid-git
+sudo mkdir /mnt/disk1
+sudo mkdir /mnt/disk2
+sudo mkdir /mnt/disk3
+sudo blkid /dev/sdb5
+sudo blkid /dev/sda1
+sudo blkid /dev/sda2
+sudo nano /etc/fstab
+```
+```bash
+UUID=01D5AFE0E284B260   /mnt/disk1  ntfs    defaults        0 0
+UUID=01D5308C5EDFFD30   /mnt/disk2  ntfs    defaults        0 0
+UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
+```
 
-sudo pacman -S attica karchive kauth kbookmarks kcodecs kcompletion kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kglobalaccel kguiaddons ki18n kiconthemes kitemviews knotifications kservice ktextwidgets kwallet kwidgetsaddons kwindowsystem kxmlgui sonnet kjobwidgets kio solid
-```
-or
+# Add swap
 ```bash
-mv ~/.config/mimeapps.list ~/.local/share/applications/
+sudo fallocate -l 4G /swapfile
+sudo mkswap /swapfile
+sudo chmod u=rw,go= /swapfile
+sudo swapon /swapfile
+sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 ```
-- [KDE Plasma kickstart issue: loop message “Applications updated.”](https://forum.manjaro.org/t/kde-plasma-kickstart-issue-loop-message-applications-updated/38559/15)
+
+# SDDM Auto numlock
 ```bash
-sudo nano /usr/lib/NetworkManager/conf.d/20-connectivity.conf
+sudo nano /etc/sddm.conf
+
+Numlock=on
 ```
-```bash
-[connectivity]
-#uri=http://www.archlinux.org/check_network_status.txt
-uri=http://networkcheck.kde.org/
-```
-- [Log in required for ethernet at home?”](https://www.reddit.com/r/ManjaroLinux/comments/keabph/log_in_required_for_ethernet_at_home/)
 
 # Apps
 ```bash
 GUI (or use pamac install --no-confirm)
 
+yay-bin
 google-chrome
 vivaldi
 psensor
@@ -136,6 +169,8 @@ Grub Customizer
 Kvantum-manjaro
 kdialog
 Piper
+neofetch
+subtitleeditor
 ```
 
 # IDE & Compiler
@@ -151,7 +186,9 @@ gitkraken
 git config --global user.name "Duc Tran"
 git config --global user.email tv.duc95@gmail.com
 git config --global core.askpass /usr/bin/ksshaskpass
-
+```
+*  Optional: use ksshaskpass
+```bash
 sudo nano ~/.config/autostart-scripts/ssh-add.sh
 #!/bin/sh
 ssh-add -q < /dev/null
@@ -170,11 +207,34 @@ sudo node dist/bin/gitcracken.js patcher
 ```
 - [GitCracken](https://github.com/5cr1pt/GitCracken)
 
+# C++
+```bash
+GUI (or use pamac install --no-confirm)
+
+gcc
+gdb
+cmake
+clang
+llvm
+lldb
+lld
+libc++
+```
+
+# Go
+```bash
+GUI (or use pamac install --no-confirm)
+
+go
+go-tools
+```
+
 # Java
 ```bash
 GUI (or use pamac install --no-confirm)
 
 jdk-openjdk
+java-openjfx
 ```
 
 # .NET Core
@@ -191,6 +251,38 @@ sudo chmod 777 dotnet-install.sh
 sudo ./dotnet-install.sh --channel 3.1 --install-dir /usr/share/dotnet
 ```
 - [dotnet-install scripts](https://dot.net/v1/dotnet-install.sh)
+```bash
+dotnet tool install --global dotnet-ef
+sudo nano ~/.xprofile
+
+# .NET
+export PATH="$PATH:/home/ductran/.dotnet/tools"
+```
+
+# Mono
+```bash
+GUI (or use pamac install --no-confirm)
+
+mono
+mono-tools
+mono-addins
+mono-msbuild
+mono-msbuild-sdkresolver
+xsp
+```
+config to run ASP .NET project
+```bash
+sudo mkdir /etc/mono/registry
+sudo chmod uog+rw /etc/mono/registry
+
+edit web.config
+<dependentAssembly>
+    <assemblyIdentity name="System.Net.Http" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+    <bindingRedirect oldVersion="0.0.0.0-2.0.0.0" newVersion="4.2.0.0" />
+</dependentAssembly>
+```
+- [Access to the path “/etc/mono/registry” is denied](https://stackoverflow.com/questions/24872394/access-to-the-path-etc-mono-registry-is-denied)
+- [How to get Swashbuckle / Swagger working on the Mono (.NET) Framework?](https://stackoverflow.com/questions/36062557/how-to-get-swashbuckle-swagger-working-on-the-mono-net-framework)
 
 # Nodejs
 ```bash
@@ -208,6 +300,50 @@ sudo sysctl -p
 sudo npm install -g @angular/cli
 ```
 - [Install NodeJS via package manager](https://nodejs.org/en/download/package-manager/#arch-linux)
+
+# Flutter
+```bash
+GUI (or use pamac install --no-confirm)
+
+flutter
+android-sdk
+android-sdk-platform-tools
+android-sdk-build-tools
+android-sdk-cmdline-tools-latest
+android-platform
+```
+```bash
+sudo groupadd flutterusers
+sudo gpasswd -a $USER flutterusers
+sudo chown -R $USER:flutterusers /opt/flutter
+sudo chmod -R g+w /opt/flutter/
+```
+```bash
+sudo groupadd android-sdk
+sudo gpasswd -a $USER android-sdk
+sudo chown -R $USER:android-sdk /opt/android-sdk
+sudo chmod -R g+w /opt/android-sdk
+```
+```bash
+sudo nano ~/.xprofile
+
+#Java
+export JAVA_HOME='/usr/lib/jvm/java-14-openjdk/'
+
+# Android SDK
+export ANDROID_SDK_ROOT='/opt/android-sdk'
+export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools/"
+export PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/"
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools/bin/"
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools/"
+
+# Flutter
+export PATH="$PATH:/opt/flutter/bin"
+```
+```bash
+flutter doctor
+flutter doctor --android-licenses
+```
 
 # MariaDB
 ```bash
@@ -231,8 +367,13 @@ pgadmin4
 ```
 ```bash
 sudo su postgres -l
-initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'
+initdb --locale=en_US.UTF-8 -E UTF8 -D /var/lib/postgres/data
 exit
+sudo systemctl start postgresql
+sudo su postgres -l
+createuser --interactive --pwprompt
+exit
+sudo systemctl stop postgresql
 ```
 - [PostgreSQL - ArchWiki](https://wiki.archlinux.org/index.php/PostgreSQL)
 
@@ -258,12 +399,52 @@ webstorm
 intellij-idea-ultimate-edition
 rider
 datagrip
+clion
+goland
+
+Note: edit rider PKGBUILD _installdir='/opt'
 ```
 ```bash
-sudo cp /opt/webstorm/bin/webstorm.png /usr/share/icons/hicolor/128x128/apps/webstorm.png
-sudo cp /opt/datagrip/bin/datagrip.png /usr/share/icons/hicolor/128x128/apps/datagrip.png
-sudo nano /usr/share/applications/jetbrains-datagrip.desktop
-sudo nano /usr/share/applications/jetbrains-webstorm.desktop
+sudo ark -b -o /opt /mnt/disk3/Software/IDE/java-11.0.7-jetbrain.zip
+sudo mv /opt/java-11.0.7-jetbrain /opt/jbr
+```
+```bash
+sudo nano /opt/datagrip/bin/datagrip.sh
+export DATAGRIP_JDK=/opt/jbr
+
+sudo nano /opt/intellij-idea-ultimate-edition/bin/idea.sh
+export IDEA_JDK=/opt/jbr
+
+sudo nano /opt/rider/bin/rider.sh
+export RIDER_JDK=/opt/jbr
+
+sudo nano /opt/webstorm/bin/webstorm.sh
+export WEBIDE_JDK=/opt/jbr
+```
+or
+```bash
+sudo nano ~/.xprofile
+
+export DATAGRIP_JDK=/opt/jbr
+export IDEA_JDK=/opt/jbr
+export RIDER_JDK=/opt/jbr
+export WEBIDE_JDK=/opt/jbr
+export CLION_JDK=/opt/jbr
+export GOLAND_JDK=/opt/jbr
+```
+
+# Redis
+```bash
+GUI (or use pamac install --no-confirm)
+
+redis
+```
+
+# RabbitMQ
+```bash
+GUI (or use pamac install --no-confirm)
+
+RabbitMQ
 ```
 
 # Apache
@@ -299,6 +480,13 @@ ANONYMOUS_USER="yes"
 DENY_LOGIN="no"
 ```
 
+# PostMan
+```bash
+GUI (or use pamac install --no-confirm)
+
+postman-bin
+```
+
 # Browser intergation
 ```bash
 GUI (or use pamac install --no-confirm)
@@ -325,36 +513,104 @@ export XMODIFIERS=@im=fcitx
 ```
 - [fcitx shortcut](https://askubuntu.com/questions/736638/fcitx-wont-trigger-ime-on-superspace)
 
-# Automount partition
+# KeepassXC
 ```bash
-sudo mkdir /mnt/disk1
-sudo mkdir /mnt/disk2
-sudo mkdir /mnt/disk3
-sudo blkid /dev/sdb5
-sudo blkid /dev/sda1
-sudo blkid /dev/sda2
-sudo nano /etc/fstab
+GUI (or use pamac install --no-confirm)
+
+keepassxc
+
+create database ~/Passwords with key ~/Passwords
 ```
 ```bash
-UUID=01D5AFE0E284B260   /mnt/disk1  ntfs    defaults        0 0
-UUID=01D5308C5EDFFD30   /mnt/disk2  ntfs    defaults        0 0
-UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
+sudo nano ~/.xprofile
+
+export PATH="$PATH:/home/ductran/bin"
 ```
-
-# Add swap
 ```bash
-sudo fallocate -l 4G /swapfile
-sudo mkswap /swapfile
-sudo chmod u=rw,go= /swapfile
-sudo swapon /swapfile
-sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
+nano ~/bin/keepassxc-unlock
+
+#!/bin/bash
+# Get password using secret-tool and unlock keepassxc
+tmp_passwd=$(secret-tool lookup keepass Passwords)
+database='/home/ductran/Passwords.kdbx'
+keyfile='/home/ductran/Passwords.keyx;'
+dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc org.keepassxc.MainWindow.openDatabase \
+string:$database string:$tmp_passwd string:$keyfile
 ```
-
-# SDDM Auto numlock
 ```bash
-sudo nano /etc/sddm.conf
+nano ~/bin/keepassxc-lock
 
-Numlock=on
+#!/bin/bash
+dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc >
+```
+```bash
+nano ~/bin/keepassxc-startup
+
+#!/bin/bash
+sleep 5
+keepassxc-unlock
+```
+```bash
+nano ~/bin/keepassxc-watch
+
+#!/bin/bash
+# KeepassXC watch for logout and unlock a database
+dbus-monitor --session "type=signal,interface=org.freedesktop.ScreenSaver" |
+  while read MSG; do
+    LOCK_STAT=`echo $MSG | grep boolean | awk '{print $2}'`
+    if [[ "$LOCK_STAT" == "false" ]]; then
+        keepassxc-unlock
+    fi
+  done
+```
+```bash
+sudo chmod 777 ~/bin/keepassxc-unlock
+sudo chmod 777 ~/bin/keepassxc-lock
+sudo chmod 777 ~/bin/keepassxc-startup
+sudo chmod 777 ~/bin/keepassxc-watch
+```
+```bash
+nano ~/.local/share/applications/keepassxc-lock.desktop
+
+[Desktop Entry]
+Name=KeePassXC-lock
+GenericName=Password Manager
+Comment=Secure way to lock KeepassXC
+Exec=keepassxc-lock
+Icon=keepassxc
+StartupNotify=false
+Terminal=false
+Type=Application
+Version=1.0
+Categories=Utility;Security;Qt;
+MimeType=application/x-keepass2;
+```
+```bash
+nano ~/.local/share/applications/keepassxc-unlock.desktop
+
+[Desktop Entry]
+Name=KeePassXC-unlock
+GenericName=Password Manager
+Comment=Secure way to unlock KeepassXC
+Exec=keepassxc-unlock
+Icon=keepassxc
+StartupNotify=false
+Terminal=false
+Type=Application
+Version=1.0
+Categories=Utility;Security;Qt;
+MimeType=application/x-keepass2;
+```
+```bash
+Add keepassxc-startup, keepassxc-watch to autostart scripts
+```
+- [Automatically unlock KeepassXC on startup and after lock screen](https://grabski.me/tech,/linux/2020/09/02/automatically-unlock-keepassxc-on-startup-and-after-lock-screen/)
+
+# Latte dock
+```bash
+GUI (or use pamac install --no-confirm)
+
+latte-dock
 ```
 
 # Tweaks
@@ -379,6 +635,13 @@ Numlock=on
 *  SDDM: Nordian
 *  Application Style: kvantum
 *  Kvantum: Nordian Kvantum
+*  Wallpaper: Plasma Desktop Wallpaper 1591
+*  Fix SDDM date Format
+```bash
+sudo nano /usr/share/sddm/themes/Nordian-SDDM/components/Clock.qml
+
+"'The day is' dddd dd MMMM yyyy"
+```
 
 # Theme 2
 *  Global theme: Arc KDE
@@ -390,9 +653,9 @@ Numlock=on
 
 # Windows Font
 ```bash
-mkdir /usr/share/fonts/WindowsFonts
-cp /windows/Windows/Fonts/* /usr/share/fonts/WindowsFonts/
-chmod 644 /usr/share/fonts/WindowsFonts/*
-fc-cache --force
+sudo mkdir /usr/share/fonts/WindowsFonts
+sudo cp /run/media/ductran/00EE6951EE693FD0/Windows/Fonts/* /usr/share/fonts/WindowsFonts/
+sudo chmod 644 /usr/share/fonts/WindowsFonts/*
+sudo fc-cache --force
 ```
 - [Microsoft fonts](https://wiki.archlinux.org/index.php/Microsoft_fonts)
