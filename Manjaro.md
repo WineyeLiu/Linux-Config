@@ -171,6 +171,7 @@ kdialog
 Piper
 neofetch
 subtitleeditor
+unrar
 ```
 
 # IDE & Compiler
@@ -659,3 +660,15 @@ sudo chmod 644 /usr/share/fonts/WindowsFonts/*
 sudo fc-cache --force
 ```
 - [Microsoft fonts](https://wiki.archlinux.org/index.php/Microsoft_fonts)
+
+# Chinese Font
+```bash
+sudo pacman -S ttf-roboto
+sudo pacman -S noto-fonts-sc noto-fonts-tc
+sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
+sudo pacman -S adobe-source-han-sans-tw-fonts adobe-source-han-serif-tw-fonts
+```
+*  optional: typographic font
+```bash
+sudo pacman -S ttf-arphic-ukai ttf-arphic-uming
+```
