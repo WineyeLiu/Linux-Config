@@ -430,6 +430,7 @@ htop
 openvpn
 networkmanager-openvpn
 subtitleeditor
+unrar
 ```
 
 # IDE & Compiler
@@ -925,6 +926,7 @@ sudo nano /usr/share/sddm/themes/Nordian-SDDM/components/Clock.qml
 # Chinese Font
 ```bash
 sudo pacman -S noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+sudo pacman -S noto-fonts-sc noto-fonts-tc
 sudo pacman -S ttf-roboto ttf-dejavu ttf-droid ttf-inconsolata ttf-indic-otf ttf-liberation
 sudo pacman -S terminus-font
 sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
