@@ -242,9 +242,14 @@ java-openjfx
 ```bash
 GUI (or use pamac install --no-confirm)
 
-dotnet-sdk
-aspnet-runtime
+dotnet-sdk-bin
+aspnet-runtime-bin
+aspnet-targeting-pack-bin
+dotnet-sdk-3.1
+aspnet-runtime-3.1
+aspnet-targeting-pack-3.1
 ```
+or
 ```bash
 Install .NET Core 3.1
 
