@@ -634,14 +634,19 @@ latte-dock
 *  Edit panel --> More Setting --> Auto hide
 *  Lock widget
 
-# Theme
-*  Global theme: Nordian Global
-*  GTK Theme: Nordian Breeze GTK
-*  Icon: Breeze Nordian
-*  SDDM: Nordian
+# Theme (dark)
+*  Global theme: Nordian Solid Global
+*  Plasma style: Nordian Solid Plasma
 *  Application Style: kvantum
+*  GTK Theme: Nordian Breeze GTK
+*  Window Decorators: Nordian Solid Aurorae
+*  Color: kvantum
+*  Icon: Breeze Nordian Dark Icon
+*  SDDM: Nordian SDDM
+*  Splash Screen: Nordian Solid Global
 *  Kvantum: Nordian Kvantum
 *  Wallpaper: Plasma Desktop Wallpaper 1591
+*  Lock screen: Nordian-Plasma
 *  Fix SDDM date Format
 ```bash
 sudo nano /usr/share/sddm/themes/Nordian-SDDM/components/Clock.qml
@@ -649,13 +654,32 @@ sudo nano /usr/share/sddm/themes/Nordian-SDDM/components/Clock.qml
 "'The day is' dddd dd MMMM yyyy"
 ```
 
-# Theme 2
+# Theme 2 (dark)
 *  Global theme: Arc KDE
 *  GTK Theme: Plane GTK Arc Dark
 *  Icon: papirus dark
 *  SDDM: KDE-Story
 *  Application Style: kvantum
 *  Kvantum: Arc Dark
+
+# Theme 3 (light)
+*  Install
+```bash
+GUI (or use pamac install --no-confirm)
+
+breeze-gtk
+lightly-qt
+```
+*  Global theme: Breeze
+*  Plasma style: Breeze Light
+*  Application Style: Lightly
+*  GTK Theme: Breeze
+*  Window Decorators: Lightly
+*  Color: Breeze Light
+*  Icon: Breeze
+*  SDDM: Breeze
+*  Splash Screen: Breeze
+*  Wallpaper: Kite
 
 # Windows Font
 ```bash
