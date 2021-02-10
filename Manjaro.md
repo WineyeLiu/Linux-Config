@@ -681,6 +681,48 @@ lightly-qt
 *  Splash Screen: Breeze
 *  Wallpaper: Kite
 
+# Theme 4 (light)
+*  Install
+```bash
+GUI (or use pamac install --no-confirm)
+
+aritim-light-kde
+aritim-light-gtk
+papirus-icon-theme
+lightly-qt
+```
+*  Global theme: aritim-light
+*  Plasma style: aritim-light
+*  Application Style: Lightly
+*  GTK Theme: aritim-light
+*  Window Decorators: aritim-light
+*  Color: aritim-light
+*  Icon: Papirus light
+*  SDDM: Breeze
+*  Splash Screen: Breeze
+*  Wallpaper: Kite
+
+# Theme 5 (dark)
+*  Install
+```bash
+GUI (or use pamac install --no-confirm)
+
+aritim-dark-kde
+aritim-dark-gtk
+papirus-icon-theme
+lightly-qt
+```
+*  Global theme: aritim-dark
+*  Plasma style: aritim-dark
+*  Application Style: Lightly
+*  GTK Theme: aritim-dark
+*  Window Decorators: aritim-dark
+*  Color: aritim-dark
+*  Icon: Papirus dark
+*  SDDM: Breeze
+*  Splash Screen: Breeze
+*  Wallpaper: Kite
+
 # Windows Font
 ```bash
 sudo mkdir /usr/share/fonts/WindowsFonts
