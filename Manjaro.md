@@ -1,4 +1,4 @@
-# My Manajro KDE installation
+# My Manjaro KDE installation
 
 # Setting
 *  Kernel: Install latest and restart
