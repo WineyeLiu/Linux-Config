@@ -1,0 +1,7 @@
+#!/bin/bash
+# Get password using secret-tool and unlock keepassxc
+tmp_passwd=$(secret-tool lookup keepass Passwords)
+database='/home/ductran/Passwords.kdbx'
+keyfile='/home/ductran/Passwords.keyx;'
+dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc org.keepassxc.MainWindow.openDatabase \
+string:$database string:$tmp_passwd string:$keyfile

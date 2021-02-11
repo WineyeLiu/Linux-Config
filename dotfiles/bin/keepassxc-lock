@@ -1,0 +1,2 @@
+#!/bin/bash
+dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc >

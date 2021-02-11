@@ -1,0 +1,90 @@
+#!/bin/bash
+
+# Read theme argument
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -t|--theme)
+    THEME_TYPE="$2"
+    shift # past argument
+    shift # past value
+    ;;
+    *)    # unknown option
+    POSITIONAL+=("$1") # save it in an array for later
+    shift # past argument
+    ;;
+esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
+
+# Setup
+# Set THEME by Argument
+if [ $THEME_TYPE = "light" ]
+then
+    THEME_GLOBAL="Aritim-Light"
+    THEME_PLASMA="Aritim-Light"
+    THEME_APPLICAION="Lightly"
+    THEME_GTK="Aritim-Light"
+    THEME_DECORATOR="__aurorae__svg__Aritim-Light"
+    THEME_COLOR="AritimLight"
+    THEME_COLOR_PATH="/usr/share/color-schemes/AritimLight.colors"
+    THEME_ICON="Papirus-Light"
+    THEME_KONSOLE="Aritim-Light.profile"
+    THEME_YAKUAKE="Aritim-Light.profile"
+    THEME_KATE="GitHub Light"
+else
+    THEME_GLOBAL="Aritim-Dark"
+    THEME_PLASMA="Aritim-Dark-Flat-Solid"
+    THEME_APPLICAION="Lightly"
+    THEME_GTK="Aritim-Dark"
+    THEME_DECORATOR="__aurorae__svg__Aritim-Dark"
+    THEME_COLOR="AritimDark"
+    THEME_COLOR_PATH="/usr/share/color-schemes/AritimDark.colors"
+    THEME_ICON="Papirus-Dark"
+    THEME_KONSOLE="Aritim-Dark.profile"
+    THEME_YAKUAKE="Aritim-Dark.profile"
+    THEME_KATE="GitHub Dark"
+fi
+
+# Determine kde version and configure based on that.
+if [ "`which kwriteconfig5`" ]; 
+then
+    KWRITECONF=kwriteconfig5
+    GTKCONFIG="$HOME/.config/gtk-3.0/settings.ini"
+    KDEVER=5
+else
+    KWRITECONF=kwriteconfig
+    GTKCONFIG="$HOME/.config/gtk-3.0/settings.ini"
+fi
+   
+# Script to switch to dark theme
+# Global Theme
+${KWRITECONF} --file kdeglobals --group "KDE" --key "LookAndFeelPackage" ${THEME_GLOBAL}
+${KWRITECONF} --file kdeglobals --group "General" --key "Name" ${THEME_GLOBAL}
+${KWRITECONF} --file kscreenlockerrc --group "Greeter" --key "Theme" ${THEME_GLOBAL}
+# Plasma Style
+${KWRITECONF} --file plasmarc --group "Theme" --key "name" ${THEME_PLASMA}
+# Application Style
+${KWRITECONF} --file kdeglobals --group "KDE" --key "widgetStyle" ${THEME_APPLICAION}
+# GTK Theme
+${KWRITECONF} --file ${GTKCONFIG} --group "KDE" --key "gtk-theme-name" ${THEME_GTK}
+${KWRITECONF} --file ${GTKCONFIG} --group "Settings" --key "gtk-theme-name" ${THEME_GTK}
+# Window Decorators
+${KWRITECONF} --file kwinrc --group "org.kde.kdecoration2" --key "theme" ${THEME_DECORATOR}
+# Icon
+${KWRITECONF} --file kdeglobals --group "Icons" --key "Theme" ${THEME_ICON}
+${KWRITECONF} --file ${GTKCONFIG} --group "KDE" --key "gtk-icon-theme-name" ${THEME_ICON}
+# Color
+# ${KWRITECONF} --file kdeglobals --group "General" --key "ColorScheme" ${THEME_COLOR}
+plasma-theme --colors ${THEME_COLOR_PATH}
+# Konsole
+${KWRITECONF} --file konsolerc --group "Desktop Entry" --key "DefaultProfile" ${THEME_KONSOLE}
+${KWRITECONF} --file konsolerc --group "Favorite Profiles" --key "Favorites" ${THEME_KONSOLE}
+# Yakuake
+${KWRITECONF} --file yakuakerc --group "Desktop Entry" --key "DefaultProfile" ${THEME_YAKUAKE}
+# Kate
+${KWRITECONF} --file katerc --group "KTextEditor Renderer" --key "Auto Color Theme Selection" false
+${KWRITECONF} --file katerc --group "KTextEditor Renderer" --key "Color Theme" "${THEME_KATE}"
