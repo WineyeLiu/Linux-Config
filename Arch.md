@@ -188,17 +188,17 @@ uncomment
 
 # Graphic driver
 ```bash
-pacman -S xf86-video-intel xf86-video-amdgpu xf86-video-nouveau mesa lib32-mesa
-pacman -S vulkan-intel lib32-vulkan-intel vulkan-radeon lib32-vulkan-radeon
+pacman -S xf86-video-intel xf86-video-amdgpu xf86-video-nouveau mesa
+pacman -S vulkan-intel vulkan-radeon
 ```
 * For nvidia latest driver
 ```bash
-pacman -S nvidia nvidia-utils lib32-nvidia-utils
+pacman -S nvidia nvidia-utils
 ```
 
 # Sound driver
 ```bash
-pacman -S alsa-firmware alsa-utils alsa-lib alsa-plugins alsa-oss lib32-alsa-lib lib32-alsa-oss lib32-alsa-plugins
+pacman -S alsa-firmware alsa-utils alsa-lib alsa-plugins alsa-oss
 pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer
 ```
 
@@ -277,7 +277,7 @@ sudo reflector --country Singapore --country Japan --country China --country Hon
 
 # Install Nvidia 390
 ```bash
-yay -S nvidia-390xx nvidia-390xx-utils lib32-nvidia-390xx-utils
+yay -S nvidia-390xx-dkms nvidia-390xx-utils nvidia-390xx-settings
 ```
 
 # Install Bumblebee
