@@ -133,7 +133,7 @@ passwd
 
 # GRUB and others
 ```bash
-pacman -S grub efibootmgr os-prober ntfs-3g networkmanager network-manager-applet wpa_supplicant dialog mtools dosfstools base-devel  git bluez bluez-utils cups openssh sshfs
+pacman -S grub efibootmgr os-prober ntfs-3g networkmanager network-manager-applet wpa_supplicant dialog mtools dosfstools base-devel bluez bluez-utils cups openssh sshfs
 ```
 ```bash
 mkdir /boot/EFI
@@ -215,7 +215,17 @@ systemctl enable sddm
 
 # KDE Plasma
 ```bash
-pacman -S plasma plasma-wayland-session plasma-wayland-protocols kde-applications sddm-kcm unrar
+pacman -S plasma plasma-wayland-session plasma-wayland-protocols sddm-kcm
+pacman -S kde-graphics
+pacman -S kde-multimedia
+pacman -S kde-system
+pacman -S kde-utilities
+pacman -S kdepim
+pacman -S kdesdk
+```
+or
+```bash
+pacman -S kde-applications
 ```
 
 # Libre Office
