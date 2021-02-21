@@ -455,8 +455,14 @@ gitkraken
 ```bash
 git config --global user.name "Duc Tran"
 git config --global user.email tv.duc95@gmail.com
+```
+*  Optional: use keepassxc
+```bash
+git config --global credential.helper libsecret
+```
+*  Optional: use ksshaskpass
+```bash
 git config --global core.askpass /usr/bin/ksshaskpass
-
 sudo nano ~/.config/autostart-scripts/ssh-add.sh
 #!/bin/sh
 ssh-add -q < /dev/null
@@ -839,13 +845,7 @@ sleep 5
 keepassxc-unlock
 ```
 ```bash
-sudo chmod 777 ~/bin/keepassxc-unlock
-sudo chmod 777 ~/bin/keepassxc-lock
-sudo chmod 777 ~/bin/keepassxc-startup
-sudo chmod 777 ~/bin/keepassxc-watch
-```
-```bash
-sudo nano ~/bin/keepassxc-watch
+nano ~/bin/keepassxc-watch
 
 #!/bin/bash
 # KeepassXC watch for logout and unlock a database
@@ -856,6 +856,12 @@ dbus-monitor --session "type=signal,interface=org.freedesktop.ScreenSaver" |
         keepassxc-unlock
     fi
   done
+```
+```bash
+sudo chmod 777 ~/bin/keepassxc-unlock
+sudo chmod 777 ~/bin/keepassxc-lock
+sudo chmod 777 ~/bin/keepassxc-startup
+sudo chmod 777 ~/bin/keepassxc-watch
 ```
 ```bash
 sudo nano ~/.local/share/applications/keepassxc-lock.desktop
