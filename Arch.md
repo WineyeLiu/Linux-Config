@@ -222,6 +222,7 @@ pacman -S kde-system
 pacman -S kde-utilities
 pacman -S kdepim
 pacman -S kdesdk
+pacman -S --needed kde-applications
 ```
 or
 ```bash
