@@ -186,10 +186,14 @@ gitkraken
 ```bash
 git config --global user.name "Duc Tran"
 git config --global user.email tv.duc95@gmail.com
-git config --global core.askpass /usr/bin/ksshaskpass
+```
+*  Optional: use keepassxc
+```bash
+git config --global credential.helper libsecret
 ```
 *  Optional: use ksshaskpass
 ```bash
+git config --global core.askpass /usr/bin/ksshaskpass
 sudo nano ~/.config/autostart-scripts/ssh-add.sh
 #!/bin/sh
 ssh-add -q < /dev/null
