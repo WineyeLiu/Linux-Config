@@ -17,6 +17,7 @@
 *  Shortcut --> Global Shortcut --> KWin --> Maximum window: Meta+PageUp
 *  Shortcut --> Global Shortcut --> KWin --> Minimum window: Meta+PageDown
 *  Shortcut --> Global Shortcut --> KWin --> Toggle Present Windows (Current Desktop): Meta+Tab
+*  Shortcut --> Global Shortcut --> Plasma --> Show desktop: untick Ctrl+F12
 *  Shortcut --> Global Shortcut --> Yakuake: window+f12
 *  Shortcut --> Global Shortcut --> Konsole: Ctrl+Alt+T
 *  Startup and Shutdown --> Autostart --> Add program: KSysGuard
