@@ -372,7 +372,6 @@ sudo mysql_secure_installation
 # PostgreSQL
 ```bash
 GUI (or use pamac install --no-confirm)
-https://askubuntu.com/questions/736638/fcitx-wont-trigger-ime-on-superspace
 postgresql
 pgadmin4
 ```
@@ -387,6 +386,16 @@ exit
 sudo systemctl stop postgresql
 ```
 - [PostgreSQL - ArchWiki](https://wiki.archlinux.org/index.php/PostgreSQL)
+
+# MS SQL Server
+```bash
+GUI (or use pamac install --no-confirm)
+mssql-server
+```
+```bash
+sudo /opt/mssql/bin/mssql-conf setup
+```
+- [Installation guidance for SQL Server on Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-ver15)
 
 # VSCode
 ```bash
