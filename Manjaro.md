@@ -17,6 +17,7 @@
 *  Shortcut --> Global Shortcut --> KWin --> Maximum window: Meta+PageUp
 *  Shortcut --> Global Shortcut --> KWin --> Minimum window: Meta+PageDown
 *  Shortcut --> Global Shortcut --> KWin --> Toggle Present Windows (Current Desktop): Meta+Tab
+*  Shortcut --> Global Shortcut --> Plasma --> Show desktop: untick Ctrl+F12
 *  Shortcut --> Global Shortcut --> Yakuake: window+f12
 *  Shortcut --> Global Shortcut --> Konsole: Ctrl+Alt+T
 *  Startup and Shutdown --> Autostart --> Add program: KSysGuard
@@ -186,10 +187,14 @@ gitkraken
 ```bash
 git config --global user.name "Duc Tran"
 git config --global user.email tv.duc95@gmail.com
-git config --global core.askpass /usr/bin/ksshaskpass
+```
+*  Optional: use keepassxc
+```bash
+git config --global credential.helper libsecret
 ```
 *  Optional: use ksshaskpass
 ```bash
+git config --global core.askpass /usr/bin/ksshaskpass
 sudo nano ~/.config/autostart-scripts/ssh-add.sh
 #!/bin/sh
 ssh-add -q < /dev/null
@@ -367,7 +372,6 @@ sudo mysql_secure_installation
 # PostgreSQL
 ```bash
 GUI (or use pamac install --no-confirm)
-https://askubuntu.com/questions/736638/fcitx-wont-trigger-ime-on-superspace
 postgresql
 pgadmin4
 ```
@@ -382,6 +386,16 @@ exit
 sudo systemctl stop postgresql
 ```
 - [PostgreSQL - ArchWiki](https://wiki.archlinux.org/index.php/PostgreSQL)
+
+# MS SQL Server
+```bash
+GUI (or use pamac install --no-confirm)
+mssql-server
+```
+```bash
+sudo /opt/mssql/bin/mssql-conf setup
+```
+- [Installation guidance for SQL Server on Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-ver15)
 
 # VSCode
 ```bash
