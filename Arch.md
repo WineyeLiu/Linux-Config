@@ -65,7 +65,7 @@ mount /dev/sda3 /mnt/windows10
 
 # Install Linux
 ```bash
-pacstrap /mnt base linux linux-firmware linux-headers nano intel-ucode
+pacstrap /mnt base linux linux-firmware linux-headers nano amd-ucode
 ```
 
 # Configure the system
@@ -188,8 +188,8 @@ uncomment
 
 # Graphic driver
 ```bash
-pacman -S xf86-video-intel xf86-video-amdgpu xf86-video-nouveau mesa
-pacman -S vulkan-intel vulkan-radeon
+pacman -S xf86-video-amdgpu xf86-video-nouveau mesa
+pacman -S vulkan-radeon
 ```
 * For nvidia latest driver
 ```bash
