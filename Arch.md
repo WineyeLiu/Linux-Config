@@ -396,6 +396,13 @@ sudo nano /etc/sddm.conf
 Numlock=on
 ```
 
+# Color Management
+```bash
+GUI (or use pamac install --no-confirm)
+
+colord-kde
+```
+
 # Apps
 ```bash
 GUI (or use pamac install --no-confirm)
