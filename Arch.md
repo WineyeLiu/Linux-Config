@@ -1,4 +1,4 @@
-# My Arch KDE installation
+# My Legion 5 Arch KDE installation
 [Installation guide](https://wiki.archlinux.org/index.php/Installation_guide)
 [KDE](https://wiki.archlinux.org/index.php/KDE#Installation)
 
@@ -9,9 +9,10 @@
 ```bash
 iwctl
 device list
-station device scan
-station device get-networks
-station device connect SSID
+iwctl adapter phy0 set-properties Powered on
+station wlan0 scan
+station wlan0 get-networks
+station wlan0 connect SSID
 ```
 * or use
 ```bash
@@ -30,7 +31,6 @@ pacman -Syyy
 ```
 * optional
 ```bash
-pacman -S python
 pacman -S reflector
 reflector -c Singapore -a 6 --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Syyy
@@ -39,7 +39,7 @@ pacman -Syyy
 # Partition the disks
 ```bash
 lsblk
-cfdisk /dev/sda
+cfdisk /dev/nvmen1
 ```
 * Choose Free space  
   Enter New  
@@ -48,19 +48,14 @@ cfdisk /dev/sda
 * Verify new partition:
 ```bash
 lsblk
-mkfs.ext4 /dev/sda6
+mkfs.ext4 /dev/nvmen1p3
 lsblk
 ```
 
 # Mount the file systems
 ```bash
-mount /dev/sda6 /mnt
+mount /dev/nvmen1p3 /mnt
 lsblk
-```
-* Optional: mount windows 10
-```bash
-mkdir /mnt/windows10
-mount /dev/sda3 /mnt/windows10
 ```
 
 # Install Linux
@@ -80,7 +75,7 @@ arch-chroot /mnt
 
 # Swapfile
 ```bash
-fallocate -l 4G /swapfile
+fallocate -l 8G /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
@@ -116,14 +111,14 @@ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 ```bash
 nano /etc/hostname
 
-delllatitude6530
+legion5
 ```
 ```bash
 nano /etc/hosts
 
 127.0.0.1	localhost
 ::1		localhost
-127.0.1.1	delllatitude6530.localdomain	delllatitude6530
+127.0.1.1	legion5.localdomain	legion5
 ```
 
 # Root password
@@ -137,7 +132,7 @@ pacman -S grub efibootmgr os-prober ntfs-3g networkmanager network-manager-apple
 ```
 ```bash
 mkdir /boot/EFI
-mount /dev/sda1 /boot/EFI
+mount /dev/nvmen1p2 /boot/EFI
 grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
@@ -190,9 +185,6 @@ uncomment
 ```bash
 pacman -S xf86-video-amdgpu xf86-video-nouveau mesa
 pacman -S vulkan-radeon
-```
-* For nvidia latest driver
-```bash
 pacman -S nvidia nvidia-utils
 ```
 
@@ -284,16 +276,6 @@ sudo pacman -Syyu
 ```bash
 sudo pacman -S reflector
 sudo reflector --country Singapore --country Japan --country China --country HongKong --country 'South Korea' --country Vietnam  --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-```
-
-# Install Nvidia 390
-```bash
-yay -S nvidia-390xx-dkms nvidia-390xx-utils nvidia-390xx-settings
-```
-
-# Install Bumblebee
-```bash
-pacman -S bumblebee
 ```
 
 # NVIDIA drivers (optional)
@@ -395,15 +377,15 @@ blacklist pcspkr
 sudo mkdir /mnt/disk1
 sudo mkdir /mnt/disk2
 sudo mkdir /mnt/disk3
-sudo blkid /dev/sda5
-sudo blkid /dev/sdb1
-sudo blkid /dev/sdb2
+sudo blkid /dev/nvme0n1p3
+sudo blkid /dev/nvme0n1p5
+sudo blkid /dev/nvme1n1p1
 sudo nano /etc/fstab
 ```
 ```bash
-UUID=01D5AFE0E284B260   /mnt/disk1  ntfs    defaults        0 0
-UUID=01D5308C5EDFFD30   /mnt/disk2  ntfs    defaults        0 0
-UUID=01D5308C6B0D0DF0   /mnt/disk3  ntfs    defaults        0 0
+UUID=56F89722F896FF83   /mnt/disk1  ntfs    defaults        0 0
+UUID=D4787282787262E2   /mnt/disk2  ntfs    defaults        0 0
+UUID=74746E13746DD87E   /mnt/disk3  ntfs    defaults        0 0
 ```
 
 # SDDM Auto numlock
