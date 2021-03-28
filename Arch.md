@@ -422,7 +422,6 @@ Stellarium
 GIMP
 grub-customizer
 kvantum-qt5
-kdialog
 piper
 vlc
 qbittorrent
@@ -559,7 +558,14 @@ GUI (or use pamac install --no-confirm)
 
 nodejs
 npm
-(or sudo pacman -S nodejs npm)
+
+or
+
+nvm
+source /usr/share/nvm/init-nvm.sh
+echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.bashrc
+nvm install node
+nvm install --lts
 ```
 ```bash
 sudo rm -rfv /etc/sysctl.d/*
