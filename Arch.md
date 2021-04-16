@@ -870,7 +870,7 @@ sudo chmod 777 ~/bin/keepassxc-startup
 sudo chmod 777 ~/bin/keepassxc-watch
 ```
 ```bash
-sudo nano ~/.local/share/applications/keepassxc-lock.desktop
+nano ~/.local/share/applications/keepassxc-lock.desktop
 
 [Desktop Entry]
 Name=KeePassXC-lock
@@ -886,7 +886,7 @@ Categories=Utility;Security;Qt;
 MimeType=application/x-keepass2;
 ```
 ```bash
-sudo nano ~/.local/share/applications/keepassxc-unlock.desktop
+nano ~/.local/share/applications/keepassxc-unlock.desktop
 
 [Desktop Entry]
 Name=KeePassXC-unlock
@@ -905,6 +905,19 @@ MimeType=application/x-keepass2;
 Add keepassxc-startup, keepassxc-watch to autostart scripts
 ```
 - [Automatically unlock KeepassXC on startup and after lock screen](https://grabski.me/tech,/linux/2020/09/02/automatically-unlock-keepassxc-on-startup-and-after-lock-screen/)
+
+# Config file dialog
+```bash
+GUI (or use pamac install --no-confirm)
+
+xdg-desktop-portal
+xdg-desktop-portal-kde
+```
+```bash
+nano ~/.xprofile
+
+export GTK_USE_PORTAL=1
+```
 
 # Tweaks
 *  Unpin all app in task bar
