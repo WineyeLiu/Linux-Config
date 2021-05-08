@@ -401,6 +401,9 @@ Numlock=on
 GUI (or use pamac install --no-confirm)
 
 colord-kde
+
+sudo cp "/mnt/disk3/Software/Windows/B156HAN09.2 #1 2021-03-18 11-33 D6500 2.2 F-S XYZLUT+MTX.icm" /usr/share/color/icc/
+sudo cp "/mnt/disk3/Software/Windows/B156HAN09.2 #1 2021-03-26 20-14 D6500 2.2 F-S XYZLUT+MTX.icm" /usr/share/color/icc/
 ```
 
 # Apps
