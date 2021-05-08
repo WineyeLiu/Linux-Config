@@ -128,7 +128,7 @@ passwd
 
 # GRUB and others
 ```bash
-pacman -S grub efibootmgr os-prober ntfs-3g networkmanager network-manager-applet wpa_supplicant dialog mtools dosfstools base-devel bluez bluez-utils cups openssh sshfs
+pacman -S grub efibootmgr os-prober ntfs-3g networkmanager network-manager-applet wpa_supplicant dialog mtools dosfstools base-devel bluez bluez-utils openssh sshfs
 ```
 ```bash
 mkdir /boot/EFI
@@ -141,7 +141,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```bash
 systemctl enable NetworkManager
 systemctl enable bluetooth
-systemctl enable cups
 systemctl enable sshd
 ```
 
@@ -185,7 +184,7 @@ uncomment
 ```bash
 pacman -S xf86-video-amdgpu xf86-video-nouveau mesa
 pacman -S vulkan-radeon
-pacman -S nvidia nvidia-utils
+pacman -S nvidia nvidia-utils nvidia-settings
 ```
 
 # Sound driver
@@ -223,7 +222,7 @@ pacman -S kde-applications
 
 # Libre Office
 ```bash
-pacman -S libreoffice
+pacman -S libreoffice-fresh
 ```
 
 # Browser
@@ -278,7 +277,7 @@ sudo pacman -S reflector
 sudo reflector --country Singapore --country Japan --country China --country HongKong --country 'South Korea' --country Vietnam  --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
-# NVIDIA drivers (optional)
+# NVIDIA Optimus (optional)
 ```bash
 sudo pacman -S optimus-manager
 sudo systemctl disable bumblebeed.service
@@ -431,6 +430,9 @@ openvpn
 networkmanager-openvpn
 subtitleeditor
 unrar
+openssl
+zenmonitor
+motrix-bin
 ```
 
 # IDE & Compiler
@@ -499,6 +501,8 @@ GUI (or use pamac install --no-confirm)
 
 jdk-openjdk
 java-openjfx
+jdk11-openjdk
+java11-openjfx
 ```
 
 # .NET Core
@@ -575,6 +579,13 @@ sudo sysctl -p
 sudo npm install -g @angular/cli
 ```
 - [Install NodeJS via package manager](https://nodejs.org/en/download/package-manager/#arch-linux)
+
+# Android tools
+```bash
+GUI (or use pamac install --no-confirm)
+
+android-tools
+```
 
 # Flutter
 ```bash
@@ -827,79 +838,8 @@ nano ~/.xprofile
 export PATH="$PATH:/home/ductran/bin"
 ```
 ```bash
-nano ~/bin/keepassxc-unlock
-
-#!/bin/bash
-# Get password using secret-tool and unlock keepassxc
-tmp_passwd=$(secret-tool lookup keepass Passwords)
-database='/home/ductran/Passwords.kdbx'
-keyfile='/home/ductran/Passwords.keyx;'
-dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc org.keepassxc.MainWindow.openDatabase \
-string:$database string:$tmp_passwd string:$keyfile
-```
-```bash
-nano ~/bin/keepassxc-lock
-
-#!/bin/bash
-dbus-send --print-reply --dest=org.keepassxc.KeePassXC.MainWindow /keepassxc >
-```
-```bash
-nano ~/bin/keepassxc-startup
-
-#!/bin/bash
-sleep 5
-keepassxc-unlock
-```
-```bash
-nano ~/bin/keepassxc-watch
-
-#!/bin/bash
-# KeepassXC watch for logout and unlock a database
-dbus-monitor --session "type=signal,interface=org.freedesktop.ScreenSaver" |
-  while read MSG; do
-    LOCK_STAT=`echo $MSG | grep boolean | awk '{print $2}'`
-    if [[ "$LOCK_STAT" == "false" ]]; then
-        keepassxc-unlock
-    fi
-  done
-```
-```bash
-sudo chmod 777 ~/bin/keepassxc-unlock
-sudo chmod 777 ~/bin/keepassxc-lock
-sudo chmod 777 ~/bin/keepassxc-startup
-sudo chmod 777 ~/bin/keepassxc-watch
-```
-```bash
-nano ~/.local/share/applications/keepassxc-lock.desktop
-
-[Desktop Entry]
-Name=KeePassXC-lock
-GenericName=Password Manager
-Comment=Secure way to lock KeepassXC
-Exec=keepassxc-lock
-Icon=keepassxc
-StartupNotify=false
-Terminal=false
-Type=Application
-Version=1.0
-Categories=Utility;Security;Qt;
-MimeType=application/x-keepass2;
-```
-```bash
-nano ~/.local/share/applications/keepassxc-unlock.desktop
-
-[Desktop Entry]
-Name=KeePassXC-unlock
-GenericName=Password Manager
-Comment=Secure way to unlock KeepassXC
-Exec=keepassxc-unlock
-Icon=keepassxc
-StartupNotify=false
-Terminal=false
-Type=Application
-Version=1.0
-Categories=Utility;Security;Qt;
-MimeType=application/x-keepass2;
+copy /mnt/disk2/Projects/linux-config/files/applications/ to ~/.local/share/applications/
+copy /mnt/disk2/Projects/linux-config/files/bin/ to ~/bin/
 ```
 ```bash
 Add keepassxc-startup, keepassxc-watch to autostart scripts
@@ -917,6 +857,11 @@ xdg-desktop-portal-kde
 nano ~/.xprofile
 
 export GTK_USE_PORTAL=1
+```
+
+# CPU Power
+```bash
+echo conservative | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 ```
 
 # Tweaks
@@ -1011,6 +956,14 @@ aritim-dark-kde
 aritim-dark-gtk
 papirus-icon-theme
 lightly-qt
+
+sudo nano /usr/share/color-schemes/AritimDark.colors
+[WM]
+activeBackground=20,26,33,255
+inactiveForeground=102,106,115,255
+
+extract /mnt/disk2/Projects/linux-config/files/assets.zip to ~/.config/gtk-3.0/
+copy /mnt/disk2/Projects/linux-config/files/share/ to /usr/share/
 ```
 *  Global theme: aritim-dark
 *  Plasma style: aritim-dark
@@ -1047,9 +1000,7 @@ sudo pacman -S ttf-arphic-ukai ttf-arphic-uming
 
 # Windows Font
 ```bash
-sudo mkdir /usr/share/fonts/WindowsFonts
-sudo cp /run/media/ductran/00EE6951EE693FD0/Windows/Fonts/* /usr/share/fonts/WindowsFonts/
-sudo chmod 644 /usr/share/fonts/WindowsFonts/*
+sudo cp /mnt/disk1/Windows/Fonts/* ~/.local/share/fonts
 sudo fc-cache --force
 ```
 - [Microsoft fonts](https://wiki.archlinux.org/index.php/Microsoft_fonts)
