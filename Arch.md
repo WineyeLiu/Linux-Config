@@ -1016,7 +1016,7 @@ sudo nano /etc/default/grub
 
 Replace #GRUB_THEME="/path/to/gfxtheme" by GRUB_THEME="/boot/grub/themes/Archxion/theme.txt"
 
-grub-mkconfig -o /boot/grub/grub.cfg
+sudo LANG=en_us grub-mkconfig -o /boot/grub/grub.cfg
 ```
 - [Generator/Grub2-themes](https://github.com/Generator/Grub2-themes)
 
