@@ -9,7 +9,7 @@
 ```bash
 iwctl
 device list
-iwctl adapter phy0 set-properties Powered on
+iwctl adapter phy0 set-property Powered on
 station wlan0 scan
 station wlan0 get-networks
 station wlan0 connect SSID
@@ -32,14 +32,14 @@ pacman -Syyy
 * optional
 ```bash
 pacman -S reflector
-reflector -c Singapore -a 6 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --country Singapore --country Japan --country HongKong --country 'South Korea' --country Vietnam  --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Syyy
 ```
 
 # Partition the disks
 ```bash
 lsblk
-cfdisk /dev/nvmen1
+cfdisk /dev/nvme1n1
 ```
 * Choose Free space  
   Enter New  
@@ -48,13 +48,13 @@ cfdisk /dev/nvmen1
 * Verify new partition:
 ```bash
 lsblk
-mkfs.ext4 /dev/nvmen1p3
+mkfs.ext4 /dev/nvme1n1p3
 lsblk
 ```
 
 # Mount the file systems
 ```bash
-mount /dev/nvmen1p3 /mnt
+mount /dev/nvme1n1p3 /mnt
 lsblk
 ```
 
@@ -132,7 +132,7 @@ pacman -S grub efibootmgr os-prober ntfs-3g networkmanager network-manager-apple
 ```
 ```bash
 mkdir /boot/EFI
-mount /dev/nvmen1p2 /boot/EFI
+mount /dev/nvme1n1p1 /boot/EFI
 grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
@@ -274,7 +274,7 @@ sudo pacman -Syyu
 # Update mirrorlist
 ```bash
 sudo pacman -S reflector
-sudo reflector --country Singapore --country Japan --country China --country HongKong --country 'South Korea' --country Vietnam  --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --country Singapore --country Japan --country HongKong --country 'South Korea' --country Vietnam  --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 # NVIDIA Optimus (optional)
@@ -320,9 +320,10 @@ Restart
 *  Regional Settings --> Formats --> Region: Viet Nam
 *  Regional Settings --> Formats --> Detail Setting --> Number: Default
 *  Regional Settings --> Formats --> Detail Setting --> Currency: Default
+*  Regional Settings --> Date & Time --> Set time auto: True
 *  Input Devices --> Keyboard --> Numlock: On
-*  Input Devices --> Mouse --> Poiter speed: 3
-*  Input Devices --> Touchpad --> Poiter speed: 3
+*  Input Devices --> Mouse --> Poiter speed: 5
+*  Input Devices --> Touchpad --> Poiter speed: 5
 *  Input Devices --> Touchpad --> Tapping --> Tap-to-click: true
 *  Display and Monitor --> Compositor --> Rendering backend: OpenGL 3.1
 *  Power Management --> Energy Saving --> On AC Power --> Brightness: 100%
@@ -376,13 +377,13 @@ blacklist pcspkr
 sudo mkdir /mnt/disk1
 sudo mkdir /mnt/disk2
 sudo mkdir /mnt/disk3
-sudo blkid /dev/nvme0n1p3
-sudo blkid /dev/nvme0n1p5
-sudo blkid /dev/nvme1n1p1
+sudo blkid /dev/nvme0n1p2
+sudo blkid /dev/nvme0n1p4
+sudo blkid /dev/nvme1n1p2
 sudo nano /etc/fstab
 ```
 ```bash
-UUID=56F89722F896FF83   /mnt/disk1  ntfs    defaults        0 0
+UUID=CA00F88C00F880AD   /mnt/disk1  ntfs    defaults        0 0
 UUID=D4787282787262E2   /mnt/disk2  ntfs    defaults        0 0
 UUID=74746E13746DD87E   /mnt/disk3  ntfs    defaults        0 0
 ```
@@ -400,6 +401,9 @@ Numlock=on
 GUI (or use pamac install --no-confirm)
 
 colord-kde
+
+sudo cp "/mnt/disk3/Software/Windows/B156HAN09.2 #1 2021-03-18 11-33 D6500 2.2 F-S XYZLUT+MTX.icm" /usr/share/color/icc/
+sudo cp "/mnt/disk3/Software/Windows/B156HAN09.2 #1 2021-03-26 20-14 D6500 2.2 F-S XYZLUT+MTX.icm" /usr/share/color/icc/
 ```
 
 # Apps
@@ -1019,7 +1023,7 @@ sudo nano /etc/default/grub
 
 Replace #GRUB_THEME="/path/to/gfxtheme" by GRUB_THEME="/boot/grub/themes/Archxion/theme.txt"
 
-grub-mkconfig -o /boot/grub/grub.cfg
+sudo LANG=en_us grub-mkconfig -o /boot/grub/grub.cfg
 ```
 - [Generator/Grub2-themes](https://github.com/Generator/Grub2-themes)
 
