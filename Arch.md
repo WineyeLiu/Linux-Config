@@ -879,6 +879,13 @@ echo conservative | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 *  Edit panel --> More Setting --> Auto hide
 *  Lock widget
 
+# Fix menu height
+```bash
+sudo nano /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/FullRepresentation.qml
+
+Layout.minimumHeight: PlasmaCore.Units.gridUnit * 45
+```
+
 # Theme (dark)
 *  Global theme: Nordian Solid Global
 *  Plasma style: Nordian Solid Plasma

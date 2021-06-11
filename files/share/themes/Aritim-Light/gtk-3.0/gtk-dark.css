@@ -58,6 +58,24 @@ headerbar button.titlebutton.minimize:backdrop:hover, .titlebar button.titlebutt
 headerbar button.titlebutton.minimize:backdrop:active, .titlebar button.titlebutton.minimize:backdrop:active {
   background-image: url("/home/ductran/.config/gtk-3.0/assets/minimize-backdrop-active.svg"); }
 
+.maximized headerbar button.titlebutton.close, .maximized .titlebar button.titlebutton.close {
+  background-image: url("/home/ductran/.config/gtk-3.0/assets/close-normal.svg"); }
+
+.maximized headerbar button.titlebutton.close:hover, .maximized .titlebar button.titlebutton.close:hover {
+  background-image: url("/home/ductran/.config/gtk-3.0/assets/close-hover.svg"); }
+
+.maximized headerbar button.titlebutton.close:active, .maximized .titlebar button.titlebutton.close:active {
+  background-image: url("/home/ductran/.config/gtk-3.0/assets/close-active.svg"); }
+
+.maximized headerbar button.titlebutton.close:backdrop, .maximized .titlebar button.titlebutton.close:backdrop {
+  background-image: url("/home/ductran/.config/gtk-3.0/assets/close-backdrop-normal.svg"); }
+
+.maximized headerbar button.titlebutton.close:backdrop:hover, .maximized .titlebar button.titlebutton.close:backdrop:hover {
+  background-image: url("/home/ductran/.config/gtk-3.0/assets/close-backdrop-hover.svg"); }
+
+.maximized headerbar button.titlebutton.close:backdrop:active, .maximized .titlebar button.titlebutton.close:backdrop:active {
+  background-image: url("/home/ductran/.config/gtk-3.0/assets/close-backdrop-active.svg"); }
+
 .maximized headerbar button.titlebutton.maximize, .maximized .titlebar button.titlebutton.maximize {
   background-image: url("/home/ductran/.config/gtk-3.0/assets/maximized-normal.svg"); }
 
@@ -75,3 +93,21 @@ headerbar button.titlebutton.minimize:backdrop:active, .titlebar button.titlebut
 
 .maximized headerbar button.titlebutton.maximize:backdrop:active, .maximized .titlebar button.titlebutton.maximize:backdrop:active {
   background-image: url("/home/ductran/.config/gtk-3.0/assets/maximized-backdrop-active.svg"); }
+
+.maximized headerbar button.titlebutton.minimize, .maximized .titlebar button.titlebutton.minimize {
+  background-image: url("/home/ductran/.config/gtk-3.0/assets/minimize-normal.svg"); }
+
+.maximized headerbar button.titlebutton.minimize:hover, .maximized .titlebar button.titlebutton.minimize:hover {
+  background-image: url("/home/ductran/.config/gtk-3.0/assets/minimize-hover.svg"); }
+
+.maximized headerbar button.titlebutton.minimize:active, .maximized .titlebar button.titlebutton.minimize:active {
+  background-image: url("/home/ductran/.config/gtk-3.0/assets/minimize-active.svg"); }
+
+.maximized headerbar button.titlebutton.minimize:backdrop, .maximized .titlebar button.titlebutton.minimize:backdrop {
+  background-image: url("/home/ductran/.config/gtk-3.0/assets/minimize-backdrop-normal.svg"); }
+
+.maximized headerbar button.titlebutton.minimize:backdrop:hover, .maximized .titlebar button.titlebutton.minimize:backdrop:hover {
+  background-image: url("/home/ductran/.config/gtk-3.0/assets/minimize-backdrop-hover.svg"); }
+
+.maximized headerbar button.titlebutton.minimize:backdrop:active, .maximized .titlebar button.titlebutton.minimize:backdrop:active {
+  background-image: url("/home/ductran/.config/gtk-3.0/assets/minimize-backdrop-active.svg"); }
