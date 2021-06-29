@@ -222,6 +222,7 @@ pacman -S kdepim
 pacman -S kdesdk
 pacman -S --needed kde-applications
 pacman -S ksysguard
+pacman -S plasma-pa
 ```
 or
 ```bash
