@@ -799,6 +799,7 @@ goland
 Note: edit rider PKGBUILD _installdir='/opt'
 ```
 ```bash
+sudo cp /opt/rider/bin/rider.svg /usr/share/pixmaps/rider.svg
 sudo rm -rf /opt/rider/jbr
 sudo ark -b -o /opt /mnt/disk3/Software/IDE/jbr-linux-x64-202106011206.zip
 ```
