@@ -189,13 +189,13 @@ pacman -S nvidia nvidia-utils nvidia-settings
 
 # Sound driver
 ```bash
-pacman -S alsa-firmware alsa-utils alsa-lib alsa-plugins alsa-oss
+pacman -S alsa-firmware alsa-utils alsa-lib alsa-plugins
 
 pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer
 
 or
 
-pacman -S pipewire pipewire-alsa pipewire-pulse
+pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack
 ```
 
 # Input driver
@@ -211,6 +211,8 @@ systemctl enable sddm
 
 # KDE Plasma
 ```bash
+Note: remove plasma-pa if using pipewire
+
 pacman -S plasma plasma-wayland-session plasma-wayland-protocols sddm-kcm
 pacman -S kde-graphics
 pacman -S kde-multimedia
@@ -516,6 +518,7 @@ subtitleeditor
 unrar
 openssl
 motrix-bin
+helvum
 ```
 
 # Multimedia
