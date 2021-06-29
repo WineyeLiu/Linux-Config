@@ -221,6 +221,7 @@ pacman -S kde-utilities
 pacman -S kdepim
 pacman -S kdesdk
 pacman -S --needed kde-applications
+pacman -S ksysguard
 ```
 or
 ```bash
@@ -492,10 +493,9 @@ sudo LANG=en_us grub-mkconfig -o /boot/grub/grub.cfg
 ```bash
 GUI (or use pamac install --no-confirm)
 
+psensor
 google-chrome
 vivaldi
-psensor
-gnome-keyring
 skypeforlinux-stable-bin
 telegram
 caprine
@@ -516,9 +516,7 @@ openvpn
 networkmanager-openvpn
 subtitleeditor
 unrar
-openssl
 motrix-bin
-helvum
 ```
 
 # Multimedia
