@@ -171,15 +171,6 @@ nmtui
 pacman -S xorg
 ```
 
-# Enable multilib (optional)
-```bash
-nano /etc/pacman.conf
-
-uncomment
-#[multilib]
-#Include = /etc/pacman.d/mirrorlist
-```
-
 # Graphic driver
 ```bash
 pacman -S xf86-video-amdgpu xf86-video-nouveau mesa
@@ -381,18 +372,28 @@ blacklist pcspkr
 
 # Automount partition
 ```bash
+GUI (or use pamac install --no-confirm)
+
+ntfs3-dkms
+```
+```bash
 sudo mkdir /mnt/disk1
 sudo mkdir /mnt/disk2
 sudo mkdir /mnt/disk3
 sudo blkid /dev/nvme0n1p2
 sudo blkid /dev/nvme0n1p4
 sudo blkid /dev/nvme1n1p2
-sudo nano /etc/fstab
 ```
 ```bash
-UUID=CA00F88C00F880AD   /mnt/disk1  ntfs    defaults        0 0
-UUID=D4787282787262E2   /mnt/disk2  ntfs    defaults        0 0
-UUID=74746E13746DD87E   /mnt/disk3  ntfs    defaults        0 0
+id -u
+id -g
+
+sudo nano /etc/fstab
+
+UUID=CA00F88C00F880AD   /mnt/disk1  ntfs        uid=1000,gid=984 0 0
+UUID=D4787282787262E2   /mnt/disk2  ntfs        uid=1000,gid=984 0 0
+UUID=74746E13746DD87E   /mnt/disk3  ntfs        uid=1000,gid=984 0 0
+
 ```
 
 # SDDM Auto numlock
@@ -968,6 +969,38 @@ Audio Gain => max
 ```
 - [Community Presets](https://github.com/wwmm/pulseeffects/wiki/Community-presets)
 - [How to mimic Dolby Audio Premium on Linux with PulseEffects](https://www.linuxupdate.co.uk/2020/10/19/how-to-mimic-dolby-audio-premium-on-linux-with-pulseeffects/)
+
+# Steam
+```bash
+nano /etc/pacman.conf
+
+uncomment
+#[multilib]
+#Include = /etc/pacman.d/mirrorlist
+```
+```bash
+sudo pacman -Syyu
+sudo pacman -S nvidia-dkms
+sudo pacman -S lib32-mesa
+sudo pacman -S lib32-vulkan-radeon
+sudo pacman -S lib32-vulkan-icd-loader
+sudo pacman -S lib32-nvidia-utils
+
+sudo pacman -S linux-zen linux-zen-headers
+```
+```bash
+GUI (or use pamac install --no-confirm)
+
+steam
+```
+```bash
+mkdir /home/ductran/.local/share/Steam/steamapps/compatdata
+mkdir "/home/ductran/.local/share/Steam/steamapps/common/Proton 6.3"
+mkdir /home/ductran/.local/share/Steam/steamapps/common/SteamLinuxRuntime_soldier
+ln -s /home/ductran/.local/share/Steam/steamapps/compatdata /mnt/disk3/Game/SteamLibrary/steamapps/compatdata
+ln -s "/home/ductran/.local/share/Steam/steamapps/common/Proton 6.3" "/mnt/disk3/Game/SteamLibrary/steamapps/common/Proton 6.3"
+ln -s /home/ductran/.local/share/Steam/steamapps/common/SteamLinuxRuntime_soldier /mnt/disk3/Game/SteamLibrary/steamapps/common/SteamLinuxRuntime_soldier
+```
 
 # Tweaks
 *  Unpin all app in task bar
