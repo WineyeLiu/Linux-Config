@@ -171,7 +171,7 @@ nmtui
 pacman -S xorg
 ```
 
-# Enable multilib
+# Enable multilib (optional)
 ```bash
 nano /etc/pacman.conf
 
@@ -190,7 +190,12 @@ pacman -S nvidia nvidia-utils nvidia-settings
 # Sound driver
 ```bash
 pacman -S alsa-firmware alsa-utils alsa-lib alsa-plugins alsa-oss
+
 pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer
+
+or
+
+pacman -S pipewire pipewire-alsa pipewire-pulse
 ```
 
 # Input driver
@@ -240,7 +245,7 @@ pacman -S git
 reboot
 ```
 
-# Yay (optional)
+# Yay
 ```bash
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin/
@@ -250,9 +255,7 @@ yay --editmenu --nodiffmenu --save
 
 # Pamac
 ```bash
-git clone https://aur.archlinux.org/pamac-aur.git
-cd pamac-aur/
-makepkg -si PKGBUILD
+yay -S pamac-aur
 ```
 
 # Add AUR Repository
@@ -406,6 +409,83 @@ sudo cp "/mnt/disk3/Software/Windows/B156HAN09.2 #1 2021-03-18 11-33 D6500 2.2 F
 sudo cp "/mnt/disk3/Software/Windows/B156HAN09.2 #1 2021-03-26 20-14 D6500 2.2 F-S XYZLUT+MTX.icm" /usr/share/color/icc/
 ```
 
+# Hardware video acceleration
+```bash
+GUI (or use pamac install --no-confirm)
+
+libva-mesa-driver
+mesa-vdpau
+```
+
+# Ryzen monitor
+```bash
+GUI (or use pamac install --no-confirm)
+
+sudo modprobe msr
+
+zenpower-dkms
+zenmonitor
+
+Edit zenmonitor PKGBUILD, add
+mkdir -p "${pkgdir}/usr/share/polkit-1/actions"
+make DESTDIR="${pkgdir}" PREFIX="/usr" install-polkit
+```
+
+# CPU Power
+```bash
+GUI (or use pamac install --no-confirm)
+cpupower
+
+sudo nano /etc/default/cpupower
+
+governor='conservative'
+min_freq="1.4GHz"
+max_freq="2.9GHz"
+
+sudo systemctl enable cpupower
+
+sudo mkdir /opt/power-mode && cd $_
+sudo nano no-turbo-boost.sh
+
+#!/bin/bash
+
+echo "0" | sudo tee /sys/devices/system/cpu/cpufreq/boost
+
+sudo nano no-turbo-boost.service
+
+[Unit]
+Description=Disable Turbo Boost
+After=acpid.socket
+After=syslog.service
+
+[Service]
+User=root
+Type=simple
+ExecStart=/opt/power-mode/no-turbo-boost.sh
+ExecStop=/opt/power-mode/no-turbo-boost.sh
+TimeoutSec=30
+StartLimitInterval=350
+
+[Install]
+WantedBy=multi-user.target
+
+sudo chmod +x /opt/power-mode/no-turbo-boost.sh
+cd /etc/systemd/system
+sudo ln -s /opt/power-mode/no-turbo-boost.service no-turbo-boost.service
+sudo chmod u+x /etc/systemd/system/no-turbo-boost.service
+sudo systemctl enable no-turbo-boost
+```
+
+# CPU Power (old)
+```bash
+echo conservative | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+sudo nano /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="cpufreq.default_governor=conservative loglevel=3 quiet"
+
+sudo LANG=en_us grub-mkconfig -o /boot/grub/grub.cfg
+```
+
 # Apps
 ```bash
 GUI (or use pamac install --no-confirm)
@@ -435,8 +515,24 @@ networkmanager-openvpn
 subtitleeditor
 unrar
 openssl
-zenmonitor
 motrix-bin
+```
+
+# Multimedia
+```bash
+GUI (or use pamac install --no-confirm)
+
+obs-studio
+```
+
+# Fix firefox
+```bash
+about:config
+toolkit.legacyUserProfileCustomizations.stylesheets = true
+
+create file chrome/userChrome.css
+
+*|div#fullscr-toggler {display:none!important;}
 ```
 
 # IDE & Compiler
@@ -511,14 +607,14 @@ java11-openjfx
 
 # .NET Core
 ```bash
-GUI (or use pamac install --no-confirm)
+GUI (or use pamac install --no-confirm) (use AUR bin version to get update earlier)
 
-dotnet-sdk
-aspnet-runtime
-aspnet-targeting-pack
-dotnet-sdk-3.1
-aspnet-runtime-3.1
-aspnet-targeting-pack-3.1
+dotnet-sdk-bin
+aspnet-runtime-bin
+aspnet-targeting-pack-bin
+dotnet-sdk-3.1-bin
+aspnet-runtime-3.1-bin
+aspnet-targeting-pack-3.1-bin
 ```
 or
 ```bash
@@ -704,6 +800,7 @@ goland
 Note: edit rider PKGBUILD _installdir='/opt'
 ```
 ```bash
+sudo rm -rf /opt/rider/jbr
 sudo ark -b -o /opt /mnt/disk3/Software/IDE/java-11.0.7-jetbrain.zip
 sudo mv /opt/java-11.0.7-jetbrain /opt/jbr
 ```
@@ -863,10 +960,17 @@ nano ~/.xprofile
 export GTK_USE_PORTAL=1
 ```
 
-# CPU Power
+# PulseEffects
 ```bash
-echo conservative | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+GUI (or use pamac install --no-confirm)
+
+pulseeffects
+
+start PulseEffects
+Audio Gain => max
 ```
+- [Community Presets](https://github.com/wwmm/pulseeffects/wiki/Community-presets)
+- [How to mimic Dolby Audio Premium on Linux with PulseEffects](https://www.linuxupdate.co.uk/2020/10/19/how-to-mimic-dolby-audio-premium-on-linux-with-pulseeffects/)
 
 # Tweaks
 *  Unpin all app in task bar
@@ -887,7 +991,7 @@ echo conservative | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 ```bash
 sudo nano /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/FullRepresentation.qml
 
-Layout.minimumHeight: PlasmaCore.Units.gridUnit * 45
+Layout.minimumHeight: PlasmaCore.Units.gridUnit * 40
 ```
 
 # Theme (dark)
@@ -923,7 +1027,6 @@ sudo nano /usr/share/sddm/themes/Nordian-SDDM/components/Clock.qml
 ```bash
 GUI (or use pamac install --no-confirm)
 
-breeze-gtk
 lightly-qt
 ```
 *  Global theme: Breeze
@@ -942,8 +1045,6 @@ lightly-qt
 ```bash
 GUI (or use pamac install --no-confirm)
 
-aritim-light-kde
-aritim-light-gtk
 papirus-icon-theme
 lightly-qt
 ```
@@ -963,8 +1064,6 @@ lightly-qt
 ```bash
 GUI (or use pamac install --no-confirm)
 
-aritim-dark-kde
-aritim-dark-gtk
 papirus-icon-theme
 lightly-qt
 
@@ -996,7 +1095,6 @@ copy /mnt/disk2/Projects/linux-config/files/share/ to /usr/share/
 # Chinese Font
 ```bash
 sudo pacman -S noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
-sudo pacman -S noto-fonts-sc noto-fonts-tc
 sudo pacman -S ttf-roboto ttf-dejavu ttf-droid ttf-inconsolata ttf-indic-otf ttf-liberation
 sudo pacman -S terminus-font
 sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
@@ -1006,6 +1104,7 @@ sudo pacman -S opendesktop-fonts
 ```
 *  optional: typographic font
 ```bash
+sudo pacman -S noto-fonts-sc noto-fonts-tc
 sudo pacman -S ttf-arphic-ukai ttf-arphic-uming
 ```
 
