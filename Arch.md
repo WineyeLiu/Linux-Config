@@ -189,13 +189,13 @@ pacman -S nvidia nvidia-utils nvidia-settings
 
 # Sound driver
 ```bash
-pacman -S alsa-firmware alsa-utils alsa-lib alsa-plugins alsa-oss
+pacman -S alsa-firmware alsa-utils alsa-lib alsa-plugins
 
 pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer
 
 or
 
-pacman -S pipewire pipewire-alsa pipewire-pulse
+pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack
 ```
 
 # Input driver
@@ -211,6 +211,8 @@ systemctl enable sddm
 
 # KDE Plasma
 ```bash
+Note: remove plasma-pa if using pipewire
+
 pacman -S plasma plasma-wayland-session plasma-wayland-protocols sddm-kcm
 pacman -S kde-graphics
 pacman -S kde-multimedia
@@ -219,6 +221,8 @@ pacman -S kde-utilities
 pacman -S kdepim
 pacman -S kdesdk
 pacman -S --needed kde-applications
+pacman -S ksysguard
+pacman -S plasma-pa
 ```
 or
 ```bash
@@ -490,10 +494,9 @@ sudo LANG=en_us grub-mkconfig -o /boot/grub/grub.cfg
 ```bash
 GUI (or use pamac install --no-confirm)
 
+psensor
 google-chrome
 vivaldi
-psensor
-gnome-keyring
 skypeforlinux-stable-bin
 telegram
 caprine
@@ -514,7 +517,6 @@ openvpn
 networkmanager-openvpn
 subtitleeditor
 unrar
-openssl
 motrix-bin
 ```
 
@@ -791,18 +793,16 @@ codeblocks
 GUI (or use pamac install --no-confirm)
 
 webstorm
-intellij-idea-ultimate-edition
 datagrip
 rider
-clion
 goland
 
 Note: edit rider PKGBUILD _installdir='/opt'
 ```
 ```bash
+sudo cp /opt/rider/bin/rider.svg /usr/share/pixmaps/rider.svg
 sudo rm -rf /opt/rider/jbr
-sudo ark -b -o /opt /mnt/disk3/Software/IDE/java-11.0.7-jetbrain.zip
-sudo mv /opt/java-11.0.7-jetbrain /opt/jbr
+sudo ark -b -o /opt /mnt/disk3/Software/IDE/jbr-linux-x64-202106011206.zip
 ```
 ```bash
 sudo nano /opt/datagrip/bin/datagrip.sh
@@ -822,10 +822,8 @@ or
 sudo nano ~/.xprofile
 
 export DATAGRIP_JDK=/opt/jbr
-export IDEA_JDK=/opt/jbr
 export RIDER_JDK=/opt/jbr
 export WEBIDE_JDK=/opt/jbr
-export CLION_JDK=/opt/jbr
 export GOLAND_JDK=/opt/jbr
 ```
 
@@ -859,7 +857,6 @@ nginx
 ```bash
 sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 sudo mkdir /etc/nginx/conf.d
-cd Downloads/dotfiles/nginx
 sudo cp nginx.conf /etc/nginx/nginx.conf
 sudo cp 127.0.0.1.conf /etc/nginx/conf.d/127.0.0.1.conf
 ```
