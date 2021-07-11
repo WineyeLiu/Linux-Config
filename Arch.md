@@ -1000,6 +1000,8 @@ mkdir /home/ductran/.local/share/Steam/steamapps/common/SteamLinuxRuntime_soldie
 ln -s /home/ductran/.local/share/Steam/steamapps/compatdata /mnt/disk3/Game/SteamLibrary/steamapps/compatdata
 ln -s "/home/ductran/.local/share/Steam/steamapps/common/Proton 6.3" "/mnt/disk3/Game/SteamLibrary/steamapps/common/Proton 6.3"
 ln -s /home/ductran/.local/share/Steam/steamapps/common/SteamLinuxRuntime_soldier /mnt/disk3/Game/SteamLibrary/steamapps/common/SteamLinuxRuntime_soldier
+mkdir /home/ductran/.local/share/Steam/compatibilitytools.d
+tar -xf Proton-6.12-GE-1.tar.gz -C ~/.steam/root/compatibilitytools.d/
 ```
 
 # Tweaks
